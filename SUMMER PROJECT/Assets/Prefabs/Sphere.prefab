@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5217099755578339789}
   - component: {fileID: 7776284461961379808}
   - component: {fileID: 9071377101344792385}
-  - component: {fileID: -5930946161137708305}
   - component: {fileID: 7087039589299783494}
   m_Layer: 0
   m_Name: Sphere
@@ -107,21 +106,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-5930946161137708305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3442919074317325586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b3d4bf8bbae27d449765daff41e4bfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletSpeed: 12
-  Damage: 5
-  bulletLifeTime: 7.5
 --- !u!54 &7087039589299783494
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -148,4 +132,4 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1

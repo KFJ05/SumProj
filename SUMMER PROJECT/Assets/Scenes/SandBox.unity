@@ -568,6 +568,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Package
       objectReference: {fileID: 0}
+    - target: {fileID: 1979466424770022097, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2345153590616264169, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3292401950971859266, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -607,6 +615,18 @@ PrefabInstance:
     - target: {fileID: 3292401950971859266, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5124029469457872481, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
+      propertyPath: Spread
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5124029469457872481, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
+      propertyPath: MagSize
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 5124029469457872481, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
+      propertyPath: TimeBetweenShooting
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -770,7 +790,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4e4fde6ffa8443849b36c6f1d0e736d1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
