@@ -45,10 +45,17 @@ public class Fire : MonoBehaviour
         BulletsLeft = MagSize;
 
         ReadyToShoot = true;
+
+        PlayerCam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
     }
 
     private void Update()
     {
+        if(PlayerCam == null)
+        {
+            PlayerCam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+        }    
+
         MyInput();
     }
 
