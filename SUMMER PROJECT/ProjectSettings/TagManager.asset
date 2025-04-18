@@ -8,6 +8,7 @@ TagManager:
   - GUN_CONTAINER
   - GunUI
   - AmmoText
+  - Enemy
   layers:
   - Default
   - TransparentFX

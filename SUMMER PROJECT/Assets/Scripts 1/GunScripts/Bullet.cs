@@ -31,6 +31,16 @@ public class Bullet : MonoBehaviour
         {
             if(collision.gameObject.tag == TagsToDamage[i])
             {
+                Health tempHP = collision.gameObject.GetComponent<Health>();
+
+                if (tempHP != null)
+                {
+                    tempHP.Damage(Damage);
+                }
+                if (!Testing)
+                {
+                    Destroy(gameObject);
+                }
                 break;
             }
 
@@ -38,16 +48,7 @@ public class Bullet : MonoBehaviour
 
         }
 
-        Health tempHP = collision.gameObject.GetComponent<Health>();
 
-        if (tempHP != null)
-        {
-            tempHP.Damage(Damage);
-        }
-        if(!Testing)
-        {
-            Destroy(gameObject);
-        }
 
     }
     
