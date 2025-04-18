@@ -127,11 +127,11 @@ MonoBehaviour:
   MuzzleFlash: {fileID: 0}
   shootF: 30
   UpwardF: 0
-  TimeBetweenShooting: 0.5
-  Spread: 2
-  ReloadTime: 5
-  timeBetweenShots: 0.5
-  MagSize: 24
+  TimeBetweenShooting: 0.2
+  Spread: 3
+  ReloadTime: 3.5
+  timeBetweenShots: 0.01
+  MagSize: 75
   BuletsFiredOnClick: 1
   FullAuto: 1
   FireKey: 323

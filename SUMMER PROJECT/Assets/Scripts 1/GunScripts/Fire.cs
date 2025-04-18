@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Fire : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class Fire : MonoBehaviour
     public Camera PlayerCam;
     public Transform FireLocation;
     public GameObject MuzzleFlash;
+    TextMeshProUGUI Text;
+    Canvas canvas;
 
 
     [Header("BulletStats")]
@@ -44,17 +48,41 @@ public class Fire : MonoBehaviour
     {
         BulletsLeft = MagSize;
 
+        canvas = GameObject.FindWithTag("GunUI").GetComponent<Canvas>();
+
+        Text = GameObject.FindWithTag("AmmoText").GetComponent<TextMeshProUGUI>();
+
         ReadyToShoot = true;
 
         PlayerCam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
     }
+
+    private void OnEnable()
+    {
+        canvas.gameObject.SetActive(true);
+    }
+    private void OnDisable()
+    {
+        canvas.gameObject.SetActive(false);
+    }
+
 
     private void Update()
     {
         if(PlayerCam == null)
         {
             PlayerCam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
-        }    
+        }
+        if(canvas == null || Text == null)
+        {
+            canvas = GameObject.FindWithTag("GunUI").GetComponent<Canvas>();
+
+            Text = GameObject.FindWithTag("AmmoText").GetComponent<TextMeshProUGUI>();
+
+
+        }
+
+        Text.text = (BulletsLeft/BuletsFiredOnClick) + " / " + (MagSize/BuletsFiredOnClick);
 
         MyInput();
     }

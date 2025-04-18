@@ -6,6 +6,8 @@ TagManager:
   tags:
   - MainPlayer
   - GUN_CONTAINER
+  - GunUI
+  - AmmoText
   layers:
   - Default
   - TransparentFX

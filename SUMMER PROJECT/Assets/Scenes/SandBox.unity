@@ -462,6 +462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0524b5bd283cdc24781627442159334c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &656601397
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,6 +609,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: GUN
       objectReference: {fileID: 0}
+    - target: {fileID: 7215699481946757011, guid: 602a21af89a2bfc49903357505204016, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8538780342362315772, guid: 602a21af89a2bfc49903357505204016, type: 3}
+      propertyPath: shootF
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8538780342362315772, guid: 602a21af89a2bfc49903357505204016, type: 3}
+      propertyPath: MagSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8538780342362315772, guid: 602a21af89a2bfc49903357505204016, type: 3}
+      propertyPath: FullAuto
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8538780342362315772, guid: 602a21af89a2bfc49903357505204016, type: 3}
+      propertyPath: timeBetweenShots
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8538780342362315772, guid: 602a21af89a2bfc49903357505204016, type: 3}
+      propertyPath: BuletsFiredOnClick
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8538780342362315772, guid: 602a21af89a2bfc49903357505204016, type: 3}
+      propertyPath: TimeBetweenShooting
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -709,6 +738,10 @@ PrefabInstance:
     - target: {fileID: 5124029469457872481, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
       propertyPath: TimeBetweenShooting
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5523177208778530408, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6103289756665993944, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
       propertyPath: player
@@ -1038,6 +1071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0524b5bd283cdc24781627442159334c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &2129413789 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 860901264852222964, guid: 61eeea681eaea4f49809995d874f0a8e, type: 3}
@@ -1055,6 +1089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0524b5bd283cdc24781627442159334c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1001 &153313266690278619
 PrefabInstance:
   m_ObjectHideFlags: 0
