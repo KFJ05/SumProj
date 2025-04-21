@@ -103,8 +103,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3622301092600986809}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.35864, y: -7.3996105, z: 21.538368}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -15.519276, y: 0.5, z: 17.73111}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -134,6 +134,7 @@ MonoBehaviour:
   LerpBarHealColour: {r: 0, g: 1, b: 0, a: 1}
   time: 2
   Dead: 0
+  CritMUlt: 0
   HealthBar: {fileID: 3090505193314152031}
   LerpBar: {fileID: 1654346942826714028}
 --- !u!65 &185963841682055301
@@ -192,12 +193,12 @@ MonoBehaviour:
   bullet: {fileID: 3442919074317325586, guid: e80fb51072ad0d44096bf6de31803704, type: 3}
   MainBody: {fileID: 8704202020843845820}
   firelocation: {fileID: 8236044373085763495}
-  FireRate: 1
+  FireRate: 0.75
   AttacksBeforeStun: 7
-  StunTimer: 2
+  StunTimer: 7
   Spread: 0
   Range: 20
-  shootF: 7
+  shootF: 15
   UseAnimator: 0
   Anim: {fileID: 0}
 --- !u!1 &3651890414369557217

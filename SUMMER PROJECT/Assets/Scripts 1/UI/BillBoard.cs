@@ -6,7 +6,10 @@ public class BillBoard : MonoBehaviour
      Transform Cam;
     void Update()
     {
-        Cam = GameObject.FindWithTag("MainCamera").GetComponent<Transform>();
+        if (Cam == null)
+        {
+            Cam = GameObject.FindWithTag("MainCamera").GetComponent<Transform>();
+        }
         transform.LookAt(Cam);
     }
 }
