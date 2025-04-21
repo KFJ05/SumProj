@@ -151,3 +151,6 @@ MonoBehaviour:
   Testing: 0
   TagsToDamage:
   - Enemy
+  Layer:
+    serializedVersion: 2
+    m_Bits: 1

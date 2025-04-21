@@ -11,16 +11,25 @@ public class Health : MonoBehaviour
 
     public bool UseHealthBar;
 
+
+    public Color LerpBarCRITDamageColour;
     public Color LerpBarDamageColour;
     public Color LerpBarHealColour;
+    Color LerpDC;
 
     public float time = 2f;
 
     public bool Dead;
 
+    public float CritMUlt;
+
     [Header("Refrences")]
     public Image HealthBar;
     public Image LerpBar;
+
+    
+
+    bool DidCrit;
 
     float lerpTimer;
 
@@ -45,7 +54,9 @@ public class Health : MonoBehaviour
         if(FillLBar > hFraction)
         {
             HealthBar.fillAmount = hFraction;
-            LerpBar.color = LerpBarDamageColour;
+
+            LerpBar.color = LerpDC;
+            
             lerpTimer += Time.deltaTime;
             float PercentC = lerpTimer / time;
             LerpBar.fillAmount = Mathf.Lerp(FillLBar, hFraction, PercentC);
@@ -74,7 +85,22 @@ public class Health : MonoBehaviour
         {
             Dead = true;
         }
+        LerpDC = LerpBarDamageColour;
 
+    }
+
+    public void CRITDamage(float Damage)
+    {
+        CurrentHealth -= (Damage * CritMUlt);
+
+
+        lerpTimer = 0;
+
+        if (CurrentHealth <= 0)
+        {
+            Dead = true;
+        }
+        LerpDC = LerpBarCRITDamageColour;
     }
     public void Heal(float AmountHealed)
     {

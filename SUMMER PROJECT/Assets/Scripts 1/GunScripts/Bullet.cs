@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -15,6 +16,7 @@ public class Bullet : MonoBehaviour
 
     public string[] TagsToDamage;
 
+    public LayerMask Layer;
 
     private void Awake()
     {
@@ -27,29 +29,43 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        for(int i = 0; i < TagsToDamage.Count(); i++)
+        for (int i = 0; i < TagsToDamage.Length; i++)
         {
-            if(collision.gameObject.tag == TagsToDamage[i])
+            if (collision.gameObject.CompareTag(TagsToDamage[i]))
             {
+                // Health should be on the hit object or one of its parents
                 Health tempHP = collision.gameObject.GetComponent<Health>();
+                if (tempHP == null)
+                {
+                    tempHP = collision.gameObject.GetComponentInParent<Health>();
+                }
+
+                // Check if the actual collider that was hit has the WeakSpot
+                WeakSpot WS = collision.collider.GetComponent<WeakSpot>();
 
                 if (tempHP != null)
                 {
-                    tempHP.Damage(Damage);
+                    if (WS != null)
+                    {
+                        tempHP.CRITDamage(Damage);
+                        Debug.Log("Crit");
+                    }
+                    else
+                    {
+                        tempHP.Damage(Damage);
+                    }
                 }
+
                 if (!Testing)
                 {
                     Destroy(gameObject);
                 }
+
                 break;
             }
-
-
-
         }
-
-
-
     }
-    
+
+
+
 }

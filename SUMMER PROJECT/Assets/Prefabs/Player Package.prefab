@@ -211,7 +211,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4294380687401173835}
-  - {fileID: 6523871563803550458}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1537468570338276355
@@ -428,7 +427,7 @@ Transform:
   m_Children:
   - {fileID: 363410463580159379}
   - {fileID: 7860237671274994392}
-  m_Father: {fileID: 3292401950971859266}
+  m_Father: {fileID: 4294380687401173835}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6476232940009284573
 MonoBehaviour:
@@ -1099,6 +1098,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6523871563803550458}
   - {fileID: 1083141749473778862}
   - {fileID: 6746532433074371190}
   - {fileID: 2298218127630819572}
@@ -1368,10 +1368,12 @@ MonoBehaviour:
   CurrentHealth: 100
   MaxHealth: 100
   UseHealthBar: 1
+  LerpBarCRITDamageColour: {r: 1, g: 0, b: 0, a: 1}
   LerpBarDamageColour: {r: 1, g: 1, b: 1, a: 0}
   LerpBarHealColour: {r: 0, g: 1, b: 0, a: 0}
   time: 2
   Dead: 0
+  CritMUlt: 0
   HealthBar: {fileID: 8738682765441593400}
   LerpBar: {fileID: 6693487644296713255}
 --- !u!1 &9013878284280097271

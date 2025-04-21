@@ -374,10 +374,12 @@ MonoBehaviour:
   CurrentHealth: 25
   MaxHealth: 25
   UseHealthBar: 1
-  LerpBarDamageColour: {r: 1, g: 1, b: 1, a: 1}
+  LerpBarCRITDamageColour: {r: 1, g: 1, b: 1, a: 1}
+  LerpBarDamageColour: {r: 0.6075471, g: 0, b: 0, a: 1}
   LerpBarHealColour: {r: 0, g: 1, b: 0, a: 1}
   time: 2
   Dead: 0
+  CritMUlt: 3
   HealthBar: {fileID: 1838244778807330024}
   LerpBar: {fileID: 233708953458137096}
 --- !u!65 &185963841682055301
@@ -397,10 +399,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1, y: 2.2405128, z: 1}
-  m_Center: {x: 0, y: 1.1297436, z: 0}
+  m_Size: {x: 1, y: 2.2405128, z: 0.8858385}
+  m_Center: {x: 0, y: 1.1297436, z: 0.057080746}
 --- !u!114 &3512951196083498599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -841,9 +843,9 @@ GameObject:
   - component: {fileID: 4759598679492070457}
   - component: {fileID: 3373952870299601542}
   - component: {fileID: 6083791230954629274}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -930,7 +932,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

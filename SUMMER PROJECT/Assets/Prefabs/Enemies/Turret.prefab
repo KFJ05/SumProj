@@ -129,6 +129,7 @@ MonoBehaviour:
   CurrentHealth: 10
   MaxHealth: 10
   UseHealthBar: 1
+  LerpBarCRITDamageColour: {r: 0, g: 0, b: 1, a: 1}
   LerpBarDamageColour: {r: 1, g: 1, b: 1, a: 1}
   LerpBarHealColour: {r: 0, g: 1, b: 0, a: 1}
   time: 2
