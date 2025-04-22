@@ -47,6 +47,7 @@ public class Die : MonoBehaviour
 
                 rb.AddForce(x, y, z, ForceMode.Impulse);
             }
+            EnemyManager.Instance.RemoveEnemy(gameObject);
 
       
 

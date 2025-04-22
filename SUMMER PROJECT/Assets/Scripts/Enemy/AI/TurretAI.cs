@@ -39,7 +39,10 @@ public class TurretAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(ATS <= 0)
+
+      
+
+        if (ATS <= 0)
         {
             ST = StunTimer;
             ATS = AttacksBeforeStun;
@@ -55,6 +58,8 @@ public class TurretAI : MonoBehaviour
         }
         else
         {
+         
+
             float D = Vector3.Distance(gameObject.transform.position, GameObject.FindWithTag("Player").transform.position);
             if (D <= Range)
             {

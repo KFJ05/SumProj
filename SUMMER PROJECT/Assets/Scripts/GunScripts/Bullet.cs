@@ -48,7 +48,6 @@ public class Bullet : MonoBehaviour
                     if (WS != null)
                     {
                         tempHP.CRITDamage(Damage);
-                        Debug.Log("Crit");
                     }
                     else
                     {

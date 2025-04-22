@@ -151,3 +151,6 @@ MonoBehaviour:
   Testing: 0
   TagsToDamage:
   - Player
+  Layer:
+    serializedVersion: 2
+    m_Bits: 0

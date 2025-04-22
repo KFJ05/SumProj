@@ -30,9 +30,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2908764697293676447}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.27, y: 2.5, z: 3.78}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.7}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5634019900043737854}
@@ -127,11 +127,11 @@ MonoBehaviour:
   MuzzleFlash: {fileID: 0}
   shootF: 30
   UpwardF: 0
-  TimeBetweenShooting: 0.2
-  Spread: 3
+  TimeBetweenShooting: 0.1
+  Spread: 0
   ReloadTime: 3.5
-  timeBetweenShots: 0.01
-  MagSize: 75
+  timeBetweenShots: 0
+  MagSize: 100
   BuletsFiredOnClick: 1
   FullAuto: 1
   FireKey: 323
@@ -185,7 +185,7 @@ MonoBehaviour:
   pickUpRange: 0
   dropFForce: 0
   dropUForce: 0
-  equipped: 0
+  equipped: 1
   PickUPWeapon: 101
   DropWeapon: 113
 --- !u!1 &4705630582313110676

@@ -27,7 +27,6 @@ public class Health : MonoBehaviour
     public Image HealthBar;
     public Image LerpBar;
 
-    
 
     bool DidCrit;
 
@@ -38,6 +37,7 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if(UseHealthBar == true)
         {
             UpdtadeHealthUI();
@@ -51,6 +51,8 @@ public class Health : MonoBehaviour
 
         float hFraction = CurrentHealth / MaxHealth;
 
+
+
         if(FillLBar > hFraction)
         {
             HealthBar.fillAmount = hFraction;
@@ -62,14 +64,14 @@ public class Health : MonoBehaviour
             LerpBar.fillAmount = Mathf.Lerp(FillLBar, hFraction, PercentC);
             
         }
-        if (FillLBar < hFraction)
+        if (FillHP < hFraction)
         {
  
             LerpBar.color = LerpBarHealColour;
             LerpBar.fillAmount = hFraction;
             lerpTimer += Time.deltaTime;
             float PercentC = lerpTimer / time;
-            HealthBar.fillAmount = Mathf.Lerp(FillLBar, hFraction, PercentC);
+            HealthBar.fillAmount = Mathf.Lerp(FillHP, LerpBar.fillAmount, PercentC);
         }
 
     }
@@ -114,6 +116,7 @@ public class Health : MonoBehaviour
             CurrentHealth = MaxHealth;
         }
     }
+
 
 
 

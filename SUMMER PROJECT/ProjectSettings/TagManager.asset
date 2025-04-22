@@ -9,6 +9,7 @@ TagManager:
   - GunUI
   - AmmoText
   - Enemy
+  - Player Spawn
   layers:
   - Default
   - TransparentFX
