@@ -63,10 +63,11 @@ public class TurretAI : MonoBehaviour
             float D = Vector3.Distance(gameObject.transform.position, GameObject.FindWithTag("Player").transform.position);
             if (D <= Range)
             {
-  
+                
                 MainBody.LookAt(GameObject.FindWithTag("Player").transform);
                 if (UseAnimator)
                 {
+                    Debug.Log(Anim);
                     Anim.SetBool("IsFiring", true);
                 }
                 if (FR <= 0)

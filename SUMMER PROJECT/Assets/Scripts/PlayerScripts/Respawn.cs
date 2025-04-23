@@ -41,6 +41,7 @@ public class Respawn : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
+            HealthBar.gameObject.SetActive(false);
 
             move.enabled = false;
             Slide.enabled = false;
@@ -59,8 +60,16 @@ public class Respawn : MonoBehaviour
 
     public void RESPAWN()
     {
-        SpawnManager.Instance.ResetAllSpawners();
-        EnemyManager.Instance.RESETALL();
+        HealthBar.gameObject.SetActive(true);
+
+        if (SpawnManager.Instance != null)
+        {
+            SpawnManager.Instance.ResetAllSpawners();
+        }
+        if (EnemyManager.Instance)
+        {
+            EnemyManager.Instance.RESETALL();
+        }
 
         SpawnPoint = GameObject.FindWithTag("Player Spawn").transform;
 
