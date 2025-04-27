@@ -20,7 +20,7 @@ public class SpawnManager : MonoBehaviour
 
             if (!instance)
             {
-                Debug.LogError("NO GAME Manager Present");
+                Debug.LogError("NO Spawn Manager Present");
             }
 
             return instance;

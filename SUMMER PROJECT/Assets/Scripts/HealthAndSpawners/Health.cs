@@ -37,6 +37,10 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(CurrentHealth > MaxHealth)
+        {
+            CurrentHealth = MaxHealth;
+        }
 
         if(UseHealthBar == true)
         {

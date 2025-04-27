@@ -6,6 +6,27 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SandBox/SandBox.unity
-    guid: af4789ec184c1bb4685d94cd43ce542f
+    path: Assets/Scenes/MenuAndPersistant/PersistantScene.unity
+    guid: 090825353c0340f4c9b53370bb456449
+  - enabled: 1
+    path: Assets/Scenes/MenuAndPersistant/MainMenu.unity
+    guid: 9ca6299c55e51cd4da6b6114db6c5647
+  - enabled: 1
+    path: Assets/Scenes/Chapter_1/Ch1Lvl1.unity
+    guid: bf02e3259e449fd4898f41cf8d7c093d
+  - enabled: 1
+    path: Assets/Scenes/Chapter_1/Ch1Lvl2.unity
+    guid: cad7adbe5abcb8a47b238b3c809eb37e
+  - enabled: 1
+    path: Assets/Scenes/Chapter_1/Ch1Lvl3.unity
+    guid: ee5d790538cf9704cb3653ce2688e0d8
+  - enabled: 1
+    path: Assets/Scenes/Chapter_1/Ch1Lvl4.unity
+    guid: 97423786be6c1f942b0a9e999f17a896
+  - enabled: 1
+    path: Assets/Scenes/Chapter_1/Ch1Lvl5.unity
+    guid: 84db070947862234e89266a258b69e1f
+  - enabled: 1
+    path: Assets/Scenes/Chapter_1/Ch1Lvl10.unity
+    guid: 43fdc48e457a63d4bb1fa9af14462c4c
   m_configObjects: {}

@@ -109,4 +109,18 @@ public class PickUP : MonoBehaviour
         GunScript.enabled = false;
     }    
 
+    public void ResetGun()
+    {
+        equipped = false;
+        slotFull = false;
+
+        transform.SetParent(null);
+
+        rb.isKinematic = false;
+        Coll.isTrigger = false;
+
+        GunScript.enabled = false;
+
+    }
+
 }

@@ -16,6 +16,8 @@ public class Die : MonoBehaviour
     public Animator anim;
     public bool useAnimator;
 
+    public bool TriggerDeath = false;
+
     private void Awake()
     {
         health = gameObject.GetComponent<Health>();
@@ -24,39 +26,79 @@ public class Die : MonoBehaviour
 
     private void Update()
     {
-        if(health.Dead == true)
+        if (health == null)
         {
-            if (useAnimator)
+            if (TriggerDeath == true)
             {
-                anim.SetBool("IsFiring", false);
+                if (useAnimator)
+                {
+                    anim.SetBool("IsFiring", false);
+                }
+                for (int i = 0; i < parts.Count(); i++)
+                {
+                    parts[i].gameObject.transform.SetParent(null);
+                    Rigidbody rb = parts[i].gameObject.GetComponent<Rigidbody>();
+                    Collider Col = parts[i].gameObject.GetComponent<Collider>();
+
+                    Col.isTrigger = false;
+
+                    rb.isKinematic = false;
+                    rb.useGravity = true;
+
+                    float x = Random.Range(-explosiveRange, explosiveRange);
+                    float y = Random.Range(0, explosiveRange);
+                    float z = Random.Range(-explosiveRange, explosiveRange);
+
+                    rb.AddForce(x, y, z, ForceMode.Impulse);
+                }
+                if (EnemyManager.Instance != null)
+                {
+                    EnemyManager.Instance.RemoveEnemy(gameObject);
+                }
+
+
+
+                Destroy(gameObject);
+
+
             }
-            for (int i = 0; i < parts.Count(); i++)
+        }
+        else
+        {
+            if (health.Dead == true)
             {
-                parts[i].gameObject.transform.SetParent(null);
-                Rigidbody rb = parts[i].gameObject.GetComponent<Rigidbody>();
-                Collider Col = parts[i].gameObject.GetComponent<Collider>();
+                if (useAnimator)
+                {
+                    anim.SetBool("IsFiring", false);
+                }
+                for (int i = 0; i < parts.Count(); i++)
+                {
+                    parts[i].gameObject.transform.SetParent(null);
+                    Rigidbody rb = parts[i].gameObject.GetComponent<Rigidbody>();
+                    Collider Col = parts[i].gameObject.GetComponent<Collider>();
 
-                Col.isTrigger = false;
+                    Col.isTrigger = false;
 
-                rb.isKinematic = false;
-                rb.useGravity = true;
+                    rb.isKinematic = false;
+                    rb.useGravity = true;
 
-                float x = Random.Range(-explosiveRange, explosiveRange);
-                float y = Random.Range(0, explosiveRange);
-                float z = Random.Range(-explosiveRange, explosiveRange);
+                    float x = Random.Range(-explosiveRange, explosiveRange);
+                    float y = Random.Range(0, explosiveRange);
+                    float z = Random.Range(-explosiveRange, explosiveRange);
 
-                rb.AddForce(x, y, z, ForceMode.Impulse);
+                    rb.AddForce(x, y, z, ForceMode.Impulse);
+                }
+                if (EnemyManager.Instance != null)
+                {
+                    EnemyManager.Instance.RemoveEnemy(gameObject);
+                }
+
+
+
+                Destroy(gameObject);
+
+
             }
-            if (EnemyManager.Instance != null)
-            {
-                EnemyManager.Instance.RemoveEnemy(gameObject);
-            }
-      
-
-
-            Destroy(gameObject);
-
-       
         }
     }
 

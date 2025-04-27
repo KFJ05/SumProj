@@ -10,6 +10,9 @@ TagManager:
   - AmmoText
   - Enemy
   - Player Spawn
+  - MainMenu
+  - WIN
+  - Gun
   layers:
   - Default
   - TransparentFX

@@ -189,5 +189,10 @@ public class Fire : MonoBehaviour
         reloading = false;
     }
 
+    public void ResetGun()
+    {
+        BulletsLeft = MagSize;
+    }
+
 
 }

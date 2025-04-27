@@ -17,6 +17,8 @@ public class Respawn : MonoBehaviour
     [Header("Game Over Screen")]
     public Canvas GameOverScreen;
     public Canvas HealthBar;
+    public bool ResetGunOnDeath;
+    GameObject Gun;
 
 
     void Update()
@@ -37,6 +39,21 @@ public class Respawn : MonoBehaviour
                 Swing = gameObject.GetComponent<Swinging>();
             if(Cam == null)
                 Cam = gameObject.GetComponentInChildren<PlayerCam>();
+            if(Gun == null)
+            {
+                Gun = GameObject.FindWithTag("Gun");
+            }
+            if (ResetGunOnDeath)
+            {
+                GunManager.Instance.SpawnNewGun();
+            }
+            else
+            {
+                Fire CF = Gun.GetComponent<Fire>();
+                CF.ResetGun();
+            }
+
+
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

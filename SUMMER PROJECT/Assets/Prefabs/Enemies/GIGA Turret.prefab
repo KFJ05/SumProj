@@ -876,7 +876,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 3442919074317325586, guid: e80fb51072ad0d44096bf6de31803704, type: 3}
   MainBody: {fileID: 653028164597915134}
-  firelocation: {fileID: 7373322680085768854}
+  firelocation:
+  - {fileID: 7373322680085768854}
   FireRate: 0.1
   AttacksBeforeStun: 40
   StunTimer: 5

@@ -20,7 +20,7 @@ public class EnemyManager : MonoBehaviour
 
             if (!instance)
             {
-                Debug.LogError("NO GAME Manager Present");
+                Debug.LogError("NO Enemy Manager Present");
             }
 
             return instance;

@@ -1,6 +1,7 @@
 using Lolopupka;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,7 +12,8 @@ public class TurretAI : MonoBehaviour
     [Header("Refrences")]
     public GameObject bullet;
 
-    public Transform MainBody, firelocation;
+    public Transform MainBody;
+    public Transform[] firelocation;
 
     [Header("AI Stats")]
 
@@ -73,25 +75,29 @@ public class TurretAI : MonoBehaviour
                 if (FR <= 0)
                 {
                     //fire
-                    Vector3 DirWithoutSpread = firelocation.position - MainBody.position;
-
-          
-
-                    float x = Random.Range(-Spread, Spread);
-                    float y = Random.Range(-Spread, Spread);
+                    for (int i = 0; i < firelocation.Count(); i++)
+                    {
+                        Vector3 DirWithoutSpread = firelocation[i].position - MainBody.position;
 
 
-                    Vector3 FireDir = DirWithoutSpread + new Vector3(x, y, 0);
+
+                        float x = Random.Range(-Spread, Spread);
+                        float y = Random.Range(-Spread, Spread);
 
 
-                    GameObject CurrBullet = Instantiate(bullet, firelocation.position, Quaternion.identity);
+                        Vector3 FireDir = DirWithoutSpread + new Vector3(x, y, 0);
 
-                    CurrBullet.transform.forward = FireDir;
 
-                    CurrBullet.GetComponent<Rigidbody>().AddForce(FireDir.normalized * shootF, ForceMode.Impulse);
+                        GameObject CurrBullet = Instantiate(bullet, firelocation[i].position, Quaternion.identity);
 
-                    ATS -= 1;
-                    FR = FireRate;
+                        CurrBullet.transform.forward = FireDir;
+
+                        CurrBullet.GetComponent<Rigidbody>().AddForce(FireDir.normalized * shootF, ForceMode.Impulse);
+                    }
+
+                        ATS -= 1;
+                        FR = FireRate;
+                    
                 }
                 else
                 {
