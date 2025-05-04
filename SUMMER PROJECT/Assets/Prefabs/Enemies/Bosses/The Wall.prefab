@@ -546,8 +546,8 @@ MonoBehaviour:
   - {fileID: 6970617800338182715}
   - {fileID: 3238656426467440740}
   - {fileID: 2293117604135999454}
-  TimeToDestroy: 12
-  HealTimer: 0
+  TimeToDestroy: 3
+  HealTimer: 999
   WallAnimator: {fileID: 8493924940070580518}
 --- !u!95 &8493924940070580518
 Animator:

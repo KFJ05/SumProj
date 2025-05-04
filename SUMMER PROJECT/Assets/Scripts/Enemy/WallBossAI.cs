@@ -34,7 +34,8 @@ public class WallBossAI : MonoBehaviour
 
         if(Whp != null && Whp.CurrentHealth <= 0)
         {
-            for(int i = 0; i < Turrets.Count(); i++)
+
+            for (int i = 0; i < Turrets.Count(); i++)
             {
                 if (Turrets[i] != null)
                 {
@@ -53,7 +54,12 @@ public class WallBossAI : MonoBehaviour
             
 
             }
+            WallAnimator.SetBool("Spawn", false);
+
+            WallAnimator.SetBool("Die", true);
             Invoke(nameof(DestroyWall), TimeToDestroy);
+
+            EnemyManager.Instance.RemoveEnemy(gameObject);
         }
 
         //TimerLeft -= Time.deltaTime;

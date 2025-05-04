@@ -34,11 +34,30 @@ public class Spawn : MonoBehaviour
                     EnemyManager.Instance.AddEnemy(G);
                 }
                 
+                
             }
             AlreadySpawned = true;
         }
     }
 
+    public void ForceSpawn()
+    {
+        for (int i = 0; i < spawnedEntities.Count(); i++)
+        {
+            if (spawnLocations[i] != null)
+            {
+                GameObject G = Instantiate(spawnedEntities[i], spawnLocations[i].position, spawnLocations[i].rotation);
+                EnemyManager.Instance.AddEnemy(G);
+            }
+            else
+            {
+                GameObject G = Instantiate(spawnedEntities[i], spawnedEntities[i].transform.position, spawnedEntities[i].transform.rotation);
+                EnemyManager.Instance.AddEnemy(G);
+            }
+        }
+    }
+
+ 
     public void resetSpawner()
     {
         AlreadySpawned = false;

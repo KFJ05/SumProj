@@ -10,6 +10,7 @@ public class Health : MonoBehaviour
     public float MaxHealth;
 
     public bool UseHealthBar;
+    public bool useSharedHealthbar;
 
 
     public Color LerpBarCRITDamageColour;

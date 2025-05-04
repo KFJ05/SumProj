@@ -17,8 +17,18 @@ public class DestroyPart : MonoBehaviour
 
             if (TimeToDestroy <= 0)
             {
+                if(PartManager.Instance != null)
+                {
+                    PartManager.Instance.RemovePart(gameObject);
+                }
                 Destroy(gameObject);
             }
         }
+    }
+
+    public void ResetPart()
+    {
+        gameObject.tag = null;
+        Destroy(gameObject);
     }
 }

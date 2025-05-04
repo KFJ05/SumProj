@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    public List<GameObject> enemies;
+    public List<GameObject> Enemies;
 
     private static EnemyManager instance;
     public static EnemyManager Instance
@@ -28,22 +28,28 @@ public class EnemyManager : MonoBehaviour
 
     }
 
+
     public void AddEnemy(GameObject Enemy)
     {
-        enemies.Add(Enemy);
+        Enemies.Add(Enemy);
     }
 
     public void RemoveEnemy(GameObject Enemy)
     {
-        enemies.Remove(Enemy);
+        Enemies.Remove(Enemy);
+    }
+
+    public int GetEnemyCount()
+    {
+        return Enemies.Count;
     }
 
     public void RESETALL()
     {
-        for(int i = 0; i < enemies.Count;)
+        for(int i = 0; i < Enemies.Count;)
         {
-            Destroy(enemies[i]);
-            RemoveEnemy(enemies[i]);
+            Destroy(Enemies[i]);
+            RemoveEnemy(Enemies[i]);
         }
     }
 

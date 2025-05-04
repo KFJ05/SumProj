@@ -289,7 +289,7 @@ Transform:
   m_GameObject: {fileID: 275003598}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -38.7, y: 22.705364, z: -149.3}
+  m_LocalPosition: {x: -40, y: 22, z: -150}
   m_LocalScale: {x: 50, y: 1, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -394,7 +394,7 @@ Transform:
   m_GameObject: {fileID: 286875299}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000004768371}
-  m_LocalPosition: {x: -40, y: 22.705364, z: -44.1}
+  m_LocalPosition: {x: -40, y: 22, z: -44.1}
   m_LocalScale: {x: 10, y: 1, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -428,7 +428,7 @@ Transform:
   m_GameObject: {fileID: 590513533}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -38.7, y: 22.705364, z: -292.6}
+  m_LocalPosition: {x: 80, y: 22, z: -150}
   m_LocalScale: {x: 50, y: 1, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -475,7 +475,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ecc1883e138dda94cb751e443f0f831b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -635,7 +635,7 @@ Transform:
   m_GameObject: {fileID: 871675153}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -40, y: 22.705364, z: -4.6110425}
+  m_LocalPosition: {x: -40, y: 22, z: -4.6110425}
   m_LocalScale: {x: 10, y: 1, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -972,7 +972,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2908764697293676447, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
@@ -1003,13 +1004,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349523184}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.70710677, y: 0.7071068, z: 0.00000031909937, w: 0.00000034272668}
-  m_LocalPosition: {x: -48, y: 32.7, z: -232.1}
+  m_LocalRotation: {x: 0.50000054, y: 0.50000054, z: 0.4999995, w: 0.49999955}
+  m_LocalPosition: {x: 12, y: 32, z: -160}
   m_LocalScale: {x: 20, y: 1, z: 43}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1661409026}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
 --- !u!65 &1349523186
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1148,13 +1149,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814721970}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.70710677, y: 0.7071068, z: 0.00000031909937, w: 0.00000034272668}
-  m_LocalPosition: {x: -28.2, y: 32.7, z: -203.8}
+  m_LocalRotation: {x: 0.50000054, y: 0.50000054, z: 0.4999995, w: 0.49999955}
+  m_LocalPosition: {x: 34, y: 32, z: -140}
   m_LocalScale: {x: 20, y: 1, z: 43}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1661409026}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
 --- !u!65 &1814721972
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1254,7 +1255,7 @@ Transform:
   m_GameObject: {fileID: 1882681182}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -38.7, y: 24.5, z: -292.6}
+  m_LocalPosition: {x: 80, y: 23, z: -150}
   m_LocalScale: {x: 50, y: 1, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1461,7 +1462,7 @@ Transform:
   m_GameObject: {fileID: 2047332928}
   serializedVersion: 2
   m_LocalRotation: {x: 0.70710677, y: 0.7071068, z: 0.00000031909937, w: 0.00000034272668}
-  m_LocalPosition: {x: -28.2, y: 32.7, z: -94.6}
+  m_LocalPosition: {x: -28.2, y: 32, z: -94.6}
   m_LocalScale: {x: 20, y: 1, z: 43}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Slideing : MonoBehaviour
 {
@@ -11,6 +12,13 @@ public class Slideing : MonoBehaviour
 
     [SerializeField]
     Transform playerObj;
+
+    [SerializeField]
+    GameObject GunContainer;
+
+    [SerializeField]
+    Vector3 GCScale;
+
 
     Rigidbody rb;
 
@@ -74,7 +82,7 @@ public class Slideing : MonoBehaviour
     private void startSlide()
     {
         pm.sliding = true;
-
+        GunContainer.transform.localScale = new Vector3(GCScale.x, GCScale.y / startYscale, GCScale.z);
         playerObj.localScale = new Vector3(playerObj.localScale.x, startYscale, playerObj.localScale.z);
 
         rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
@@ -83,6 +91,8 @@ public class Slideing : MonoBehaviour
     private void stopSlide()
     {
         pm.sliding = false;
+
+        GunContainer.transform.localScale = GCScale;
 
         playerObj.localScale = new Vector3(playerObj.localScale.x, normalYscale, playerObj.localScale.z);
 

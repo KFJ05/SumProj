@@ -20,7 +20,8 @@ public class Respawn : MonoBehaviour
     public bool ResetGunOnDeath;
     GameObject Gun;
 
-
+    public bool UsingGun;
+    
     void Update()
     {
         if(HP == null)
@@ -39,19 +40,27 @@ public class Respawn : MonoBehaviour
                 Swing = gameObject.GetComponent<Swinging>();
             if(Cam == null)
                 Cam = gameObject.GetComponentInChildren<PlayerCam>();
-            if(Gun == null)
+            if (UsingGun == true)
             {
-                Gun = GameObject.FindWithTag("Gun");
+                if (Gun == null)
+                {
+                    Gun = GameObject.FindWithTag("Gun");
+                }
+                if (ResetGunOnDeath)
+                {
+                    GunManager.Instance.SpawnNewGun();
+                }
+                else
+                {
+                    Fire CF = Gun.GetComponent<Fire>();
+                    CF.ResetGun();
+                }
             }
-            if (ResetGunOnDeath)
-            {
-                GunManager.Instance.SpawnNewGun();
-            }
-            else
-            {
-                Fire CF = Gun.GetComponent<Fire>();
-                CF.ResetGun();
-            }
+
+
+
+            
+            
 
 
 
@@ -83,9 +92,13 @@ public class Respawn : MonoBehaviour
         {
             SpawnManager.Instance.ResetAllSpawners();
         }
-        if (EnemyManager.Instance)
+        if (EnemyManager.Instance != null)
         {
             EnemyManager.Instance.RESETALL();
+        }
+        if(PartManager.Instance != null)
+        {
+            PartManager.Instance.ResetParts();
         }
 
         SpawnPoint = GameObject.FindWithTag("Player Spawn").transform;

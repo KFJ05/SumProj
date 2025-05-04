@@ -45,6 +45,13 @@ public class Movement : MonoBehaviour
 
     bool ReadytoJump = true;
 
+
+    [SerializeField]
+    GameObject GunContainer;
+
+    [SerializeField]
+    Vector3 GCScale;
+
     [Header("ground check")]
 
     [SerializeField]
@@ -304,12 +311,14 @@ public class Movement : MonoBehaviour
 
         if(Input.GetKeyDown(CrouchAndSlideKey))
         {
+            GunContainer.transform.localScale = new Vector3(GCScale.x, GCScale.y / crouchYscale, GCScale.z);
             transform.localScale = new Vector3(transform.localScale.x, crouchYscale, transform.localScale.z);
             rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
         }
 
         if (Input.GetKeyUp(CrouchAndSlideKey))
         {
+            GunContainer.transform.localScale = GCScale;
             transform.localScale = new Vector3(transform.localScale.x, NormalScale, transform.localScale.z);
 
            
