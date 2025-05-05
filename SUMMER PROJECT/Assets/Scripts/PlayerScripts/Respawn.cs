@@ -74,6 +74,12 @@ public class Respawn : MonoBehaviour
             wallRun.enabled = false;
             Swing.enabled = false;
             Cam.enabled = false;
+            if (UsingGun == true)
+            {
+                Fire fire = Gun.GetComponent<Fire>();
+                fire.enabled = false;
+            }
+            
 
             GameOverScreen.gameObject.SetActive(true);
         }
@@ -114,6 +120,11 @@ public class Respawn : MonoBehaviour
         wallRun.enabled = true;
         Swing.enabled = true;
         Cam.enabled = true;
+        if (UsingGun == true)
+        {
+            Fire fire = Gun.GetComponent<Fire>();
+            fire.enabled = false;
+        }
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

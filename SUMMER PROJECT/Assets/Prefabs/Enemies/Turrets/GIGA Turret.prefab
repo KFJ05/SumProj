@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3ecbc0fc837d2d940b4e67ccd0a9d44b, type: 2}
+  - {fileID: 2100000, guid: a0ad5995a9c6e074abd1849cd5aefee4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -332,7 +332,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7d23de1fa2433d3498349077c691cc49, type: 2}
+  - {fileID: 2100000, guid: fb4724d2a1642084397a9ef0f70e76a6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -556,7 +556,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ef903e69f0b1e9949ba8e8d3d704d0e4, type: 2}
+  - {fileID: 2100000, guid: d76c3243c141bb841a4fdbc9f059c240, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -901,6 +901,7 @@ MonoBehaviour:
   CurrentHealth: 35
   MaxHealth: 35
   UseHealthBar: 1
+  useSharedHealthbar: 0
   LerpBarCRITDamageColour: {r: 1, g: 1, b: 1, a: 1}
   LerpBarDamageColour: {r: 0.5320754, g: 0.5320754, b: 0.5320754, a: 1}
   LerpBarHealColour: {r: 0, g: 1, b: 0, a: 1}
@@ -930,6 +931,8 @@ MonoBehaviour:
   explosiveRange: 12
   anim: {fileID: 3160347370497224448}
   useAnimator: 1
+  PartofWave: 0
+  TriggerDeath: 0
 --- !u!1 &4535104943500052878
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,7 +997,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ef903e69f0b1e9949ba8e8d3d704d0e4, type: 2}
+  - {fileID: 2100000, guid: 437c8e1e14016834fbd1dfd65fd4e4ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1305,7 +1308,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 786e14bf44025ef468cf044763ec56d6, type: 2}
+  - {fileID: 2100000, guid: baf21ea036769e84cb33713a373875d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

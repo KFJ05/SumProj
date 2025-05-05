@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using UnityEngine;
 
 public class Swinging : MonoBehaviour
@@ -34,6 +35,12 @@ public class Swinging : MonoBehaviour
     public float extendCableSpeed;
 
 
+    [Header("Prediction")]
+    public RaycastHit predicionHit;
+    public float predictionSphereCastRad;
+    public Transform PredictionPoint;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +58,8 @@ public class Swinging : MonoBehaviour
         {
             StopSwing();
         }
+
+        CheckforSwingPoints();
 
         if(joint != null)
         {
@@ -79,29 +88,34 @@ public class Swinging : MonoBehaviour
 
     private void StartSwing()
     {
+
+
+      
+        if(predicionHit.point == Vector3.zero)
+        {
+            return;
+        }
+
         playerMovement.swinging = true;
 
-        RaycastHit hit;
-        if(Physics.Raycast(cam.position, cam.forward, out hit, MaxSwingDistance, whatIsGrapple))
-        {
-            swingPort = hit.point;
-            joint = player.gameObject.AddComponent<SpringJoint>();
-            joint.autoConfigureConnectedAnchor = false;
-            joint.connectedAnchor = swingPort;
+        swingPort = predicionHit.point;
+        joint = player.gameObject.AddComponent<SpringJoint>();
+        joint.autoConfigureConnectedAnchor = false;
+        joint.connectedAnchor = swingPort;
 
-            float disFromPoint = Vector3.Distance(player.position, swingPort);
+        float disFromPoint = Vector3.Distance(player.position, swingPort);
 
-            joint.maxDistance = disFromPoint * 0.8f;
-            joint.minDistance = disFromPoint * 0.25f;
+        joint.maxDistance = disFromPoint * 0.8f;
+        joint.minDistance = disFromPoint * 0.25f;
 
-            joint.spring = 4.5f;
-            joint.damper = 7f;
-            joint.massScale = 4.5f;
+        joint.spring = 4.5f;
+        joint.damper = 7f;
+        joint.massScale = 4.5f;
 
-            lr.positionCount = 2;
-            currentGrapplePos = gunTip.position;
+        lr.positionCount = 2;
+        currentGrapplePos = gunTip.position;
           
-        }
+        
     }
 
     private void StopSwing()
@@ -149,5 +163,50 @@ public class Swinging : MonoBehaviour
             joint.maxDistance = Edfp * 0.8f;
             joint.minDistance = Edfp * 0.25f;
         }
+    }
+
+    private void CheckforSwingPoints()
+    {
+        if(joint != null)
+        {
+            return;
+        }
+
+        RaycastHit shperecastHit;
+        Physics.SphereCast(cam.position, predictionSphereCastRad, cam.forward, out shperecastHit, MaxSwingDistance, whatIsGrapple);
+
+        RaycastHit RCH;
+        Physics.Raycast(cam.position, cam.forward, out RCH, MaxSwingDistance, whatIsGrapple);
+
+        Vector3 RealHitpoint;
+
+        if(RCH.point != Vector3.zero)
+        {
+            RealHitpoint = RCH.point;
+        }
+        else if(shperecastHit.point != Vector3.zero)
+        {
+            RealHitpoint = shperecastHit.point;
+        }
+
+        else
+        {
+            RealHitpoint = Vector3.zero; 
+        }
+
+
+        if(RealHitpoint != Vector3.zero)
+        {
+            PredictionPoint.gameObject.SetActive(true);
+            PredictionPoint.position = RealHitpoint;
+        }
+
+        else
+        {
+            PredictionPoint.gameObject.SetActive(false);
+        }
+
+        predicionHit = RCH.point == Vector3.zero ? shperecastHit : RCH;
+
     }
 }

@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 3512951196083498599}
   - component: {fileID: 2360197935783647253}
   m_Layer: 0
-  m_Name: Turret
+  m_Name: Turret Tutorial
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -188,7 +188,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3622301092600986809}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2427c22e5825b07468330a279606615e, type: 3}
   m_Name: 
@@ -377,7 +377,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 437c8e1e14016834fbd1dfd65fd4e4ee, type: 2}
+  - {fileID: 2100000, guid: 4ce2c70f1eda10c4c8fd8690edf7dbf6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -525,7 +525,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: baf21ea036769e84cb33713a373875d4, type: 2}
+  - {fileID: 2100000, guid: 4ec20794f66e3f94b8c80e5ea0cca5fb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -780,7 +780,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a0ad5995a9c6e074abd1849cd5aefee4, type: 2}
+  - {fileID: 2100000, guid: 0439d527f504bfd4aa9833d7f7389d2b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -929,7 +929,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d76c3243c141bb841a4fdbc9f059c240, type: 2}
+  - {fileID: 2100000, guid: 22fdbb6f68784734abe746ef547ea76b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
