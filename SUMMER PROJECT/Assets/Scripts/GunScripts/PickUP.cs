@@ -10,6 +10,7 @@ public class PickUP : MonoBehaviour
     public Rigidbody rb;
     public BoxCollider Coll;
     public Transform player, gunContainer, fpsCam;
+    public Canvas Stats;
 
     [Header("Pick up and throw stats")]
     public float pickUpRange;
@@ -57,7 +58,16 @@ public class PickUP : MonoBehaviour
         else
         {
 
-            float DTP = player.position.magnitude - transform.position.magnitude;
+            float DTP = Vector3.Distance(player.position , transform.position);
+
+            if(DTP <= pickUpRange && !equipped)
+            {
+                Stats.gameObject.SetActive(true);
+            }
+            else
+            {
+                Stats.gameObject.SetActive(false);
+            }
 
             if (!equipped && DTP <= pickUpRange && Input.GetKeyDown(PickUPWeapon) && !slotFull)
             {

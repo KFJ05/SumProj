@@ -1758,7 +1758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLevel: Ch1Lvl7
-  NextLevel: Ch1Lvl10
+  NextLevel: Ch1Lvl8
 --- !u!4 &1640226330
 Transform:
   m_ObjectHideFlags: 0

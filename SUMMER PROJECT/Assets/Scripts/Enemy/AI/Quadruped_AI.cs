@@ -26,6 +26,8 @@ public class Quadruped_AI : MonoBehaviour
     public float DistanceToStand;
     public float speed;
 
+    public bool LockY;
+
     public float TimeToDestroyLegs;
 
     float D;
@@ -50,15 +52,26 @@ public class Quadruped_AI : MonoBehaviour
             QuadHP = gameObject.GetComponent<Health>();
         }
 
-        if (D > DistanceToStand && QuadHP.CurrentHealth > 0)
+        
+        
+
+
+
+        if(QuadHP != null && QuadHP.CurrentHealth > 0)
         {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime, MainTurret);
+
+
+            if (LockY == true)
+            {
+                transform.LookAt(new Vector3(Player.transform.position.x, 0, Player.transform.position.z));
+            }
+            else
+            {
+                transform.LookAt(Player.transform.position);
+            }
+
+            transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.Self);
         }
-
-
-
-
-
 
         if (QuadHP != null && QuadHP.CurrentHealth <= 0)
         {
