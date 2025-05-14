@@ -1351,6 +1351,7 @@ MonoBehaviour:
   player: {fileID: 0}
   gunContainer: {fileID: 0}
   fpsCam: {fileID: 0}
+  Stats: {fileID: 0}
   pickUpRange: 5
   dropFForce: 3
   dropUForce: 0
@@ -2788,7 +2789,7 @@ GameObject:
   - component: {fileID: 6816036524232502646}
   - component: {fileID: 2936562961606995442}
   - component: {fileID: 1645100360800708675}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player (1)
   m_TagString: Player
   m_Icon: {fileID: 0}

@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
 
     public List<string> CompletedLevels = new List<string>();
 
+    public AudioSource MasterMusicSource;
+
+    public AudioSource MasterSoundSource;
+
     private static GameManager instance;
     public static GameManager Instance
     {
@@ -56,6 +60,33 @@ public class GameManager : MonoBehaviour
 
         SceneManager.LoadScene(NextLevel, LoadSceneMode.Additive);
     }
+
+    public void PlayMusic(AudioClip clip, bool LoopMusic)
+    {
+        MasterMusicSource.clip = clip;
+        MasterMusicSource.loop = LoopMusic;
+        MasterMusicSource.Play();
+
+    }
+    public void StopMusic()
+    {
+        MasterMusicSource.Pause();
+        MasterMusicSource.clip = null;
+        MasterMusicSource.loop = false;
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        MasterSoundSource.clip = clip;
+        MasterSoundSource.Play();
+
+    }
+    public void StopSound()
+    {
+        MasterSoundSource.Pause();
+        MasterSoundSource.clip = null;
+    }
+
 
 
 

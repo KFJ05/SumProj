@@ -2385,7 +2385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawners:
   - {fileID: 183283436}
-  - {fileID: 0}
+  - {fileID: 951728535}
 --- !u!4 &1404131939
 Transform:
   m_ObjectHideFlags: 0
@@ -2867,6 +2867,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentLevel: Ch1Lvl5
   NextLevel: Ch1Lvl6
+  LevelMusic: {fileID: 8300000, guid: 7e79060a7dfc0df4db66cd35c3d58399, type: 3}
+  LoopMusic: 1
+  PlayMusic: 1
+  StopMusicOnLeave: 0
 --- !u!4 &1697792140
 Transform:
   m_ObjectHideFlags: 0
