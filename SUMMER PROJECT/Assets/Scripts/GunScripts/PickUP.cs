@@ -60,20 +60,24 @@ public class PickUP : MonoBehaviour
 
             float DTP = Vector3.Distance(player.position , transform.position);
 
-            if(DTP <= pickUpRange && !equipped)
+
+            if (!equipped && DTP <= pickUpRange && Input.GetKey(PickUPWeapon) && !slotFull)
+            {
+                Pickup();
+            }
+
+            else if (DTP <= pickUpRange && !equipped)
             {
                 Stats.gameObject.SetActive(true);
             }
+
             else
             {
                 Stats.gameObject.SetActive(false);
             }
 
-            if (!equipped && DTP <= pickUpRange && Input.GetKeyDown(PickUPWeapon) && !slotFull)
-            {
-                Pickup();
-            }
-            if (equipped && Input.GetKeyDown(DropWeapon))
+      
+            if (equipped && Input.GetKey(DropWeapon))
             {
                 Drop();
             }

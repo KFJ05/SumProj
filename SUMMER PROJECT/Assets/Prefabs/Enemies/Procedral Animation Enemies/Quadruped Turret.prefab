@@ -578,7 +578,7 @@ GameObject:
   - component: {fileID: 4696385088717620901}
   - component: {fileID: 1011728984244223629}
   - component: {fileID: 5735791426501016023}
-  - component: {fileID: 2404689708578045743}
+  - component: {fileID: 2673096862210469184}
   m_Layer: 0
   m_Name: Quadruped Turret
   m_TagString: Enemy
@@ -755,7 +755,7 @@ MonoBehaviour:
   CritMUlt: 0
   HealthBar: {fileID: 3090505193314152031}
   LerpBar: {fileID: 1654346942826714028}
---- !u!114 &2404689708578045743
+--- !u!114 &2673096862210469184
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -764,17 +764,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 3622301092600986809}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54a3816bbd8aae844a7c4b561c71a996, type: 3}
+  m_Script: {fileID: 11500000, guid: d5b51ef10037b724e9235c90d92782f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  Player: {fileID: 0}
+  Ground:
+    serializedVersion: 2
+    m_Bits: 0
+  PlayerLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  moveToPoints: 0
+  GameObjectNames: []
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 0
+  TBA: 0
+  SightRange: 40
+  AttackRange: 30
+  CallFire: 0
   Turrets:
-  - {fileID: 8169585724022900574}
-  MainTurret: {fileID: 5591285133560876380}
-  ProAnim: {fileID: 4696385088717620901}
-  ProBody: {fileID: 3314021871219261922}
-  DistanceToStand: 20
-  speed: 2
-  TimeToDestroyLegs: 7.5
+  - {fileID: 2269790151686519254}
 --- !u!1 &3908813521269269911
 GameObject:
   m_ObjectHideFlags: 0
@@ -2450,7 +2460,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8169585724022900574}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2427c22e5825b07468330a279606615e, type: 3}
   m_Name: 
@@ -2467,6 +2477,7 @@ MonoBehaviour:
   shootF: 50
   UseAnimator: 0
   Anim: {fileID: 0}
+  FireFunctionCalledElsewhere: 0
 --- !u!1 &8203901926637761610
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,6 +33,8 @@ public class TurretAI : MonoBehaviour
     float FR, ST;
     int ATS;
 
+    public bool FireFunctionCalledElsewhere;
+
     private void Awake()
     {
         ATS = AttacksBeforeStun;
@@ -42,75 +44,90 @@ public class TurretAI : MonoBehaviour
     void Update()
     {
 
-      
+        if (FireFunctionCalledElsewhere == false)
+        {
 
-        if (ATS <= 0)
-        {
-            ST = StunTimer;
-            ATS = AttacksBeforeStun;
-        }
-        if(ST > 0)
-        {
-            if (UseAnimator)
+
+            if (ATS <= 0)
             {
-                Anim.SetBool("IsFiring", false);
+                ST = StunTimer;
+                ATS = AttacksBeforeStun;
             }
-
-            ST -= Time.deltaTime;
-        }
-        else
-        {
-         
-
-            float D = Vector3.Distance(gameObject.transform.position, GameObject.FindWithTag("Player").transform.position);
-            if (D <= Range)
+            if (ST > 0)
             {
-                
-                MainBody.LookAt(GameObject.FindWithTag("Player").transform);
                 if (UseAnimator)
                 {
-                    Debug.Log(Anim);
-                    Anim.SetBool("IsFiring", true);
+                    Anim.SetBool("IsFiring", false);
                 }
-                if (FR <= 0)
+
+                ST -= Time.deltaTime;
+            }
+            else
+            {
+
+
+                float D = Vector3.Distance(gameObject.transform.position, GameObject.FindWithTag("Player").transform.position);
+                if (D <= Range)
                 {
-                    //fire
-                    for (int i = 0; i < firelocation.Count(); i++)
+
+                    MainBody.LookAt(GameObject.FindWithTag("Player").transform);
+                    if (UseAnimator)
                     {
-                        Vector3 DirWithoutSpread = firelocation[i].position - MainBody.position;
-
-
-
-                        float x = Random.Range(-Spread, Spread);
-                        float y = Random.Range(-Spread, Spread);
-
-
-                        Vector3 FireDir = DirWithoutSpread + new Vector3(x, y, 0);
-
-
-                        GameObject CurrBullet = Instantiate(bullet, firelocation[i].position, Quaternion.identity);
-
-                        CurrBullet.transform.forward = FireDir;
-
-                        CurrBullet.GetComponent<Rigidbody>().AddForce(FireDir.normalized * shootF, ForceMode.Impulse);
+                        Debug.Log(Anim);
+                        Anim.SetBool("IsFiring", true);
                     }
+                    if (FR <= 0)
+                    {
+                        //fire
+                        FireTurrBullet();
 
                         ATS -= 1;
                         FR = FireRate;
-                    
-                }
-                else
-                {
-           
 
-                    FR -= Time.deltaTime;
+                    }
+                    else
+                    {
+
+
+                        FR -= Time.deltaTime;
+                    }
                 }
+
             }
-
+        }
+        else
+        {
+            MainBody.LookAt(GameObject.FindWithTag("Player").transform);
         }
 
 
 
 
     }
+
+    public void FireTurrBullet()
+    {
+        for (int i = 0; i < firelocation.Count(); i++)
+        {
+            Vector3 DirWithoutSpread = firelocation[i].position - MainBody.position;
+
+
+
+            float x = Random.Range(-Spread, Spread);
+            float y = Random.Range(-Spread, Spread);
+
+
+            Vector3 FireDir = DirWithoutSpread + new Vector3(x, y, 0);
+
+
+            GameObject CurrBullet = Instantiate(bullet, firelocation[i].position, Quaternion.identity);
+
+            CurrBullet.transform.forward = FireDir;
+
+            CurrBullet.GetComponent<Rigidbody>().AddForce(FireDir.normalized * shootF, ForceMode.Impulse);
+        }
+
+    }
 }
+
+
