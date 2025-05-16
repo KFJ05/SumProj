@@ -17,10 +17,7 @@ public class EnemyAI : MonoBehaviour
     public string[] GameObjectNames;
 
 
-    //Patrolling
-    public Vector3 walkPoint;
-    bool walkpointSet;
-    public float walkPointRange;
+    
 
     //Attacking
     public float TBA;
@@ -31,6 +28,10 @@ public class EnemyAI : MonoBehaviour
     public bool CallFire;
 
     public TurretAI[] Turrets;
+
+    public LayerMask PlayerLayer, whatisGround;
+
+    bool playerinSightRange, playerinAttackRange;
 
 
     private void Awake()
@@ -56,21 +57,28 @@ public class EnemyAI : MonoBehaviour
 
 
     private void Update()
-    {
-        if(Vector3.Distance(transform.position, Player.position) <= SightRange && Vector3.Distance(transform.position, Player.position) > AttackRange)
+    { 
+        
+        playerinSightRange = Physics.CheckSphere(transform.position, SightRange, PlayerLayer);
+        playerinAttackRange = Physics.CheckSphere(transform.position, AttackRange, PlayerLayer);
+
+        if (playerinSightRange && !playerinAttackRange)
         {
             moveToPlayer();
             CancelInvoke();
         }
-        else if(Vector3.Distance(transform.position, Player.position) <= AttackRange)
+        else if(playerinAttackRange && playerinSightRange)
         {
             stopmoving();
             Invoke(nameof(Fire), TBA);
         }
-        else if (Vector3.Distance(transform.position, Player.position) > SightRange)
+        else if (!playerinSightRange && !playerinAttackRange)
         {
             stopmoving();
         }
+        
+
+       // agent.destination = Player.position;
     }
 
 
