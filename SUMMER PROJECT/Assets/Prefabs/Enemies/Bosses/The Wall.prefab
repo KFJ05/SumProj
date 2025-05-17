@@ -521,14 +521,15 @@ MonoBehaviour:
   MaxHealth: 500
   UseHealthBar: 1
   useSharedHealthbar: 0
-  LerpBarCRITDamageColour: {r: 1, g: 1, b: 1, a: 1}
-  LerpBarDamageColour: {r: 0.6075471, g: 0.6075471, b: 0.6075471, a: 1}
+  LerpBarDamageColour: {r: 1, g: 1, b: 1, a: 1}
   LerpBarHealColour: {r: 0, g: 1, b: 0, a: 1}
   time: 2
   Dead: 0
   CritMUlt: 3
   HealthBar: {fileID: 8820063097278169401}
   LerpBar: {fileID: 1391229248662863026}
+  DamageEffect: {fileID: 0}
+  CritDamageEffect: {fileID: 0}
 --- !u!114 &233225273557120596
 MonoBehaviour:
   m_ObjectHideFlags: 0

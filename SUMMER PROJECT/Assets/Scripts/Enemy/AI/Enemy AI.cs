@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
@@ -17,7 +18,8 @@ public class EnemyAI : MonoBehaviour
     public string[] GameObjectNames;
 
 
-    
+
+    bool Fired;
 
     //Attacking
     public float TBA;
@@ -25,13 +27,19 @@ public class EnemyAI : MonoBehaviour
     //states
     public float SightRange, AttackRange;
 
-    public bool CallFire;
-
-    public TurretAI[] Turrets;
+    
 
     public LayerMask PlayerLayer, whatisGround;
 
     bool playerinSightRange, playerinAttackRange;
+
+    [Header("Refrences")]
+    public GameObject[] turrets;
+
+    public Health HP;
+
+    public Die EnemyDeath;
+
 
 
     private void Awake()
@@ -40,16 +48,7 @@ public class EnemyAI : MonoBehaviour
 
         agent = GetComponent<NavMeshAgent>();
 
-        if(CallFire)
-        {
-            for(int i = 0; i < Turrets.Count(); i++)
-            {
-                if (Turrets[i] != null)
-                {
-                    Turrets[i].FireFunctionCalledElsewhere = true;
-                }
-            }
-        }
+
 
         
     }
@@ -65,17 +64,44 @@ public class EnemyAI : MonoBehaviour
         if (playerinSightRange && !playerinAttackRange)
         {
             moveToPlayer();
-            CancelInvoke();
+            //CancelInvoke();
         }
         else if(playerinAttackRange && playerinSightRange)
         {
             stopmoving();
-            Invoke(nameof(Fire), TBA);
+            //Fire();
+           // Fired = false;
+ 
+
         }
+       // else if (playerinAttackRange && playerinSightRange && Fired == false)
+      //  {
+             //Invoke(nameof(ResetFire), TBA);
+       // }
         else if (!playerinSightRange && !playerinAttackRange)
         {
             stopmoving();
         }
+        if(HP.CurrentHealth <= 0)
+        {
+            for(int i = 0; i < turrets.Count(); i++)
+            {
+                TurretAI T = turrets[i].gameObject.GetComponent<TurretAI>();
+                if (T != null)
+                {
+                    T.enabled = false;
+                }
+                Die D = turrets[i].GetComponent<Die>();
+                if(D != null)
+                {
+                    D.TriggerDeath = true;
+                }
+            }
+
+            EnemyDeath.TriggerDeath = true;
+        }
+
+        
         
 
        // agent.destination = Player.position;
@@ -97,18 +123,6 @@ public class EnemyAI : MonoBehaviour
     {
 
     }
-
-    public void Fire()
-    {
-        for(int i = 0; i < Turrets.Count(); i++)
-        {
-            if (Turrets[i] != null)
-            {
-                Turrets[i].FireTurrBullet();
-            }
-        }
-    }
-
 
 
 

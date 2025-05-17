@@ -12,24 +12,23 @@ public class Health : MonoBehaviour
     public bool UseHealthBar;
     public bool useSharedHealthbar;
 
-
-    public Color LerpBarCRITDamageColour;
     public Color LerpBarDamageColour;
     public Color LerpBarHealColour;
-    Color LerpDC;
 
     public float time = 2f;
 
     public bool Dead;
 
     public float CritMUlt;
+    bool didCrit;
+
+    bool PlayPS = false;
 
     [Header("Refrences")]
     public Image HealthBar;
     public Image LerpBar;
-
-
-    bool DidCrit;
+    public ParticleSystem DamageEffect;
+    public ParticleSystem CritDamageEffect;
 
     float lerpTimer;
 
@@ -62,8 +61,19 @@ public class Health : MonoBehaviour
         {
             HealthBar.fillAmount = hFraction;
 
-            LerpBar.color = LerpDC;
-            
+            LerpBar.color = LerpBarDamageColour;
+
+            if (DamageEffect != null && PlayPS == true && didCrit == false)
+            {
+                DamageEffect.Play();
+                PlayPS = false;
+            }
+            else if (DamageEffect != null && PlayPS == true && didCrit == true)
+            {
+                CritDamageEffect.Play();
+                PlayPS = false;
+            }
+
             lerpTimer += Time.deltaTime;
             float PercentC = lerpTimer / time;
             LerpBar.fillAmount = Mathf.Lerp(FillLBar, hFraction, PercentC);
@@ -92,8 +102,8 @@ public class Health : MonoBehaviour
         {
             Dead = true;
         }
-        LerpDC = LerpBarDamageColour;
-
+        PlayPS = true;
+        didCrit = false;
     }
 
     public void CRITDamage(float Damage)
@@ -107,7 +117,8 @@ public class Health : MonoBehaviour
         {
             Dead = true;
         }
-        LerpDC = LerpBarCRITDamageColour;
+        PlayPS = true;
+        didCrit = true;
     }
     public void Heal(float AmountHealed)
     {

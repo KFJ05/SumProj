@@ -17,9 +17,9 @@ public class Die : MonoBehaviour
     public Animator anim;
     public bool useAnimator;
 
-    public bool PartofWave;
-
     public bool TriggerDeath = false;
+
+    public bool useHealth = true;
 
     private void Awake()
     {
@@ -29,14 +29,14 @@ public class Die : MonoBehaviour
 
     private void Update()
     {
-        if (health == null)
+        if (health == null || useHealth == false)
         {
             if (TriggerDeath == true)
             {
                 DestroyEnemy();
             }
         }
-        else if(health.CurrentHealth <= 0)
+        else if(health.CurrentHealth <= 0 && useHealth == true)
         {
             DestroyEnemy();
         }
