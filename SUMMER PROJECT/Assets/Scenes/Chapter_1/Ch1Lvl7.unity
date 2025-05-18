@@ -636,7 +636,6 @@ MonoBehaviour:
   spawners:
   - {fileID: 1533212063}
   - {fileID: 1439055098}
-  - {fileID: 0}
 --- !u!4 &765867339
 Transform:
   m_ObjectHideFlags: 0

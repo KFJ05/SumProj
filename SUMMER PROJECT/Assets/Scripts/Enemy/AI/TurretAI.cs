@@ -73,7 +73,7 @@ public class TurretAI : MonoBehaviour
                     MainBody.LookAt(GameObject.FindWithTag("Player").transform);
                     if (UseAnimator)
                     {
-                        Debug.Log(Anim);
+                       // Debug.Log(Anim);
                         Anim.SetBool("IsFiring", true);
                     }
                     if (FR <= 0)

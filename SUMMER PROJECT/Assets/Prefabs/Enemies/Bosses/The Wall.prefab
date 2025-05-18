@@ -517,8 +517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20f5b8bb1e8b10746b7727594934cdc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 500
-  MaxHealth: 500
+  CurrentHealth: 5
+  MaxHealth: 5
   UseHealthBar: 1
   useSharedHealthbar: 0
   LerpBarDamageColour: {r: 1, g: 1, b: 1, a: 1}

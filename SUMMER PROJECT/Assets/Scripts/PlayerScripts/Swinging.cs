@@ -142,7 +142,12 @@ public class Swinging : MonoBehaviour
             rb.AddForce(orientation.forward * fowardThrust * Time.deltaTime);
         }
 
-        if(Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.S))
+        {
+            rb.AddForce(-orientation.forward * fowardThrust * Time.deltaTime);
+        }
+
+        if (Input.GetKey(KeyCode.Space))
         {
             Vector3 DirToPoint = swingPort - transform.position;
             rb.AddForce(DirToPoint.normalized * fowardThrust * Time.deltaTime);
@@ -153,7 +158,7 @@ public class Swinging : MonoBehaviour
             joint.minDistance = DtoP * 0.25f;
         }
 
-
+        /*
         if (Input.GetKey(KeyCode.S))
         {
 
@@ -163,6 +168,7 @@ public class Swinging : MonoBehaviour
             joint.maxDistance = Edfp * 0.8f;
             joint.minDistance = Edfp * 0.25f;
         }
+        */
     }
 
     private void CheckforSwingPoints()

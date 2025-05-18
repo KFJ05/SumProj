@@ -228,10 +228,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLevel: Ch1Lvl10
-  NextLevel: Ch1Lvl11
+  NextLevel: MainMenu
   LevelMusic: {fileID: 8300000, guid: d73d7c3032a2f8c498709c40d9b7e330, type: 3}
   LoopMusic: 1
   PlayMusic: 1
+  StopMusicOnLeave: 1
 --- !u!4 &160271728
 Transform:
   m_ObjectHideFlags: 0

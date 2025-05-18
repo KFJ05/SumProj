@@ -582,7 +582,7 @@ GameObject:
   - component: {fileID: 8276644485253081547}
   - component: {fileID: 7200555029172979834}
   m_Layer: 0
-  m_Name: Quadruped Turret
+  m_Name: Quadruped
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -597,7 +597,7 @@ Transform:
   m_GameObject: {fileID: 3622301092600986809}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.075462, y: 1.6, z: 84.50116}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -749,7 +749,6 @@ MonoBehaviour:
   MaxHealth: 18
   UseHealthBar: 1
   useSharedHealthbar: 0
-  LerpBarCRITDamageColour: {r: 1, g: 1, b: 1, a: 1}
   LerpBarDamageColour: {r: 1, g: 1, b: 1, a: 1}
   LerpBarHealColour: {r: 0, g: 1, b: 0, a: 1}
   time: 2
@@ -758,6 +757,7 @@ MonoBehaviour:
   HealthBar: {fileID: 3090505193314152031}
   LerpBar: {fileID: 1654346942826714028}
   DamageEffect: {fileID: 4722872552865862039}
+  CritDamageEffect: {fileID: 0}
 --- !u!114 &2673096862210469184
 MonoBehaviour:
   m_ObjectHideFlags: 0
