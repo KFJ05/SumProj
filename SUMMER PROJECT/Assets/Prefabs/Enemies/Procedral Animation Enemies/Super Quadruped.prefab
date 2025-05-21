@@ -2084,7 +2084,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4676971115366601980}
   - component: {fileID: 6580574431788089405}
-  - component: {fileID: 6270041057574250851}
   - component: {fileID: 3958031945255317229}
   m_Layer: 0
   m_Name: LowerLeg001
@@ -2165,28 +2164,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 1.4366832, y: -0.6028664, z: 0.0033234656}
     m_Extent: {x: 1.8274236, y: 0.99543107, z: 0.27432021}
   m_DirtyAABB: 0
---- !u!64 &6270041057574250851
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4515752879424854699}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 1
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -6670546853976437494, guid: 0a6fe349834a6d847912aed8c6897197, type: 3}
 --- !u!54 &3958031945255317229
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2804,6 +2781,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8401477802356700582}
+  - {fileID: 7183790842054006896}
   m_Father: {fileID: 694701143807482546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2999236149493382564
@@ -3130,7 +3108,6 @@ Transform:
   - {fileID: 6142818079293234087}
   - {fileID: 6881953364687889465}
   - {fileID: 3827111984868058089}
-  - {fileID: 7183790842054006896}
   - {fileID: 5199956591563292902}
   - {fileID: 8382449132815523450}
   - {fileID: 1268943116435280786}
@@ -3450,7 +3427,7 @@ Transform:
   m_Children:
   - {fileID: 971903913505250063}
   - {fileID: 3659793499117084446}
-  m_Father: {fileID: 694701143807482546}
+  m_Father: {fileID: 3827111984868058089}
   m_LocalEulerAnglesHint: {x: 30, y: -45, z: 0}
 --- !u!95 &3842097565435200010
 Animator:
