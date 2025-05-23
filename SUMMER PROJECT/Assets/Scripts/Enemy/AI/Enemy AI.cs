@@ -15,8 +15,9 @@ public class EnemyAI : MonoBehaviour
 
     public bool moveToPoints;
 
-    public string[] GameObjectNames;
+    public string[] Movespots;
 
+    List<GameObject> MoveL = new List<GameObject>(); 
 
 
     bool Fired;
@@ -40,69 +41,101 @@ public class EnemyAI : MonoBehaviour
 
     public Die EnemyDeath;
 
+    public GameObject body;
+
+    public bool getAgent = true;
 
 
     private void Awake()
     {
         Player = GameObject.FindWithTag("Player").transform;
 
-        agent = GetComponent<NavMeshAgent>();
+        if (getAgent)
+        {
+            agent = GetComponent<NavMeshAgent>();
+        }
 
-
-
+        for(int i = 0; i < Movespots.Count(); i++)
+        {
+            GameObject MoveLoc = GameObject.Find(Movespots[i]);
+            if (MoveLoc != null)
+            {
+                MoveL.Add(MoveLoc);
+            }
+        }
         
     }
 
 
 
     private void Update()
-    { 
-        
-        playerinSightRange = Physics.CheckSphere(transform.position, SightRange, PlayerLayer);
-        playerinAttackRange = Physics.CheckSphere(transform.position, AttackRange, PlayerLayer);
+    {
 
-        if (playerinSightRange && !playerinAttackRange)
+        if (moveToPoints != true)
         {
-            moveToPlayer();
-            //CancelInvoke();
-        }
-        else if(playerinAttackRange && playerinSightRange)
-        {
-            stopmoving();
-            //Fire();
-           // Fired = false;
- 
+            playerinSightRange = Physics.CheckSphere(transform.position, SightRange, PlayerLayer);
+            playerinAttackRange = Physics.CheckSphere(transform.position, AttackRange, PlayerLayer);
 
-        }
-       // else if (playerinAttackRange && playerinSightRange && Fired == false)
-      //  {
-             //Invoke(nameof(ResetFire), TBA);
-       // }
-        else if (!playerinSightRange && !playerinAttackRange)
-        {
-            stopmoving();
-        }
-        if(HP.CurrentHealth <= 0)
-        {
-            for(int i = 0; i < turrets.Count(); i++)
+            if (playerinSightRange && !playerinAttackRange)
             {
-                TurretAI T = turrets[i].gameObject.GetComponent<TurretAI>();
-                if (T != null)
+                moveToPlayer();
+                //CancelInvoke();
+            }
+            else if (playerinAttackRange && playerinSightRange)
+            {
+                stopmoving();
+                //Fire();
+                // Fired = false;
+
+
+            }
+            // else if (playerinAttackRange && playerinSightRange && Fired == false)
+            //  {
+            //Invoke(nameof(ResetFire), TBA);
+            // }
+            else if (!playerinSightRange && !playerinAttackRange)
+            {
+                stopmoving();
+            }
+            if (HP.CurrentHealth <= 0)
+            {
+                for (int i = 0; i < turrets.Count(); i++)
                 {
-                    T.enabled = false;
+                    TurretAI T = turrets[i].gameObject.GetComponent<TurretAI>();
+                    if (T != null)
+                    {
+                        T.enabled = false;
+                    }
+                    Die D = turrets[i].GetComponent<Die>();
+                    if (D != null)
+                    {
+                        D.TriggerDeath = true;
+                    }
                 }
-                Die D = turrets[i].GetComponent<Die>();
-                if(D != null)
-                {
-                    D.TriggerDeath = true;
-                }
+
+                EnemyDeath.TriggerDeath = true;
             }
 
-            EnemyDeath.TriggerDeath = true;
-        }
 
-        
-        
+        }
+        else
+        {
+            for(int i =0; i < MoveL.Count; i++)
+            { 
+                if (body.transform.position == MoveL[i].transform.position)
+                {
+                    Debug.Log("Move");
+                    if (MoveL[i+1] != null)
+                    {
+                        MovetoSpot(MoveL[i + 1].transform);
+                    }
+                    else
+                    {
+                        MovetoSpot(MoveL[0].transform);
+                    }
+                }
+            }
+        }
 
        // agent.destination = Player.position;
     }
@@ -119,9 +152,9 @@ public class EnemyAI : MonoBehaviour
         agent.SetDestination(transform.position);
     }
 
-    public void MovetoSpot()
+    public void MovetoSpot(Transform trans)
     {
-
+        agent.SetDestination(trans.position);
     }
 
 

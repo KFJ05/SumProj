@@ -123,8 +123,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   proceduralAnimation: {fileID: 2001820636319836081}
   bodyOffset: {x: 0, y: 0, z: 0}
-  bodySpeed: 10
-  legsImpact: 1
+  bodySpeed: 1
+  legsImpact: 12
   height: 1
   smartBodyPosition: 1
   bodyOrientation: 0
@@ -511,6 +511,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4479966181954310058}
   - component: {fileID: 701415240938363349}
+  - component: {fileID: 7959397536121244611}
   m_Layer: 0
   m_Name: Moving Fortress
   m_TagString: Untagged
@@ -563,6 +564,28 @@ MonoBehaviour:
   LerpBar: {fileID: 6885083892402161951}
   DamageEffect: {fileID: 4969833819256300595}
   CritDamageEffect: {fileID: 6659531445462078790}
+--- !u!195 &7959397536121244611
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580353839591177337}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 6
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 30
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &2081241631339829496
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,7 +1723,6 @@ GameObject:
   - component: {fileID: 3409027354466917645}
   - component: {fileID: 2001820636319836081}
   - component: {fileID: 172045369123300148}
-  - component: {fileID: 266392420450988181}
   - component: {fileID: 285904022013696509}
   m_Layer: 0
   m_Name: Body
@@ -1741,10 +1763,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stepDistance: 1
-  stepHeight: 1
-  stepSpeed: 5
+  stepHeight: 35
+  stepSpeed: 1
   velocityMultiplier: 0.4
-  cycleSpeed: 1
+  cycleSpeed: 0.25
   cycleLimit: 1
   SetTimingsManually: 0
   manualTimings: []
@@ -1816,9 +1838,9 @@ MonoBehaviour:
   - {fileID: 8110556868251370675}
   - {fileID: 3844131979010719096}
   showGizmoz: 1
-  legRayoffset: 4
-  legRayLength: 2
-  sphereCastRadius: 2.3
+  legRayoffset: 8
+  legRayLength: 9
+  sphereCastRadius: 7
   refreshTimingRate: 60
 --- !u!114 &172045369123300148
 MonoBehaviour:
@@ -1832,10 +1854,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b51ef10037b724e9235c90d92782f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 266392420450988181}
+  agent: {fileID: 7959397536121244611}
   Player: {fileID: 0}
   moveToPoints: 1
-  GameObjectNames: []
+  Movespots:
+  - MP1
+  - MP2
+  - MP3
+  - MP4
   TBA: 0
   SightRange: 0
   AttackRange: 0
@@ -1848,28 +1874,8 @@ MonoBehaviour:
   turrets: []
   HP: {fileID: 701415240938363349}
   EnemyDeath: {fileID: 285904022013696509}
---- !u!195 &266392420450988181
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5832988334920639471}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  body: {fileID: 1580353839591177337}
+  getAgent: 0
 --- !u!114 &285904022013696509
 MonoBehaviour:
   m_ObjectHideFlags: 0
