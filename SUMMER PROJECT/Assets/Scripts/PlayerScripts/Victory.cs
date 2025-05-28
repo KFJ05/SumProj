@@ -11,6 +11,7 @@ public class Victory: MonoBehaviour
     Wallrunning wallRun;
     Swinging Swing;
     PlayerCam Cam;
+    Respawn R;
 
     GameObject Gun;
 
@@ -89,6 +90,8 @@ public class Victory: MonoBehaviour
             Swing = gameObject.GetComponent<Swinging>();
         if (Cam == null)
             Cam = gameObject.GetComponentInChildren<PlayerCam>();
+        if (R == null)
+            R = gameObject.GetComponent<Respawn>();
 
         Gun = GameObject.FindWithTag("Gun");
         if (Gun != null)
@@ -107,6 +110,7 @@ public class Victory: MonoBehaviour
         wallRun.enabled = false;
         Swing.enabled = false;
         Cam.enabled = false;
+        R.enabled = false;
 
         WinScreen.gameObject.SetActive(true);
 

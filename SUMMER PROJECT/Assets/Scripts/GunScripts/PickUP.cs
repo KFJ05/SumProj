@@ -17,6 +17,8 @@ public class PickUP : MonoBehaviour
     public float dropFForce;
     public float dropUForce;
 
+    public bool EquipedonStart = true;
+
     
 
     public bool equipped;
@@ -31,6 +33,13 @@ public class PickUP : MonoBehaviour
         player = GameObject.FindWithTag("Player").transform;
         gunContainer = GameObject.FindWithTag("GUN_CONTAINER").transform;
         fpsCam = GameObject.FindWithTag("MainCamera").transform;
+
+        if (EquipedonStart == false)
+        {
+            equipped = false;
+            slotFull = false;
+        }
+        
 
         if (!equipped)
         {

@@ -11,18 +11,24 @@ public class moveNavMesh : MonoBehaviour
 
     bool starMoving;
 
+    public Spawn bossSpawn;
+
     // Update is called once per frame
     void Update()
     {
 
-        if(GameObject.Find("Moving Fortress") != null)
-        {
-            starMoving = true;
-        }
 
-        if(starMoving == true && transform.position.y < Maxy)
+        if(transform.position.y < Maxy && bossSpawn.AlreadySpawned == true)
         {
             transform.Translate(0, Time.deltaTime * speed, 0);
         }
+
+        Respawn r = GameObject.FindWithTag("Player").GetComponent<Respawn>();
+
+        if(r.reset == true)
+        {
+            transform.position = Vector3.zero;
+        }
+
     }
 }

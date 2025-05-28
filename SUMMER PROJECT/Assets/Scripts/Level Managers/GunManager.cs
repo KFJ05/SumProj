@@ -37,11 +37,14 @@ public class GunManager : MonoBehaviour
         {
             if (Gun[i] != null && GunSpawnLocation[i] != null)
             {
+
+
                 Fire CurrGunFire = Gun[i].GetComponent<Fire>();
                 CurrGunFire.ResetGun();
 
                 PickUP CurrGunPU = Gun[i].GetComponent<PickUP>();
                 CurrGunPU.ResetGun();
+                
          
                 Gun[i].transform.position = GunSpawnLocation[i].position;
                 Gun[i].transform.rotation = GunSpawnLocation[i].rotation;

@@ -21,6 +21,8 @@ public class Respawn : MonoBehaviour
     GameObject Gun;
 
     public bool UsingGun;
+
+    public bool reset = false;
     
     void Update()
     {
@@ -30,6 +32,8 @@ public class Respawn : MonoBehaviour
         }
         if(HP.CurrentHealth <= 0)
         {
+            reset = true;
+
             if(move == null)
                 move = gameObject.GetComponent<Movement>();
             if(Slide == null)
@@ -129,7 +133,7 @@ public class Respawn : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-
+        reset = false;
     }
 
 

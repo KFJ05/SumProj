@@ -23,6 +23,13 @@ public class LevelManager : MonoBehaviour
         {
             GameManager.Instance.PlayMusic(LevelMusic, LoopMusic);
         }
+        if(!PlayMusic)
+        {
+            if(GameManager.Instance.GetMusic() == null)
+            {
+                GameManager.Instance.PlayMusic(LevelMusic, LoopMusic);
+            }
+        }
     }
 
     public void BackToMenu()
@@ -31,6 +38,16 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.StopMusic();
         
         GameManager.Instance.BacktomainMenu(CurrentLevel);
+
+        if (EnemyManager.Instance != null)
+        {
+            EnemyManager.Instance.RESETALL();
+        }
+
+        if (PartManager.Instance != null)
+        {
+            PartManager.Instance.ResetParts();
+        }
     }
     public void LoadNextLevel()
     {
@@ -39,6 +56,16 @@ public class LevelManager : MonoBehaviour
             GameManager.Instance.StopMusic();
         }
         GameManager.Instance.loadNextLevel(CurrentLevel, NextLevel);
+
+        if (EnemyManager.Instance != null)
+        {
+            EnemyManager.Instance.RESETALL();
+        }
+
+        if (PartManager.Instance != null)
+        {
+            PartManager.Instance.ResetParts();
+        }
     }
 
 

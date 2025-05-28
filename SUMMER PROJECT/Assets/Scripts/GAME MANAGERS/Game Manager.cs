@@ -89,6 +89,11 @@ public class GameManager : MonoBehaviour
 
 
 
+    public AudioClip GetMusic()
+    {
+        return MasterMusicSource.clip;
+    }
+
 
     public void EndGame()
     {

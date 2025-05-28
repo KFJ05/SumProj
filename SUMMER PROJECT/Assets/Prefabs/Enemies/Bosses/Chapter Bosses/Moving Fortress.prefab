@@ -1863,8 +1863,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1248ae862aad743b404a5450b842a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stepDistance: 20
-  stepHeight: 35
+  stepDistance: 35
+  stepHeight: 100
   stepSpeed: 1
   velocityMultiplier: 0.4
   cycleSpeed: 0.25
