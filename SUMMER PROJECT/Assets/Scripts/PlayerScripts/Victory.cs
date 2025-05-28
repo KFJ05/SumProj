@@ -112,6 +112,11 @@ public class Victory: MonoBehaviour
 
     }
 
+    public void SetWin()
+    {
+        win();
+    }
+
 
 
 }

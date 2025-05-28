@@ -1,3 +1,4 @@
+using Lolopupka;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,8 @@ public class EnemyAI : MonoBehaviour
     public GameObject body;
 
     public bool getAgent = true;
+
+
 
 
     private void Awake()
@@ -97,35 +100,24 @@ public class EnemyAI : MonoBehaviour
             {
                 stopmoving();
             }
-            if (HP.CurrentHealth <= 0)
-            {
-                for (int i = 0; i < turrets.Count(); i++)
-                {
-                    TurretAI T = turrets[i].gameObject.GetComponent<TurretAI>();
-                    if (T != null)
-                    {
-                        T.enabled = false;
-                    }
-                    Die D = turrets[i].GetComponent<Die>();
-                    if (D != null)
-                    {
-                        D.TriggerDeath = true;
-                    }
-                }
-
-                EnemyDeath.TriggerDeath = true;
-            }
-
+            CheckHealth();
 
         }
         else
         {
             for(int i =0; i < MoveL.Count; i++)
-            { 
-                if (body.transform.position == MoveL[i].transform.position)
+            {
+                if (MoveL[i] == null)
+                {
+                    i = 0;
+                }
+
+                if (body.transform.position.x == MoveL[i].transform.position.x && body.transform.position.z == MoveL[i].transform.position.z)
                 {
                     Debug.Log("Move");
-                    if (MoveL[i+1] != null)
+
+
+                    if (i + 1 < MoveL.Count)
                     {
                         MovetoSpot(MoveL[i + 1].transform);
                     }
@@ -133,8 +125,11 @@ public class EnemyAI : MonoBehaviour
                     {
                         MovetoSpot(MoveL[0].transform);
                     }
+                 
                 }
             }
+
+            CheckHealth();
         }
 
        // agent.destination = Player.position;
@@ -154,9 +149,36 @@ public class EnemyAI : MonoBehaviour
 
     public void MovetoSpot(Transform trans)
     {
-        agent.SetDestination(trans.position);
+        Vector3 position = new Vector3(trans.position.x, body.transform.position.y, trans.position.z);
+
+        agent.SetDestination(position);
     }
 
+    public void CheckHealth()
+    {
+        if (HP.CurrentHealth <= 0)
+        {
+            for (int i = 0; i < turrets.Count(); i++)
+            {
+                TurretAI T = turrets[i].gameObject.GetComponent<TurretAI>();
+                if (T != null)
+                {
+                    T.enabled = false;
+                }
+                Die D = turrets[i].GetComponent<Die>();
+                if (D != null)
+                {
+                    D.TriggerDeath = true;
+                }
+            }
 
+
+            
+
+            EnemyDeath.TriggerDeath = true;
+
+            
+        }
+    }
 
 }

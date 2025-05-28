@@ -3431,7 +3431,7 @@ GameObject:
   - component: {fileID: 2055508289}
   - component: {fileID: 2055508288}
   m_Layer: 0
-  m_Name: Cube (4)
+  m_Name: DeathZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

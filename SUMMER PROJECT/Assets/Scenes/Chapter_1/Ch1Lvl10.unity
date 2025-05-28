@@ -844,7 +844,7 @@ Transform:
   m_GameObject: {fileID: 653370877}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -15, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1133,7 +1133,7 @@ MonoBehaviour:
   spawnLocations:
   - {fileID: 653370878}
   spawnedEntities:
-  - {fileID: 3067645570283220526, guid: 32178e85ba5a6c546875e1f2ae69d367, type: 3}
+  - {fileID: 7863665120205185418, guid: 6697d480616cc564a9d8743e38543b2f, type: 3}
   SpawnTag: Player
   AlreadySpawned: 0
 --- !u!65 &1003073805

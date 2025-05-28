@@ -452,7 +452,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 4.8, y: 0.5}
+  m_SizeDelta: {x: 14.8, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3802660542402866505
 CanvasRenderer:
@@ -677,7 +677,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 2.52}
-  m_SizeDelta: {x: 5, y: 0.7}
+  m_SizeDelta: {x: 15, y: 0.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5932682685766845868
 CanvasRenderer:
@@ -904,7 +904,6 @@ MonoBehaviour:
   MaxHealth: 35
   UseHealthBar: 1
   useSharedHealthbar: 0
-  LerpBarCRITDamageColour: {r: 1, g: 1, b: 1, a: 1}
   LerpBarDamageColour: {r: 0.5320754, g: 0.5320754, b: 0.5320754, a: 1}
   LerpBarHealColour: {r: 0, g: 1, b: 0, a: 1}
   time: 2
@@ -913,6 +912,7 @@ MonoBehaviour:
   HealthBar: {fileID: 5945651847704133677}
   LerpBar: {fileID: 5743272222822283066}
   DamageEffect: {fileID: 1100793853664827385}
+  CritDamageEffect: {fileID: 0}
 --- !u!114 &5434953907515321968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -936,6 +936,7 @@ MonoBehaviour:
   useAnimator: 1
   TriggerDeath: 0
   useHealth: 1
+  WinLevelOnDeath: 0
 --- !u!1 &4535104943500052878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,7 +1120,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 4.8, y: 0.5}
+  m_SizeDelta: {x: 14.8, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &480524435495832344
 CanvasRenderer:

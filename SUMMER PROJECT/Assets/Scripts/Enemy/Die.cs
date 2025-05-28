@@ -21,6 +21,8 @@ public class Die : MonoBehaviour
 
     public bool useHealth = true;
 
+    public bool WinLevelOnDeath = false;
+
     private void Awake()
     {
         health = gameObject.GetComponent<Health>();
@@ -44,6 +46,14 @@ public class Die : MonoBehaviour
 
     public void DestroyEnemy()
     {
+
+        if (WinLevelOnDeath == true)
+        {
+            Victory V = GameObject.FindWithTag("Player").GetComponent<Victory>();
+
+            V.SetWin();
+
+        }
         if (useAnimator)
         {
             anim.SetBool("IsFiring", false);
@@ -75,8 +85,6 @@ public class Die : MonoBehaviour
             EnemyManager.Instance.RemoveEnemy(gameObject);
         }
       
-
-
 
         Destroy(gameObject);
 

@@ -1497,7 +1497,7 @@ MonoBehaviour:
   showGizmoz: 1
   legRayoffset: 8
   legRayLength: 4
-  sphereCastRadius: 4
+  sphereCastRadius: 5
   refreshTimingRate: 25
 --- !u!54 &1011728984244223629
 Rigidbody:
@@ -1588,7 +1588,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   Player: {fileID: 0}
   moveToPoints: 0
-  GameObjectNames: []
+  Movespots: []
   TBA: 10
   SightRange: 200
   AttackRange: 15
@@ -1602,6 +1602,8 @@ MonoBehaviour:
   - {fileID: 5392813256684430634}
   HP: {fileID: 5735791426501016023}
   EnemyDeath: {fileID: 1549346207348870366}
+  body: {fileID: 0}
+  getAgent: 1
 --- !u!114 &1549346207348870366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1625,6 +1627,7 @@ MonoBehaviour:
   useAnimator: 0
   TriggerDeath: 0
   useHealth: 0
+  WinLevelOnDeath: 0
 --- !u!1 &3858708467345961531
 GameObject:
   m_ObjectHideFlags: 0
@@ -2085,6 +2088,7 @@ GameObject:
   - component: {fileID: 4676971115366601980}
   - component: {fileID: 6580574431788089405}
   - component: {fileID: 3958031945255317229}
+  - component: {fileID: 2770843127183565334}
   m_Layer: 0
   m_Name: LowerLeg001
   m_TagString: Enemy
@@ -2191,6 +2195,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &2770843127183565334
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4515752879424854699}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &4794268718360670124
 GameObject:
   m_ObjectHideFlags: 0
@@ -2515,6 +2541,7 @@ MonoBehaviour:
   useAnimator: 1
   TriggerDeath: 0
   useHealth: 1
+  WinLevelOnDeath: 0
 --- !u!1 &5491760008010932576
 GameObject:
   m_ObjectHideFlags: 0
