@@ -4,29 +4,73 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public class HealthBarMultiple : MonoBehaviour
 {
-    public Image[] healthbars;
-    public Image LerpBar;
+    public List<Image> healthbars = new List<Image>();
+    public List<Image> LerpBars = new List<Image>();
     public Color LerpBarDamageColour;
     public Color LerpBarHealColour;
 
-    public float totalHealth;
-    public float currenthealth;
+    public List<float> MaxHealthPerHealthBar = new List<float>(); 
+    public List<float> CurrentHealthBarHP = new List<float>();
 
-    float MaxhealthPerhpBar;
-    float CurrHpPerBar;
+    public Die Death;
 
     float lerpTimer;
 
     public float time = 2f;
 
+    int i = 0;
+
+    public float totalHealth;
+
     private void Awake()
     {
-        currenthealth = totalHealth;
 
-        MaxhealthPerhpBar = totalHealth / healthbars.Count();
-        CurrHpPerBar = currenthealth / healthbars.Count();
+
+
+        if (CurrentHealthBarHP.Count == MaxHealthPerHealthBar.Count && CurrentHealthBarHP.Count == healthbars.Count)
+        {
+
+            CurrentHealthBarHP[0] = MaxHealthPerHealthBar[0];
+
+            for(int i = 0; i < CurrentHealthBarHP.Count; i++)
+            {
+                totalHealth += CurrentHealthBarHP[i];
+            }
+        }
+
+
+    }
+
+    private void Update()
+    {
+        if (totalHealth <= 0)
+        {
+            Death.TriggerDeath = true;
+        }
+
+        if (CurrentHealthBarHP[0] <= 0)
+        {
+            if (CurrentHealthBarHP[0] < 0)
+            {
+                if (1 < CurrentHealthBarHP.Count)
+                {
+                    CurrentHealthBarHP[i] -= CurrentHealthBarHP[0];
+                }
+            }
+
+            Destroy(healthbars[0]);
+            healthbars.Remove(healthbars[0]);
+            MaxHealthPerHealthBar.Remove(MaxHealthPerHealthBar[0]);
+            CurrentHealthBarHP.Remove(CurrentHealthBarHP[0]);
+            Destroy(LerpBars[0]);
+            LerpBars.Remove(LerpBars[0]);
+
+        }
+
+
+        UpdtadeHealthUI(0);
 
 
     }
@@ -35,9 +79,9 @@ public class HealthBar : MonoBehaviour
     public void UpdtadeHealthUI(int currentHealthBar)
     {
         float FillHP = healthbars[currentHealthBar].fillAmount;
-        float FillLBar = LerpBar.fillAmount;
+        float FillLBar = LerpBars[currentHealthBar].fillAmount;
 
-        float hFraction = currenthealth / totalHealth;
+        float hFraction = CurrentHealthBarHP[currentHealthBar] / MaxHealthPerHealthBar[currentHealthBar];
 
 
 
@@ -45,24 +89,40 @@ public class HealthBar : MonoBehaviour
         {
             healthbars[currentHealthBar].fillAmount = hFraction;
 
-            LerpBar.color = LerpBarDamageColour;
+            LerpBars[currentHealthBar].color = LerpBarDamageColour;
 
 
             lerpTimer += Time.deltaTime;
             float PercentC = lerpTimer / time;
-            LerpBar.fillAmount = Mathf.Lerp(FillLBar, hFraction, PercentC);
+            LerpBars[currentHealthBar].fillAmount = Mathf.Lerp(FillLBar, hFraction, PercentC);
 
         }
         if (FillHP < hFraction)
         {
 
-            LerpBar.color = LerpBarHealColour;
-            LerpBar.fillAmount = hFraction;
+            LerpBars[currentHealthBar].color = LerpBarHealColour;
+            LerpBars[currentHealthBar].fillAmount = hFraction;
             lerpTimer += Time.deltaTime;
             float PercentC = lerpTimer / time;
-            healthbars[currentHealthBar].fillAmount = Mathf.Lerp(FillHP, LerpBar.fillAmount, PercentC);
+            healthbars[currentHealthBar].fillAmount = Mathf.Lerp(FillHP, LerpBars[currentHealthBar].fillAmount, PercentC);
         }
 
+    }
+
+    public void Damage(float Damage)
+    {
+        CurrentHealthBarHP[0] -= Damage;
+
+        totalHealth -= Damage;
+
+        lerpTimer = 0;
+
+        if (CurrentHealthBarHP[0] <= 0 && CurrentHealthBarHP.Count == 1)
+        {
+          //  Dead = true;
+        }
+        //PlayPS = true;
+        //didCrit = false;
     }
 
 

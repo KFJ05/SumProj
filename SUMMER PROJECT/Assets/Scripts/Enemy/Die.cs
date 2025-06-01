@@ -8,6 +8,8 @@ public class Die : MonoBehaviour
 {
     Health health;
 
+    public bool usingMultipleHpBars;
+
 
 
     public GameObject[] parts;
@@ -21,6 +23,9 @@ public class Die : MonoBehaviour
     public bool useHealth = true;
 
     public bool WinLevelOnDeath = false;
+
+    public bool useParticles;
+    public ParticleSystem DeathExplosiom;
 
     private void Awake()
     {
@@ -37,14 +42,23 @@ public class Die : MonoBehaviour
                 DestroyEnemy();
             }
         }
-        else if(health.CurrentHealth <= 0 && useHealth == true)
+        else if ( health.CurrentHealth <= 0 && useHealth == true)
         {
             DestroyEnemy();
         }
+
     }
 
     public void DestroyEnemy()
     {
+
+
+        if(useParticles == true)
+        {
+            DeathExplosiom.gameObject.transform.SetParent(null);
+            DeathExplosiom.Play();
+        }
+
 
         if (WinLevelOnDeath == true)
         {
@@ -53,6 +67,8 @@ public class Die : MonoBehaviour
             V.SetWin();
 
         }
+
+
         if (useAnimator)
         {
             anim.SetBool("IsFiring", false);

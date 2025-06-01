@@ -92,6 +92,11 @@ public class Movement : MonoBehaviour
     [SerializeField]
     KeyCode CrouchAndSlideKey = KeyCode.C;
 
+
+    [Header("Refrences")]
+    public ParticleSystem Wind;
+    public float StartWindFreshhold;
+
     
 
     bool Grounded;
@@ -254,6 +259,17 @@ public class Movement : MonoBehaviour
         }
 
             LastDMoveSpeed = DMoveSpeed;
+
+        if(rb.velocity.magnitude >= StartWindFreshhold)
+        {
+            Wind.Play();
+            Wind.startSpeed = rb.velocity.magnitude;
+        }
+        else
+        {
+            Wind.Stop();
+        }
+
 
     }
 
