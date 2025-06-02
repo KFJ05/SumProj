@@ -68,7 +68,7 @@ public class Health : MonoBehaviour
                 DamageEffect.Play();
                 PlayPS = false;
             }
-            else if (DamageEffect != null && PlayPS == true && didCrit == true)
+            else if (CritDamageEffect != null && PlayPS == true && didCrit == true)
             {
                 CritDamageEffect.Play();
                 PlayPS = false;

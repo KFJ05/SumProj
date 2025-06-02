@@ -16,6 +16,8 @@ public class HealthBarMultiple : MonoBehaviour
 
     public Die Death;
 
+    public EnemyAI Enemy;
+
     float lerpTimer;
 
     public float time = 2f;
@@ -23,6 +25,15 @@ public class HealthBarMultiple : MonoBehaviour
     int i = 0;
 
     public float totalHealth;
+
+    public float CritMUlt;
+    bool didCrit;
+
+    bool PlayPS = false;
+
+    public ParticleSystem DamageEffect;
+    public ParticleSystem CritDamageEffect;
+
 
     private void Awake()
     {
@@ -47,6 +58,11 @@ public class HealthBarMultiple : MonoBehaviour
     {
         if (totalHealth <= 0)
         {
+            if(Enemy != null)
+            {
+                Enemy.DestroyTurrets();
+            }
+
             Death.TriggerDeath = true;
         }
 
@@ -90,7 +106,16 @@ public class HealthBarMultiple : MonoBehaviour
             healthbars[currentHealthBar].fillAmount = hFraction;
 
             LerpBars[currentHealthBar].color = LerpBarDamageColour;
-
+            if (DamageEffect != null && PlayPS == true && didCrit == false)
+            {
+                DamageEffect.Play();
+                PlayPS = false;
+            }
+            else if (CritDamageEffect != null && PlayPS == true && didCrit == true)
+            {
+                CritDamageEffect.Play();
+                PlayPS = false;
+            }
 
             lerpTimer += Time.deltaTime;
             float PercentC = lerpTimer / time;
@@ -123,6 +148,37 @@ public class HealthBarMultiple : MonoBehaviour
         }
         //PlayPS = true;
         //didCrit = false;
+    }
+
+
+    public void CRITDamage(float Damage)
+    {
+        CurrentHealthBarHP[0] -= (Damage * CritMUlt);
+
+
+        lerpTimer = 0;
+
+        if (CurrentHealthBarHP[0] <= 0)
+        {
+            //Dead = true;
+        }
+        PlayPS = true;
+        didCrit = true;
+    }
+
+    public void Heal(float AmountHealed)
+    {
+        CurrentHealthBarHP[0] += AmountHealed;
+
+
+        lerpTimer = 0;
+
+
+
+        if (CurrentHealthBarHP[0] > MaxHealthPerHealthBar[0])
+        {
+            CurrentHealthBarHP[0] = MaxHealthPerHealthBar[0];
+        }
     }
 
 

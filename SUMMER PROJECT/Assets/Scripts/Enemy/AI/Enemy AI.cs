@@ -100,7 +100,8 @@ public class EnemyAI : MonoBehaviour
             {
                 stopmoving();
             }
-            CheckHealth();
+            if(HP != null)
+                CheckHealth();
 
         }
         else
@@ -128,8 +129,8 @@ public class EnemyAI : MonoBehaviour
                  
                 }
             }
-
-            CheckHealth();
+            if(HP != null)
+                CheckHealth();
         }
 
        // agent.destination = Player.position;
@@ -181,4 +182,22 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-}
+    public void DestroyTurrets()
+    {
+        for (int i = 0; i < turrets.Count(); i++)
+        {
+            TurretAI T = turrets[i].gameObject.GetComponent<TurretAI>();
+            if (T != null)
+            {
+                T.enabled = false;
+            }
+            Die D = turrets[i].GetComponent<Die>();
+            if (D != null)
+            {
+                D.TriggerDeath = true;
+            }
+
+        }
+    }
+
+ }
