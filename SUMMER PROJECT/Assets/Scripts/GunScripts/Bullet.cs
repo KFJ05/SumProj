@@ -18,6 +18,8 @@ public class Bullet : MonoBehaviour
 
     public LayerMask Layer;
 
+    public ParticleSystem poofEffect;
+
     private void Awake()
     {
         if (!Testing)
@@ -71,13 +73,16 @@ public class Bullet : MonoBehaviour
                     tempHPM.Damage(Damage);
                 }
 
-                if (!Testing)
-                {
-                    Destroy(gameObject);
-                }
-
                 break;
             }
+        }
+
+        if (!Testing)
+        {
+            poofEffect.transform.parent = null;
+            poofEffect.Play();
+
+            Destroy(gameObject);
         }
     }
 

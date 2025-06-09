@@ -10,8 +10,6 @@ public class Die : MonoBehaviour
 
     public bool usingMultipleHpBars;
 
-
-
     public GameObject[] parts;
     public float explosiveRange;
 

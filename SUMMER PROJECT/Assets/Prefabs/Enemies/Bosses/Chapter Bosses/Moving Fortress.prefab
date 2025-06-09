@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.47058824, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -619,6 +619,7 @@ GameObject:
   - component: {fileID: 7959397536121244611}
   - component: {fileID: 6158126743721945858}
   - component: {fileID: 719889933244434679}
+  - component: {fileID: 5364713037390413185}
   m_Layer: 0
   m_Name: Moving Fortress
   m_TagString: Untagged
@@ -701,6 +702,9 @@ MonoBehaviour:
   Enemy: {fileID: 172045369123300148}
   time: 2
   totalHealth: 0
+  CritMUlt: 0
+  DamageEffect: {fileID: 0}
+  CritDamageEffect: {fileID: 0}
 --- !u!195 &7959397536121244611
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -765,6 +769,18 @@ MonoBehaviour:
   x: -100
   y: -50
   z: 100
+--- !u!114 &5364713037390413185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580353839591177337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc8b630600c6d4e48a8656dec6795ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2081241631339829496
 GameObject:
   m_ObjectHideFlags: 0
@@ -3043,7 +3059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5019608, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

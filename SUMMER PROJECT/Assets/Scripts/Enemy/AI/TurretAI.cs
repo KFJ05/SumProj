@@ -17,6 +17,8 @@ public class TurretAI : MonoBehaviour
 
     [Header("AI Stats")]
 
+    public float TimetoWaitOnSpawn;
+
     public float FireRate;
     public int AttacksBeforeStun;
     public float StunTimer;
@@ -43,61 +45,67 @@ public class TurretAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (FireFunctionCalledElsewhere == false)
+        if (TimetoWaitOnSpawn <= 0)
         {
+            if (FireFunctionCalledElsewhere == false)
+            {
 
 
-            if (ATS <= 0)
-            {
-                ST = StunTimer;
-                ATS = AttacksBeforeStun;
-            }
-            if (ST > 0)
-            {
-                if (UseAnimator)
+                if (ATS <= 0)
                 {
-                    Anim.SetBool("IsFiring", false);
+                    ST = StunTimer;
+                    ATS = AttacksBeforeStun;
                 }
+                if (ST > 0)
+                {
+                    if (UseAnimator)
+                    {
+                        Anim.SetBool("IsFiring", false);
+                    }
 
-                ST -= Time.deltaTime;
+                    ST -= Time.deltaTime;
+                }
+                else
+                {
+
+
+                    float D = Vector3.Distance(gameObject.transform.position, GameObject.FindWithTag("Player").transform.position);
+                    if (D <= Range)
+                    {
+
+                        MainBody.LookAt(GameObject.FindWithTag("Player").transform);
+                        if (UseAnimator)
+                        {
+                            // Debug.Log(Anim);
+                            Anim.SetBool("IsFiring", true);
+                        }
+                        if (FR <= 0)
+                        {
+                            //fire
+                            FireTurrBullet();
+
+                            ATS -= 1;
+                            FR = FireRate;
+
+                        }
+                        else
+                        {
+
+
+                            FR -= Time.deltaTime;
+                        }
+                    }
+
+                }
             }
             else
             {
-
-
-                float D = Vector3.Distance(gameObject.transform.position, GameObject.FindWithTag("Player").transform.position);
-                if (D <= Range)
-                {
-
-                    MainBody.LookAt(GameObject.FindWithTag("Player").transform);
-                    if (UseAnimator)
-                    {
-                       // Debug.Log(Anim);
-                        Anim.SetBool("IsFiring", true);
-                    }
-                    if (FR <= 0)
-                    {
-                        //fire
-                        FireTurrBullet();
-
-                        ATS -= 1;
-                        FR = FireRate;
-
-                    }
-                    else
-                    {
-
-
-                        FR -= Time.deltaTime;
-                    }
-                }
-
+                MainBody.LookAt(GameObject.FindWithTag("Player").transform);
             }
         }
         else
         {
-            MainBody.LookAt(GameObject.FindWithTag("Player").transform);
+            TimetoWaitOnSpawn -= Time.deltaTime;
         }
 
 
