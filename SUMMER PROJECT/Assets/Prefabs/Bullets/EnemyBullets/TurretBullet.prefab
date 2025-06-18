@@ -279,9 +279,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5455870346011230616}
     m_Modifications:
+    - target: {fileID: 3511682789009320575, guid: 40ec70d130ff92548a72114b558b6878, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4055269347400041022, guid: 40ec70d130ff92548a72114b558b6878, type: 3}
       propertyPath: m_Name
       value: Bulletpoof
+      objectReference: {fileID: 0}
+    - target: {fileID: 4615786091098150710, guid: 40ec70d130ff92548a72114b558b6878, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5499099034331375528, guid: 40ec70d130ff92548a72114b558b6878, type: 3}
       propertyPath: m_LocalScale.x

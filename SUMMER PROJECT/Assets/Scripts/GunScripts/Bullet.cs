@@ -70,7 +70,14 @@ public class Bullet : MonoBehaviour
                 }
                 if(tempHPM != null)
                 {
-                    tempHPM.Damage(Damage);
+                    if (WS != null)
+                    {
+                        tempHPM.CRITDamage(Damage);
+                    }
+                    else
+                    {
+                        tempHPM.Damage(Damage);
+                    }
                 }
 
                 break;

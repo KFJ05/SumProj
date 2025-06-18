@@ -1796,12 +1796,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4076874715307898980}
-  - {fileID: 8307614804282458401}
+  - {fileID: 2952439528240391888}
+  - {fileID: 7980582748371847946}
   - {fileID: 7741952276696711790}
   - {fileID: 3068020962390622903}
-  - {fileID: 7980582748371847946}
-  - {fileID: 2952439528240391888}
+  - {fileID: 4076874715307898980}
+  - {fileID: 8307614804282458401}
   - {fileID: 437415415391138746}
   m_Father: {fileID: 6793603138682381722}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2942,6 +2942,7 @@ MonoBehaviour:
   Layer:
     serializedVersion: 2
     m_Bits: 0
+  poofEffect: {fileID: 0}
 --- !u!54 &6761808162138215950
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3647,6 +3648,14 @@ PrefabInstance:
     - target: {fileID: 5859781850712653876, guid: 7d0252dd3ceb4194ea2aacb49af00d67, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7429843317942626475, guid: 7d0252dd3ceb4194ea2aacb49af00d67, type: 3}
+      propertyPath: LerpBars.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7429843317942626475, guid: 7d0252dd3ceb4194ea2aacb49af00d67, type: 3}
+      propertyPath: healthbars.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5735791426501016023, guid: 7d0252dd3ceb4194ea2aacb49af00d67, type: 3}

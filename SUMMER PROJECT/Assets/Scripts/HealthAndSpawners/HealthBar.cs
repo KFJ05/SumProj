@@ -34,6 +34,8 @@ public class HealthBarMultiple : MonoBehaviour
     public ParticleSystem DamageEffect;
     public ParticleSystem CritDamageEffect;
 
+    float storedDamage;
+
 
     private void Awake()
     {
@@ -70,10 +72,8 @@ public class HealthBarMultiple : MonoBehaviour
         {
             if (CurrentHealthBarHP[0] < 0)
             {
-                if (1 < CurrentHealthBarHP.Count)
-                {
-                    CurrentHealthBarHP[i] -= CurrentHealthBarHP[0];
-                }
+                storedDamage = CurrentHealthBarHP[0];
+
             }
 
             Destroy(healthbars[0]);
@@ -83,8 +83,14 @@ public class HealthBarMultiple : MonoBehaviour
             Destroy(LerpBars[0]);
             LerpBars.Remove(LerpBars[0]);
 
-        }
 
+        }
+        if (storedDamage < 0)
+        {
+            CurrentHealthBarHP[0] += storedDamage;
+
+            storedDamage = 0;
+        }
 
         UpdtadeHealthUI(0);
 
@@ -155,6 +161,7 @@ public class HealthBarMultiple : MonoBehaviour
     {
         CurrentHealthBarHP[0] -= (Damage * CritMUlt);
 
+        totalHealth -= (Damage * CritMUlt);
 
         lerpTimer = 0;
 

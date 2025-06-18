@@ -5,7 +5,7 @@ using static Cinemachine.DocumentationSortingAttribute;
 
 public class LevelManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Start is called before the first frame updateaaa
     public string CurrentLevel;
     public string NextLevel;
 

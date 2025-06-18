@@ -33,6 +33,8 @@ public class Fire : MonoBehaviour
 
     public bool FullAuto;
 
+    
+    
     int BulletsLeft, bulletsShot;
 
     bool shooting, ReadyToShoot, reloading;
