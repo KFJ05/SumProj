@@ -12,10 +12,13 @@ public class TurretAI : MonoBehaviour
     [Header("Refrences")]
     public GameObject bullet;
 
+
     public Transform MainBody;
     public Transform[] firelocation;
 
     [Header("AI Stats")]
+
+    public bool FireBullets = true;
 
     public float TimetoWaitOnSpawn;
 
@@ -23,6 +26,8 @@ public class TurretAI : MonoBehaviour
     public int AttacksBeforeStun;
     public float StunTimer;
     public float Spread;
+
+    public bool useBaseLookAt = true;
 
     public float Range;
 
@@ -32,14 +37,35 @@ public class TurretAI : MonoBehaviour
 
     public Animator Anim;
 
+    public float turnSpeed;
+
     float FR, ST;
     int ATS;
 
+    GameObject Player;
+
     public bool FireFunctionCalledElsewhere;
+
+    public Rigidbody TurrRB;
+
+
+
+    [Header("Rocket Settings")]
+    public GameObject Rocket;
+    public Transform fireRocketlocation;
+    public bool FireRockets = false;
+    public float RocketFireRate = 10f;
+
+    float RocketTimer;
 
     private void Awake()
     {
         ATS = AttacksBeforeStun;
+
+        Player = GameObject.FindWithTag("Player");
+
+        RocketTimer = RocketFireRate;
+
     }
 
     // Update is called once per frame
@@ -73,13 +99,23 @@ public class TurretAI : MonoBehaviour
                     if (D <= Range)
                     {
 
-                        MainBody.LookAt(GameObject.FindWithTag("Player").transform);
+                        if (useBaseLookAt == true)
+                        {
+                            MainBody.LookAt(GameObject.FindWithTag("Player").transform);
+                        }
+                        else
+                        {
+
+                            var rocketTargetrot = Quaternion.LookRotation(Player.transform.position - MainBody.position);
+                            TurrRB.MoveRotation(Quaternion.RotateTowards(MainBody.rotation, rocketTargetrot, turnSpeed));
+                        }
+
                         if (UseAnimator)
                         {
                             // Debug.Log(Anim);
                             Anim.SetBool("IsFiring", true);
                         }
-                        if (FR <= 0)
+                        if (FR <= 0 && FireBullets == true)
                         {
                             //fire
                             FireTurrBullet();
@@ -90,9 +126,19 @@ public class TurretAI : MonoBehaviour
                         }
                         else
                         {
-
-
                             FR -= Time.deltaTime;
+                        }
+
+
+                        if (FireRockets == true)
+                        {
+                            RocketTimer -= Time.deltaTime;
+
+                            if (RocketTimer <= 0)
+                            {
+                                FireRocket();
+                                RocketTimer = RocketFireRate;
+                            }
                         }
                     }
 
@@ -107,7 +153,6 @@ public class TurretAI : MonoBehaviour
         {
             TimetoWaitOnSpawn -= Time.deltaTime;
         }
-
 
 
 
@@ -135,6 +180,11 @@ public class TurretAI : MonoBehaviour
             CurrBullet.GetComponent<Rigidbody>().AddForce(FireDir.normalized * shootF, ForceMode.Impulse);
         }
 
+    }
+
+    public void FireRocket()
+    {
+        GameObject FiredRocket = Instantiate(Rocket, fireRocketlocation.position, Quaternion.identity);
     }
 }
 

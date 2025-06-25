@@ -25,6 +25,9 @@ public class Die : MonoBehaviour
     public bool useParticles;
     public ParticleSystem DeathExplosiom;
 
+    public bool IsEnemy = true;
+    public bool hasParts = true;
+
     private void Awake()
     {
         health = gameObject.GetComponent<Health>();
@@ -71,29 +74,32 @@ public class Die : MonoBehaviour
         {
             anim.SetBool("IsFiring", false);
         }
-        for (int i = 0; i < parts.Count(); i++)
+        if (hasParts)
         {
-            parts[i].gameObject.transform.SetParent(null);
-            parts[i].gameObject.tag = "SparePart";
-            if(PartManager.Instance != null)
+            for (int i = 0; i < parts.Count(); i++)
             {
-                PartManager.Instance.AddPart(parts[i]);
+                parts[i].gameObject.transform.SetParent(null);
+                parts[i].gameObject.tag = "SparePart";
+                if (PartManager.Instance != null)
+                {
+                    PartManager.Instance.AddPart(parts[i]);
+                }
+                Rigidbody rb = parts[i].gameObject.GetComponent<Rigidbody>();
+                Collider Col = parts[i].gameObject.GetComponent<Collider>();
+
+                Col.isTrigger = false;
+
+                rb.isKinematic = false;
+                rb.useGravity = true;
+
+                float x = Random.Range(-explosiveRange, explosiveRange);
+                float y = Random.Range(0, explosiveRange);
+                float z = Random.Range(-explosiveRange, explosiveRange);
+
+                rb.AddForce(x, y, z, ForceMode.Impulse);
             }
-            Rigidbody rb = parts[i].gameObject.GetComponent<Rigidbody>();
-            Collider Col = parts[i].gameObject.GetComponent<Collider>();
-
-            Col.isTrigger = false;
-
-            rb.isKinematic = false;
-            rb.useGravity = true;
-
-            float x = Random.Range(-explosiveRange, explosiveRange);
-            float y = Random.Range(0, explosiveRange);
-            float z = Random.Range(-explosiveRange, explosiveRange);
-
-            rb.AddForce(x, y, z, ForceMode.Impulse);
         }
-        if (EnemyManager.Instance != null)
+        if (EnemyManager.Instance != null && IsEnemy)
         {
             EnemyManager.Instance.RemoveEnemy(gameObject);
         }

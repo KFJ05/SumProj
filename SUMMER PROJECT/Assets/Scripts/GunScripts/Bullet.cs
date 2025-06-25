@@ -16,9 +16,9 @@ public class Bullet : MonoBehaviour
 
     public string[] TagsToDamage;
 
-    public LayerMask Layer;
-
     public ParticleSystem poofEffect;
+
+    public GameObject StoredObj;
 
     private void Awake()
     {
@@ -81,6 +81,65 @@ public class Bullet : MonoBehaviour
                 }
 
                 break;
+            }
+        }
+
+        if (!Testing)
+        {
+            poofEffect.transform.parent = null;
+            poofEffect.Play();
+
+            Destroy(gameObject);
+        }
+    }
+    
+    private void OnParticleCollision(GameObject other)
+    {
+        if(other != StoredObj)
+        {
+            for (int i = 0; i < TagsToDamage.Length; i++)
+            {
+                if (other.CompareTag(TagsToDamage[i]))
+                {
+                    // Health should be on the hit object or one of its parents
+                    Health tempHP = other.GetComponent<Health>();
+                    HealthBarMultiple tempHPM = null;
+                    if (tempHP == null)
+                    {
+                        tempHP = other.GetComponentInParent<Health>();
+                    }
+
+                    if (tempHP == null)
+                    {
+
+                        tempHPM = other.GetComponent<HealthBarMultiple>();
+                        if (tempHPM == null)
+                        {
+                            tempHPM = other.GetComponentInParent<HealthBarMultiple>();
+                        }
+
+                    }
+
+                    // Check if the actual collider that was hit has the WeakSpot
+
+
+                    if (tempHP != null)
+                    {
+
+                        tempHP.Damage(Damage);
+
+                    }
+                    if (tempHPM != null)
+                    {
+
+                        tempHPM.Damage(Damage);
+
+                    }
+
+                    break;
+                }
+
+                StoredObj = other;
             }
         }
 

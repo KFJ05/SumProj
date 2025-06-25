@@ -10,8 +10,12 @@ public class RocketAi : MonoBehaviour
     public string LockOnTag;
     Rigidbody RocketyRb;
 
+    GameObject RocketTarget;
+
     public float turnSpeed;
     public float RocketSpeed;
+
+    public ParticleSystem rocketExplode;
 
     Transform rocketT;
 
@@ -19,12 +23,34 @@ public class RocketAi : MonoBehaviour
 
     void Start()
     {
-       // RocketyRb = gameobject.GetComponent<Rigidbody>();
+        RocketyRb = GetComponent<Rigidbody>();
+        rocketT = GetComponent<Transform>();
+
+        RocketTarget = GameObject.FindWithTag(LockOnTag);
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!RocketyRb)
+        {
+            return;
+        }
+
+        RocketyRb.velocity = rocketT.forward * RocketSpeed;
+
+        var rocketTargetrot = Quaternion.LookRotation(RocketTarget.transform.position - rocketT.position);
         
+
+        RocketyRb.MoveRotation(Quaternion.RotateTowards(rocketT.rotation, rocketTargetrot, turnSpeed));
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        rocketExplode.gameObject.transform.parent = null;
+        rocketExplode.Play();
+
+        Destroy(gameObject);
     }
 }

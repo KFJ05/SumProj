@@ -978,6 +978,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5591285133560876380}
+  - component: {fileID: 2832962534740639781}
   m_Layer: 0
   m_Name: TurretHead
   m_TagString: Untagged
@@ -1001,6 +1002,33 @@ Transform:
   - {fileID: 8163318026700142182}
   m_Father: {fileID: 2413681810171750296}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &2832962534740639781
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3977761997059463682}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 14
+  m_CollisionDetection: 0
 --- !u!1 &4229503853782631172
 GameObject:
   m_ObjectHideFlags: 0
@@ -2731,7 +2759,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 3442919074317325586, guid: e80fb51072ad0d44096bf6de31803704, type: 3}
-  SpawnEffect: {fileID: 2803181552905790079}
   MainBody: {fileID: 5591285133560876380}
   firelocation:
   - {fileID: 5070479825298510452}
@@ -2740,11 +2767,14 @@ MonoBehaviour:
   AttacksBeforeStun: 5
   StunTimer: 0.5
   Spread: 0
+  useBaseLookAt: 0
   Range: 20
   shootF: 50
   UseAnimator: 0
   Anim: {fileID: 0}
+  turnSpeed: 5
   FireFunctionCalledElsewhere: 0
+  TurrRB: {fileID: 2832962534740639781}
 --- !u!1 &8203901926637761610
 GameObject:
   m_ObjectHideFlags: 0
@@ -3648,11 +3678,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1854329801ef9eb469b6eae437e6a13e, type: 3}
---- !u!198 &2803181552905790079 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 5091906005358848350, guid: 1854329801ef9eb469b6eae437e6a13e, type: 3}
-  m_PrefabInstance: {fileID: 6939188640509004577}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5626510713043369878 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3339862103620465847, guid: 1854329801ef9eb469b6eae437e6a13e, type: 3}
