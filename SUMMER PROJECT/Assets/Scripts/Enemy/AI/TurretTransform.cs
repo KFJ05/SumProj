@@ -24,6 +24,14 @@ public class TurretTransform : MonoBehaviour
     public bool TriggerOnce;
     bool triggerd = false;
 
+    public bool ChangeAiStats;
+
+    public float newFireRate, NewStunTimer, NewBulletSpread, newRange, newBulletSpeed, newTurnSpeed;
+
+    public bool ChangeRocketStats;
+    public float newRocketTimer;
+
+
     public bool usingParts;
     public GameObject[] parts;
     public float explosiveRange;
@@ -57,6 +65,14 @@ public class TurretTransform : MonoBehaviour
                     triggerd = true;
                     VisualDestruction();
                 }
+                if(ChangeAiStats == true)
+                {
+                    SetNewStats();
+                }
+                if(ChangeRocketStats == true)
+                {
+                    SetNewrocketTimer();
+                }
             }
         }
         else
@@ -85,6 +101,14 @@ public class TurretTransform : MonoBehaviour
                 {
                     triggerd = true;
                     VisualDestruction();
+                }
+                if (ChangeAiStats == true)
+                {
+                    SetNewStats();
+                }
+                if (ChangeRocketStats == true)
+                {
+                    SetNewrocketTimer();
                 }
             }
         }
@@ -116,5 +140,23 @@ public class TurretTransform : MonoBehaviour
                 rb.AddForce(x, y, z, ForceMode.Impulse);
             }
      }
+
+    public void SetNewStats()
+    {
+        TurrAI.FireRate = newFireRate;
+        TurrAI.StunTimer = NewStunTimer;
+        TurrAI.Spread = NewBulletSpread;
+        TurrAI.Range = newRange;
+        TurrAI.shootF = newBulletSpeed;
+        TurrAI.turnSpeed = newTurnSpeed;
+    }
+
+
+    public void SetNewrocketTimer()
+    {
+        TurrAI.RocketFireRate = newRocketTimer;
+    }
 }
+
+
 

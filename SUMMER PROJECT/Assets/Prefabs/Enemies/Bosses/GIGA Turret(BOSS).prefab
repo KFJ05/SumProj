@@ -783,6 +783,7 @@ GameObject:
   - component: {fileID: 7429843317942626475}
   - component: {fileID: 3512951196083498599}
   - component: {fileID: 842176026943441538}
+  - component: {fileID: 101858867988236615}
   m_Layer: 0
   m_Name: GIGA Turret(BOSS)
   m_TagString: Enemy
@@ -847,7 +848,7 @@ MonoBehaviour:
   Rocket: {fileID: 2077613701241159719, guid: 07aaef9257a7548448d8fa1c0a8e6514, type: 3}
   fireRocketlocation: {fileID: 2883242140264362414}
   FireRockets: 0
-  RocketFireRate: 2
+  RocketFireRate: 3.5
 --- !u!114 &7429843317942626475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -934,6 +935,49 @@ MonoBehaviour:
   TurrAI: {fileID: 3734730040426074004}
   usingMultipleHealthbars: 1
   TriggerOnce: 1
+  ChangeAiStats: 0
+  newFireRate: 0
+  NewStunTimer: 0
+  NewBulletSpread: 0
+  newRange: 0
+  newBulletSpeed: 0
+  newTurnSpeed: 0
+  ChangeRocketStats: 0
+  newRocketTimer: 0
+  usingParts: 0
+  parts: []
+  explosiveRange: 0
+--- !u!114 &101858867988236615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3622301092600986809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c14ab1de1e8dd5409fcec5e61e8e9ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AddRocketsOnHpInterval: 0
+  RemoveRocketsOnHpInterval: 0
+  AddBulletsOnHpInterval: 0
+  RemoveBulletsOnHpInterval: 0
+  HpInterval: 45
+  BaseHP: {fileID: 0}
+  MultHP: {fileID: 7429843317942626475}
+  TurrAI: {fileID: 3734730040426074004}
+  usingMultipleHealthbars: 1
+  TriggerOnce: 0
+  ChangeAiStats: 0
+  newFireRate: 0
+  NewStunTimer: 0
+  NewBulletSpread: 0
+  newRange: 0
+  newBulletSpeed: 0
+  newTurnSpeed: 0
+  ChangeRocketStats: 1
+  newRocketTimer: 2
   usingParts: 0
   parts: []
   explosiveRange: 0

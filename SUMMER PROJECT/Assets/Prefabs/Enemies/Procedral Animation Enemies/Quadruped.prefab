@@ -838,6 +838,8 @@ MonoBehaviour:
   WinLevelOnDeath: 0
   useParticles: 1
   DeathExplosiom: {fileID: 8068254143548655650}
+  IsEnemy: 1
+  hasParts: 1
 --- !u!1 &3908813521269269911
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,7 +1179,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 83438f0806879154c93483d7a39e3624, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1513,7 +1515,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 83438f0806879154c93483d7a39e3624, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2059,7 +2061,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 83438f0806879154c93483d7a39e3624, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2381,7 +2383,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 83438f0806879154c93483d7a39e3624, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2746,6 +2748,8 @@ MonoBehaviour:
   WinLevelOnDeath: 0
   useParticles: 0
   DeathExplosiom: {fileID: 0}
+  IsEnemy: 1
+  hasParts: 1
 --- !u!114 &2269790151686519254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2762,6 +2766,7 @@ MonoBehaviour:
   MainBody: {fileID: 5591285133560876380}
   firelocation:
   - {fileID: 5070479825298510452}
+  FireBullets: 1
   TimetoWaitOnSpawn: 0.75
   FireRate: 2
   AttacksBeforeStun: 5
@@ -2775,6 +2780,10 @@ MonoBehaviour:
   turnSpeed: 5
   FireFunctionCalledElsewhere: 0
   TurrRB: {fileID: 2832962534740639781}
+  Rocket: {fileID: 0}
+  fireRocketlocation: {fileID: 0}
+  FireRockets: 0
+  RocketFireRate: 10
 --- !u!1 &8203901926637761610
 GameObject:
   m_ObjectHideFlags: 0
@@ -3196,7 +3205,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a13a57c4ef11670489150d6a6b3c7b65, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -704,9 +704,8 @@ MonoBehaviour:
   Testing: 1
   TagsToDamage:
   - Player
-  Layer:
-    serializedVersion: 2
-    m_Bits: 0
+  poofEffect: {fileID: 0}
+  StoredObj: {fileID: 0}
 --- !u!65 &985529812
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -868,7 +867,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a849eb7a42d9d764db60a504c8d18108, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1417,9 +1416,8 @@ MonoBehaviour:
   Testing: 1
   TagsToDamage:
   - Player
-  Layer:
-    serializedVersion: 2
-    m_Bits: 0
+  poofEffect: {fileID: 0}
+  StoredObj: {fileID: 0}
 --- !u!65 &2055508289
 BoxCollider:
   m_ObjectHideFlags: 0
