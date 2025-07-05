@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 211628936326351383}
   - component: {fileID: 9214383146720806865}
   - component: {fileID: 586936894210420884}
+  - component: {fileID: 6885639923318024479}
   m_Layer: 0
   m_Name: Enemy Rocket
   m_TagString: Enemy
@@ -227,6 +228,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 0.5, z: 1.9}
   m_Center: {x: 0, y: 0, z: 1}
+--- !u!114 &6885639923318024479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077613701241159719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2423a831653430d4abc73707e5b40211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 211628936326351383}
+  mat: {fileID: 0}
+  colour: {r: 0, g: 0, b: 0, a: 0}
+  UseR: 1
+  UseG: 0
+  UseB: 0
 --- !u!1 &6287813597812123692
 GameObject:
   m_ObjectHideFlags: 0

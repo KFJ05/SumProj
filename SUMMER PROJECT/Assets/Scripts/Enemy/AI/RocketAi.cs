@@ -19,6 +19,8 @@ public class RocketAi : MonoBehaviour
 
     Transform rocketT;
 
+    public string[] notDetnatedBy;
+
 
 
     void Start()
@@ -48,9 +50,21 @@ public class RocketAi : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        rocketExplode.gameObject.transform.parent = null;
-        rocketExplode.Play();
+        bool triggerd = true;
+        for(int i = 0; i < notDetnatedBy.Length; i++)
+        {
+            if (collision.gameObject.tag == notDetnatedBy[i])
+            {
+                triggerd = false;
+            }
+        }
 
-        Destroy(gameObject);
+        if (triggerd == true)
+        {
+            rocketExplode.gameObject.transform.parent = null;
+            rocketExplode.Play();
+
+            Destroy(gameObject);
+        }
     }
 }
