@@ -154,10 +154,8 @@ MonoBehaviour:
   Testing: 0
   TagsToDamage:
   - Enemy
-  Layer:
-    serializedVersion: 2
-    m_Bits: 1
   poofEffect: {fileID: 8305827655552785994}
+  StoredObj: {fileID: 0}
 --- !u!96 &1148929065954804827
 TrailRenderer:
   serializedVersion: 3

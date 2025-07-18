@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: PyroGun
+  m_Shader: {fileID: 4800000, guid: 18a7a4d0032d650458ca555516dd81e5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -41,11 +41,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: e77ee6ccdbc318d48a9eb4f1fcd38905, type: 3}
+        m_Texture: {fileID: 2800000, guid: dbbb64e8b689ad34ab15efea1bd78054, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 584d404e4e551ae43bd1f77c4d05dca1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 871739e760c3b2c4c9ed38d2dddb1414, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:

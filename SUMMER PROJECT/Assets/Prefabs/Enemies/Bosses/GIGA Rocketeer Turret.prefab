@@ -949,13 +949,13 @@ MonoBehaviour:
   LerpBarDamageColour: {r: 1, g: 1, b: 1, a: 1}
   LerpBarHealColour: {r: 0, g: 1, b: 0, a: 1}
   MaxHealthPerHealthBar:
-  - 45
-  - 50
-  - 75
+  - 25
+  - 30
+  - 40
   CurrentHealthBarHP:
-  - 45
-  - 50
-  - 75
+  - 25
+  - 30
+  - 40
   Death: {fileID: 3512951196083498599}
   Enemy: {fileID: 0}
   time: 2
@@ -1007,7 +1007,7 @@ MonoBehaviour:
   RemoveRocketsOnHpInterval: 0
   AddBulletsOnHpInterval: 0
   RemoveBulletsOnHpInterval: 1
-  HpInterval: 75
+  HpInterval: 40
   BaseHP: {fileID: 0}
   MultHP: {fileID: 7429843317942626475}
   TurrAI: {fileID: 3734730040426074004}
@@ -1044,7 +1044,7 @@ MonoBehaviour:
   RemoveRocketsOnHpInterval: 1
   AddBulletsOnHpInterval: 1
   RemoveBulletsOnHpInterval: 0
-  HpInterval: 125
+  HpInterval: 70
   BaseHP: {fileID: 0}
   MultHP: {fileID: 7429843317942626475}
   TurrAI: {fileID: 3734730040426074004}
@@ -1098,7 +1098,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -20}
-  m_SizeDelta: {x: 500, y: 50}
+  m_SizeDelta: {x: 750, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1276559211967327468
 CanvasRenderer:
@@ -1128,7 +1128,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GIGA ROCKETEER TURRET
+  m_text: SUPER ROCKETEER SECURITY TURRET
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

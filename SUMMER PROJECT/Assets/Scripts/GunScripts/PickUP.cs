@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,6 +12,17 @@ public class PickUP : MonoBehaviour
     public BoxCollider Coll;
     public Transform player, gunContainer, fpsCam;
     public Canvas Stats;
+
+    public string GunName;
+    public string GunDesc;
+    public string GunStats;
+    public string GunEffects;
+
+    public string GunNameGObjName;
+    public string GunDescGObjName;
+    public string GunStatsGObjName;
+    public string GunEffectsGObjName;
+
 
     [Header("Pick up and throw stats")]
     public float pickUpRange;
@@ -77,12 +89,24 @@ public class PickUP : MonoBehaviour
 
             else if (DTP <= pickUpRange && !equipped)
             {
-                Stats.gameObject.SetActive(true);
+                //Stats.gameObject.SetActive(true);
+                /*TextMeshProUGUI Name = GameObject.Find(GunNameGObjName).GetComponent<TextMeshProUGUI>();
+                Name.text = GunName;
+                TextMeshProUGUI Desc = GameObject.Find(GunDescGObjName).GetComponent<TextMeshProUGUI>();
+                Desc.text = GunDesc;
+                TextMeshProUGUI Stats = GameObject.Find(GunStatsGObjName).GetComponent<TextMeshProUGUI>();
+                Stats.text = GunStats;
+                TextMeshProUGUI Effects = GameObject.Find(GunEffectsGObjName).GetComponent<TextMeshProUGUI>();
+                Effects.text = GunEffects;
+
+                GameObject.FindWithTag("GunStats").SetActive(true);
+                */
+
             }
 
             else
             {
-                Stats.gameObject.SetActive(false);
+               // GameObject.FindWithTag("GunStats").SetActive(false);
             }
 
       

@@ -11,18 +11,25 @@ public class EmmisiveHealthBar : MonoBehaviour
 
     public Renderer Render;
 
+    public bool GetRenderer = true;
+
     public Material Mat;
 
     float Emis;
 
     public Color colour;
 
+    public bool usingColour = true;
+
     public bool UseR, UseG, UseB;
 
 
     private void Start()
     {
-        Render = GetComponent<Renderer>();
+        if (GetRenderer)
+        {
+            Render = GetComponent<Renderer>();
+        }
         Mat = Render.material;
         colour = Color.black;
     }
@@ -45,7 +52,10 @@ public class EmmisiveHealthBar : MonoBehaviour
         {
             colour.b = Emis;
         }
-        Render.material.color = colour;
+        if (usingColour)
+        {
+            Render.material.color = colour;
+        }
         Mat.SetColor("_EmissionColor", colour);
     }
 }

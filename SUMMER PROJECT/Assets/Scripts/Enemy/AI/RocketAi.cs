@@ -15,6 +15,8 @@ public class RocketAi : MonoBehaviour
     public float turnSpeed;
     public float RocketSpeed;
 
+    public bool useParticles = true;
+
     public ParticleSystem rocketExplode;
 
     Transform rocketT;
@@ -50,21 +52,24 @@ public class RocketAi : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        bool triggerd = true;
-        for(int i = 0; i < notDetnatedBy.Length; i++)
+        if (useParticles)
         {
-            if (collision.gameObject.tag == notDetnatedBy[i])
+            bool triggerd = true;
+            for (int i = 0; i < notDetnatedBy.Length; i++)
             {
-                triggerd = false;
+                if (collision.gameObject.tag == notDetnatedBy[i])
+                {
+                    triggerd = false;
+                }
             }
-        }
 
-        if (triggerd == true)
-        {
-            rocketExplode.gameObject.transform.parent = null;
-            rocketExplode.Play();
+            if (triggerd == true)
+            {
+                rocketExplode.gameObject.transform.parent = null;
+                rocketExplode.Play();
 
-            Destroy(gameObject);
+                Destroy(gameObject);
+            }
         }
     }
 }

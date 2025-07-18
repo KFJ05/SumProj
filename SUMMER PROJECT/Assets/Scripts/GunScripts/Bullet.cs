@@ -95,14 +95,15 @@ public class Bullet : MonoBehaviour
     
     private void OnParticleCollision(GameObject other)
     {
-        if(other != StoredObj)
-        {
+
+        
             for (int i = 0; i < TagsToDamage.Length; i++)
             {
                 if (other.CompareTag(TagsToDamage[i]))
                 {
                     // Health should be on the hit object or one of its parents
                     Health tempHP = other.GetComponent<Health>();
+                    Debug.Log(tempHP);
                     HealthBarMultiple tempHPM = null;
                     if (tempHP == null)
                     {
@@ -138,10 +139,9 @@ public class Bullet : MonoBehaviour
 
                     break;
                 }
-
-                StoredObj = other;
-            }
+            
         }
+
 
         if (!Testing)
         {
@@ -150,6 +150,10 @@ public class Bullet : MonoBehaviour
 
             Destroy(gameObject);
         }
+    }
+    private void OnParticleTrigger()
+    {
+
     }
 
 

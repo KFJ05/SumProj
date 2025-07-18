@@ -848,7 +848,7 @@ MonoBehaviour:
   Rocket: {fileID: 2077613701241159719, guid: 07aaef9257a7548448d8fa1c0a8e6514, type: 3}
   fireRocketlocation: {fileID: 2883242140264362414}
   FireRockets: 0
-  RocketFireRate: 3.5
+  RocketFireRate: 4
 --- !u!114 &7429843317942626475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -871,10 +871,10 @@ MonoBehaviour:
   LerpBarHealColour: {r: 0, g: 1, b: 0, a: 1}
   MaxHealthPerHealthBar:
   - 50
-  - 75
+  - 50
   CurrentHealthBarHP:
   - 50
-  - 75
+  - 50
   Death: {fileID: 3512951196083498599}
   Enemy: {fileID: 0}
   time: 2
@@ -908,7 +908,7 @@ MonoBehaviour:
   useAnimator: 1
   TriggerDeath: 0
   useHealth: 1
-  WinLevelOnDeath: 0
+  WinLevelOnDeath: 1
   useParticles: 1
   DeathExplosiom: {fileID: 9058354973484872387}
   IsEnemy: 1
@@ -929,7 +929,7 @@ MonoBehaviour:
   RemoveRocketsOnHpInterval: 0
   AddBulletsOnHpInterval: 0
   RemoveBulletsOnHpInterval: 0
-  HpInterval: 75
+  HpInterval: 50
   BaseHP: {fileID: 0}
   MultHP: {fileID: 7429843317942626475}
   TurrAI: {fileID: 3734730040426074004}
@@ -1046,7 +1046,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GIGA TURRET
+  m_text: SUPER SECURITY TURRET
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

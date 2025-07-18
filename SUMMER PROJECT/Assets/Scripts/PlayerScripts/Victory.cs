@@ -25,6 +25,9 @@ public class Victory: MonoBehaviour
     public TextMeshProUGUI Requirements;
 
 
+    bool W;
+
+
     private void Awake()
     {
         Requirements.gameObject.SetActive(false);
@@ -55,6 +58,15 @@ public class Victory: MonoBehaviour
 
     private void Update()
     {
+
+        if (W == true)
+        {
+            if(EnemyManager.Instance.GetEnemyCount() <= LowestEnemiesAliveNeededToWin)
+            {
+                win();
+            }
+        }
+
         if(Win == false)
         {
             WinScreen.gameObject.SetActive(false);
@@ -114,12 +126,23 @@ public class Victory: MonoBehaviour
 
         WinScreen.gameObject.SetActive(true);
 
+        EnemyManager.Instance.RESETALL();
+
     }
 
     public void SetWin()
     {
-        win();
+
+        W = true;
+        if (EnemyManager.Instance.GetEnemyCount() > LowestEnemiesAliveNeededToWin)
+        {
+            Requirements.gameObject.SetActive(true);
+        }
+
+
+
     }
+
 
 
 
