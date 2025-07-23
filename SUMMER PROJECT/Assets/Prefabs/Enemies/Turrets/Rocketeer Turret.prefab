@@ -1343,6 +1343,15 @@ MonoBehaviour:
   TurrAI: {fileID: 621209317289829874}
   usingMultipleHealthbars: 1
   TriggerOnce: 1
+  ChangeAiStats: 0
+  newFireRate: 0
+  NewStunTimer: 0
+  NewBulletSpread: 0
+  newRange: 0
+  newBulletSpeed: 0
+  newTurnSpeed: 0
+  ChangeRocketStats: 0
+  newRocketTimer: 0
   usingParts: 1
   parts:
   - {fileID: 5667215689834943244}

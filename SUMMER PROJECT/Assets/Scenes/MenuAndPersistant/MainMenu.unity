@@ -2834,6 +2834,7 @@ MonoBehaviour:
   ChapterSelect: {fileID: 709522835}
   Chapters:
   - {fileID: 2038888640}
+  MenuMusic: {fileID: 8300000, guid: d73d7c3032a2f8c498709c40d9b7e330, type: 3}
 --- !u!1 &905939572
 GameObject:
   m_ObjectHideFlags: 0

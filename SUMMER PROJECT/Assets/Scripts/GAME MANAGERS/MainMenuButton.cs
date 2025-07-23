@@ -18,6 +18,8 @@ public class MainMenuButton : MonoBehaviour
     }
     public void BackToMenu()
     {
+        GameManager.Instance.StopMusic();
+
         GameManager.Instance.BacktomainMenu(Level);
     }
 }

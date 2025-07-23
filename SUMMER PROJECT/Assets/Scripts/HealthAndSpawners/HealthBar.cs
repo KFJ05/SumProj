@@ -39,12 +39,8 @@ public class HealthBarMultiple : MonoBehaviour
 
     private void Awake()
     {
-
-
-
         if (CurrentHealthBarHP.Count == MaxHealthPerHealthBar.Count && CurrentHealthBarHP.Count == healthbars.Count)
         {
-
             CurrentHealthBarHP[0] = MaxHealthPerHealthBar[0];
 
             for(int i = 0; i < CurrentHealthBarHP.Count; i++)
@@ -52,8 +48,6 @@ public class HealthBarMultiple : MonoBehaviour
                 totalHealth += CurrentHealthBarHP[i];
             }
         }
-
-
     }
 
     private void Update()
@@ -64,7 +58,6 @@ public class HealthBarMultiple : MonoBehaviour
             {
                 Enemy.DestroyTurrets();
             }
-
             Death.TriggerDeath = true;
         }
 
@@ -75,26 +68,19 @@ public class HealthBarMultiple : MonoBehaviour
                 storedDamage = CurrentHealthBarHP[0];
 
             }
-
             Destroy(healthbars[0]);
             healthbars.Remove(healthbars[0]);
             MaxHealthPerHealthBar.Remove(MaxHealthPerHealthBar[0]);
             CurrentHealthBarHP.Remove(CurrentHealthBarHP[0]);
             Destroy(LerpBars[0]);
             LerpBars.Remove(LerpBars[0]);
-
-
         }
         if (storedDamage < 0)
         {
             CurrentHealthBarHP[0] += storedDamage;
-
             storedDamage = 0;
         }
-
         UpdtadeHealthUI(0);
-
-
     }
 
 
@@ -104,8 +90,6 @@ public class HealthBarMultiple : MonoBehaviour
         float FillLBar = LerpBars[currentHealthBar].fillAmount;
 
         float hFraction = CurrentHealthBarHP[currentHealthBar] / MaxHealthPerHealthBar[currentHealthBar];
-
-
 
         if (FillLBar > hFraction)
         {
@@ -130,7 +114,6 @@ public class HealthBarMultiple : MonoBehaviour
         }
         if (FillHP < hFraction)
         {
-
             LerpBars[currentHealthBar].color = LerpBarHealColour;
             LerpBars[currentHealthBar].fillAmount = hFraction;
             lerpTimer += Time.deltaTime;
@@ -142,46 +125,48 @@ public class HealthBarMultiple : MonoBehaviour
 
     public void Damage(float Damage)
     {
-        CurrentHealthBarHP[0] -= Damage;
-
-        totalHealth -= Damage;
-
-        lerpTimer = 0;
-
-        if (CurrentHealthBarHP[0] <= 0 && CurrentHealthBarHP.Count == 1)
+        if (CurrentHealthBarHP[0] != null)
         {
-          //  Dead = true;
+            CurrentHealthBarHP[0] -= Damage;
+
+            totalHealth -= Damage;
+
+            lerpTimer = 0;
+
+            if (CurrentHealthBarHP[0] <= 0 && CurrentHealthBarHP.Count == 1)
+            {
+                //  Dead = true;
+            }
+            PlayPS = true;
+            //didCrit = false;
         }
-        //PlayPS = true;
-        //didCrit = false;
     }
 
 
     public void CRITDamage(float Damage)
     {
-        CurrentHealthBarHP[0] -= (Damage * CritMUlt);
 
-        totalHealth -= (Damage * CritMUlt);
-
-        lerpTimer = 0;
-
-        if (CurrentHealthBarHP[0] <= 0)
+        if (CurrentHealthBarHP[0] != null)
         {
-            //Dead = true;
+            CurrentHealthBarHP[0] -= (Damage * CritMUlt);
+
+            totalHealth -= (Damage * CritMUlt);
+
+            lerpTimer = 0;
+
+            if (CurrentHealthBarHP[0] <= 0)
+            {
+                //Dead = true;
+            }
+            PlayPS = true;
+            didCrit = true;
         }
-        PlayPS = true;
-        didCrit = true;
     }
 
     public void Heal(float AmountHealed)
     {
         CurrentHealthBarHP[0] += AmountHealed;
-
-
         lerpTimer = 0;
-
-
-
         if (CurrentHealthBarHP[0] > MaxHealthPerHealthBar[0])
         {
             CurrentHealthBarHP[0] = MaxHealthPerHealthBar[0];

@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: e6cf7141a892a484b9277acd98818d12, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 7ea22384183dd5e49be9bd5c528fd5b4, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -2977,11 +2977,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLevel: Ch1Lvl5
-  NextLevel: Ch1Lvl6
-  LevelMusic: {fileID: 8300000, guid: 7e79060a7dfc0df4db66cd35c3d58399, type: 3}
+  NextLevel: MainMenu
+  LevelMusic: {fileID: 8300000, guid: 4c4cb19b8fcaf694ba02deb7c8af1882, type: 3}
   LoopMusic: 1
   PlayMusic: 1
-  StopMusicOnLeave: 0
+  StopMusicOnLeave: 1
 --- !u!4 &1697792140
 Transform:
   m_ObjectHideFlags: 0
@@ -3111,10 +3111,8 @@ MonoBehaviour:
   Testing: 1
   TagsToDamage:
   - Player
-  Layer:
-    serializedVersion: 2
-    m_Bits: 0
   poofEffect: {fileID: 0}
+  StoredObj: {fileID: 0}
 --- !u!65 &1826281469
 BoxCollider:
   m_ObjectHideFlags: 0

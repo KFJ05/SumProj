@@ -39,6 +39,10 @@ public class TurretAI : MonoBehaviour
 
     public float turnSpeed;
 
+    public float TimeBeforeFire;
+
+    float Firetimer;
+
     float FR, ST;
     int ATS;
 
@@ -66,6 +70,8 @@ public class TurretAI : MonoBehaviour
 
         RocketTimer = RocketFireRate;
 
+        Firetimer = TimeBeforeFire;
+
     }
 
     // Update is called once per frame
@@ -88,6 +94,8 @@ public class TurretAI : MonoBehaviour
                     {
                         Anim.SetBool("IsFiring", false);
                     }
+
+                    Firetimer = TimeBeforeFire;
 
                     ST -= Time.deltaTime;
                 }
@@ -114,8 +122,10 @@ public class TurretAI : MonoBehaviour
                         {
                             // Debug.Log(Anim);
                             Anim.SetBool("IsFiring", true);
+
+                            
                         }
-                        if (FR <= 0 && FireBullets == true)
+                        if (FR <= 0 && FireBullets == true && Firetimer <= 0)
                         {
                             //fire
                             FireTurrBullet();
@@ -127,6 +137,8 @@ public class TurretAI : MonoBehaviour
                         else
                         {
                             FR -= Time.deltaTime;
+
+                            Firetimer -= Time.deltaTime;
                         }
 
 

@@ -20,8 +20,26 @@ public class Bullet : MonoBehaviour
 
     public GameObject StoredObj;
 
+    public AudioClip[] clips;
+
+    public AudioClip poofNoise;
+
+    AudioSource s;
+
     private void Awake()
     {
+        int i = Random.RandomRange(0, clips.Length);
+        if (clips[i] != null)
+        {
+            s = GetComponent<AudioSource>();
+            s.clip = clips[i];
+            s.Play();
+
+        }
+            
+
+        
+
         if (!Testing)
         {
             Destroy(gameObject, bulletLifeTime);
@@ -31,6 +49,12 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (poofNoise != null)
+        {
+            s.clip = poofNoise;
+            s.Play();
+        }
+
         for (int i = 0; i < TagsToDamage.Length; i++)
         {
             if (collision.gameObject.CompareTag(TagsToDamage[i]))
@@ -50,6 +74,9 @@ public class Bullet : MonoBehaviour
                     if(tempHPM == null)
                     {
                         tempHPM = collision.gameObject.GetComponentInParent<HealthBarMultiple>();
+
+
+                        Debug.Log("Hit");
                     }
 
                 }
@@ -88,6 +115,8 @@ public class Bullet : MonoBehaviour
         {
             poofEffect.transform.parent = null;
             poofEffect.Play();
+
+
 
             Destroy(gameObject);
         }

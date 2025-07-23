@@ -8,8 +8,17 @@ public class MainMenu : MonoBehaviour
 
     public Canvas mainMenu, ChapterSelect;
     public Canvas[] Chapters;
- 
-    
+
+    public AudioClip MenuMusic;
+
+    private void Awake()
+    {
+        if (GameManager.Instance.GetMusic() == null)
+        {
+            GameManager.Instance.PlayMusic(MenuMusic, true);
+        }
+    }
+
     public void LoadLevel(string Level)
     {
         GameManager.Instance.LoadLevelFromMenu(Level);

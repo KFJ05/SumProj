@@ -7231,10 +7231,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentLevel: Ch1Lvl3
   NextLevel: Ch1Lvl4
-  LevelMusic: {fileID: 8300000, guid: e2b4013c93ba5b043b2fa86a6af0f28a, type: 3}
+  LevelMusic: {fileID: 8300000, guid: 4c4cb19b8fcaf694ba02deb7c8af1882, type: 3}
   LoopMusic: 1
-  PlayMusic: 0
-  StopMusicOnLeave: 0
+  PlayMusic: 1
+  StopMusicOnLeave: 1
 --- !u!1001 &1285860529
 PrefabInstance:
   m_ObjectHideFlags: 0
