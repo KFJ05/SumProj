@@ -17,6 +17,8 @@ public class LevelManager : MonoBehaviour
 
     public bool StopMusicOnLeave;
 
+    public Material SkyboxMat;
+
     private void Awake()
     {
         if(PlayMusic)
@@ -29,6 +31,10 @@ public class LevelManager : MonoBehaviour
             {
                 GameManager.Instance.PlayMusic(LevelMusic, LoopMusic);
             }
+        }
+        if(SkyboxMat != null)
+        {
+            SkyBoxManager.Instance.SetNewSkybox(SkyboxMat);
         }
     }
 

@@ -3490,6 +3490,8 @@ MonoBehaviour:
   - Player
   poofEffect: {fileID: 0}
   StoredObj: {fileID: 0}
+  clips: []
+  poofNoise: {fileID: 0}
 --- !u!65 &1010081501
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4512,6 +4514,7 @@ MonoBehaviour:
   LoopMusic: 1
   PlayMusic: 1
   StopMusicOnLeave: 1
+  SkyboxMat: {fileID: 2100000, guid: b5af140db5a13cb488374fc91d875841, type: 2}
 --- !u!1001 &1285860529
 PrefabInstance:
   m_ObjectHideFlags: 0

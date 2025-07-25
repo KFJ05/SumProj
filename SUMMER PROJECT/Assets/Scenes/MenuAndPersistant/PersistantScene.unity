@@ -250,6 +250,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1026957555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1026957556}
+  m_Layer: 0
+  m_Name: MasterMusicSource (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1026957556
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026957555}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1168270666
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,6 +419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1222384134}
   - component: {fileID: 1222384135}
+  - component: {fileID: 1222384136}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -426,6 +458,19 @@ MonoBehaviour:
   CompletedLevels: []
   MasterMusicSource: {fileID: 1168270667}
   MasterSoundSource: {fileID: 429719294}
+--- !u!114 &1222384136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222384133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2371905e84913141a2fa2ccd9598ae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Skybox: {fileID: 0}
 --- !u!1 &1683501868
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,4 +546,5 @@ SceneRoots:
   - {fileID: 1222384134}
   - {fileID: 1683501871}
   - {fileID: 1168270668}
+  - {fileID: 1026957556}
   - {fileID: 429719295}
