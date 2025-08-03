@@ -14,6 +14,8 @@ public class HealthBarMultiple : MonoBehaviour
     public List<float> MaxHealthPerHealthBar = new List<float>(); 
     public List<float> CurrentHealthBarHP = new List<float>();
 
+    public bool usingTurretDie = true;
+
     public Die Death;
 
     public EnemyAI Enemy;
@@ -58,7 +60,10 @@ public class HealthBarMultiple : MonoBehaviour
             {
                 Enemy.DestroyTurrets();
             }
-            Death.TriggerDeath = true;
+            if (usingTurretDie)
+            {
+                Death.TriggerDeath = true;
+            }
         }
 
         if (CurrentHealthBarHP[0] <= 0)
@@ -166,11 +171,15 @@ public class HealthBarMultiple : MonoBehaviour
     public void Heal(float AmountHealed)
     {
         CurrentHealthBarHP[0] += AmountHealed;
+        totalHealth += AmountHealed;
         lerpTimer = 0;
         if (CurrentHealthBarHP[0] > MaxHealthPerHealthBar[0])
         {
+            float F = CurrentHealthBarHP[0] - MaxHealthPerHealthBar[0];
+            totalHealth -= F;
             CurrentHealthBarHP[0] = MaxHealthPerHealthBar[0];
         }
+      
     }
 
 

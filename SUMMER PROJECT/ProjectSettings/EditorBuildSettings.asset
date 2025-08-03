@@ -26,34 +26,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Chapter_1/Ch1Lvl5.unity
     guid: 2358ba78ad23fe140b2d8168b0bcd468
-  - enabled: 1
-    path: Assets/Scenes/Chapter_1/Ch1Lvl6.unity
-    guid: 596d8fead84ad18499a95887960ff31a
-  - enabled: 1
-    path: Assets/Scenes/Chapter_1/Ch1Lvl7.unity
-    guid: 84db070947862234e89266a258b69e1f
-  - enabled: 1
-    path: Assets/Scenes/Chapter_1/Ch1Lvl8.unity
-    guid: 4e1ea5cade6110045a2b1c03a92dae38
-  - enabled: 1
-    path: Assets/Scenes/Chapter_1/Ch1Lvl9.unity
-    guid: d5a6d88f5028b124f84e6d7fd05492f0
-  - enabled: 1
-    path: Assets/Scenes/Chapter_1/Ch1Lvl10.unity
-    guid: 43fdc48e457a63d4bb1fa9af14462c4c
-  - enabled: 1
-    path: Assets/Scenes/Chapter_1/Ch1Lvl11.unity
-    guid: 6a600a9b1ce4c4d4faffbf8cf6a9a3d8
-  - enabled: 1
-    path: Assets/Scenes/Chapter_1/Ch1Lvl12.unity
-    guid: cacd44580265ecd4399d8d096e40a432
-  - enabled: 1
-    path: Assets/Scenes/Chapter_1/Ch1Lvl13.unity
-    guid: 6feb1f599766da94286e3f2900b0cefb
-  - enabled: 1
-    path: Assets/Scenes/Chapter_1/Ch1Lvl14.unity
-    guid: 04e6b5018364ec648a243f215268ddfe
-  - enabled: 1
-    path: Assets/Scenes/Chapter_1/Ch1Lvl15.unity
-    guid: 7ad03f66ce8a8bc41ab7eb113a2703cf
   m_configObjects: {}

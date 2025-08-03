@@ -23,6 +23,9 @@ public class Respawn : MonoBehaviour
     public bool UsingGun;
 
     public bool reset = false;
+
+    public bool ResetMusic = false;
+    public AudioClip LevelMusic;
     
     void Update()
     {
@@ -96,6 +99,12 @@ public class Respawn : MonoBehaviour
 
     public void RESPAWN()
     {
+        if(ResetMusic == true)
+        {
+            GameManager.Instance.StopMusic();
+            GameManager.Instance.PlayMusic(LevelMusic, true);
+        }
+
         HealthBar.gameObject.SetActive(true);
 
         if (SpawnManager.Instance != null)

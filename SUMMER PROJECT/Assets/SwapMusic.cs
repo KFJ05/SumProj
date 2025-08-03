@@ -10,6 +10,8 @@ public class SwapMusic : MonoBehaviour
     public AudioClip Clip2;
     public AudioSource source;
 
+    bool triggered = false;
+
     
 
     // Update is called once per frame
@@ -20,9 +22,15 @@ public class SwapMusic : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        // if(other.gameObject.tag == "Player")
+        //{
+        //    source.clip = Clip2;
+        //}
+        if (triggered == false)
         {
-            source.clip = Clip2;
+            GameManager.Instance.StopMusic();
+            GameManager.Instance.PlayMusic(Clip1, true);
+            triggered = true;
         }
     }
 }

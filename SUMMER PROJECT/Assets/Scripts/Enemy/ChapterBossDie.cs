@@ -1,10 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
-public class SoldierDie : MonoBehaviour
+public class ChapterBossDie : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    //public TimelineClip clip;
+    public PlayableDirector director;
+
+    
 
     public Collider[] colliders;
     public Rigidbody[] Bodies;
@@ -16,11 +23,14 @@ public class SoldierDie : MonoBehaviour
     public HealthBarMultiple HealthBarMultiple;
     public bool usingMultipleHpBars;
 
-    public Canvas HealthBar;
-
     bool Triggerd = false;
 
     public bool WinLevelOnDeath = false;
+
+    private void Start()
+    {
+       // director.
+    }
 
     // Update is called once per frame
     void Update()
@@ -61,10 +71,6 @@ public class SoldierDie : MonoBehaviour
 
         if (Triggerd == true)
         {
-            if (HealthBar != null)
-            {
-                HealthBar.gameObject.SetActive(false);
-            }
             TimeToDestroy -= Time.deltaTime;
         }
         if(TimeToDestroy <= 0)
