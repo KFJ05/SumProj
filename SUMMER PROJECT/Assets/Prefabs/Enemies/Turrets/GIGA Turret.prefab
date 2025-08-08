@@ -882,6 +882,7 @@ MonoBehaviour:
   MainBody: {fileID: 653028164597915134}
   firelocation:
   - {fileID: 7373322680085768854}
+  FireBullets: 1
   TimetoWaitOnSpawn: 0.75
   FireRate: 0.1
   AttacksBeforeStun: 40
@@ -893,8 +894,13 @@ MonoBehaviour:
   UseAnimator: 1
   Anim: {fileID: 3160347370497224448}
   turnSpeed: 15
+  TimeBeforeFire: 0
   FireFunctionCalledElsewhere: 0
   TurrRB: {fileID: 2334349190299322531}
+  Rocket: {fileID: 0}
+  fireRocketlocation: {fileID: 0}
+  FireRockets: 0
+  RocketFireRate: 10
 --- !u!114 &369902577663040872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -907,8 +913,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20f5b8bb1e8b10746b7727594934cdc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 35
-  MaxHealth: 35
+  CurrentHealth: 50
+  MaxHealth: 50
   UseHealthBar: 1
   useSharedHealthbar: 0
   LerpBarDamageColour: {r: 1, g: 1, b: 1, a: 1}
@@ -918,6 +924,10 @@ MonoBehaviour:
   CritMUlt: 3
   HealthBar: {fileID: 5945651847704133677}
   LerpBar: {fileID: 5743272222822283066}
+  Segments: {fileID: 5472805636459596008}
+  SegmentMaterial: {fileID: 0}
+  SegMat: {fileID: 0}
+  HealthPerSegment: 10
   DamageEffect: {fileID: 1100793853664827385}
   CritDamageEffect: {fileID: 4559740552791938957}
 --- !u!114 &5434953907515321968
@@ -947,6 +957,8 @@ MonoBehaviour:
   WinLevelOnDeath: 0
   useParticles: 1
   DeathExplosiom: {fileID: 6320048103203448224}
+  IsEnemy: 1
+  hasParts: 1
 --- !u!1 &4535104943500052878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,7 +1164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 7dddbbe47f191f14fb559d432d72ecf8, type: 2}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}

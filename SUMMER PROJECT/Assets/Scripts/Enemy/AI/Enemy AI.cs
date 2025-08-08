@@ -20,7 +20,6 @@ public class EnemyAI : MonoBehaviour
 
     List<GameObject> MoveL = new List<GameObject>(); 
 
-
     bool Fired;
 
     //Attacking
@@ -28,8 +27,6 @@ public class EnemyAI : MonoBehaviour
 
     //states
     public float SightRange, AttackRange;
-
-    
 
     public LayerMask PlayerLayer, whatisGround;
 
@@ -45,10 +42,6 @@ public class EnemyAI : MonoBehaviour
     public GameObject body;
 
     public bool getAgent = true;
-
-
-
-
     private void Awake()
     {
         Player = GameObject.FindWithTag("Player").transform;
@@ -68,8 +61,6 @@ public class EnemyAI : MonoBehaviour
         }
         
     }
-
-
 
     private void Update()
     {

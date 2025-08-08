@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,16 +28,88 @@ public class Health : MonoBehaviour
     [Header("Refrences")]
     public Image HealthBar;
     public Image LerpBar;
+    public GameObject Segments;
+    public Material SegmentMaterial;
+    public Material SegMat;
+
+   
+
+    public float HealthPerSegment;
+
     public ParticleSystem DamageEffect;
     public ParticleSystem CritDamageEffect;
 
     float lerpTimer;
 
-    // Start is called before the first frame update
- 
-    // Update is called once per frame
+
+    [Header("Sheild settings")]
+    public float SheildSize;
+    public bool SheildActive;
+    bool SheildTrigger;
+    public float SheildCurrentHealth;
+    public float SheildMaxHealth; 
+
+    [Header("Sheild Prefabs")]
+    public GameObject SheildPrefab;
+    public Image SheildHBar;
+    public Image SheildLerpBar;
+    public float Sheildtime = 4f;
+    GameObject sheild;
+    public float YOffset;
+
+
+
+
+
+    private void Start()
+    {
+        if (Segments != null)
+        {
+            SegmentMaterial = Segments.GetComponent<Image>().material;
+            SegMat = new Material(SegmentMaterial);
+        }
+        if (SegmentMaterial != null)
+        {
+            float segmentAmmount = MaxHealth/ HealthPerSegment;
+            float NewSegmentAmount = segmentAmmount;
+
+            SetSegments(NewSegmentAmount);
+        }
+        SheildHBar.gameObject.SetActive(false);
+        SheildLerpBar.gameObject.SetActive(false);
+
+    }
+
+    public void SetSegments( float NewSegA)
+    {
+        SegMat.SetFloat("_Frequency", NewSegA);
+        SegmentMaterial = Segments.GetComponent<Image>().material = SegMat;
+    }
+
     void Update()
     {
+        if(SheildActive == true && SheildTrigger == false)
+        {
+            SheildCurrentHealth = SheildMaxHealth;
+            sheild = Instantiate(SheildPrefab);
+            sheild.transform.parent = gameObject.transform;
+            sheild.transform.localScale = Vector3.one * SheildSize;
+            SheildHBar.gameObject.SetActive(true);
+            SheildLerpBar.gameObject.SetActive(true);
+            SheildTrigger = true;
+
+            Sheild S = sheild.gameObject.GetComponent<Sheild>();
+            S.YOffset = YOffset;
+        }
+        if(SheildCurrentHealth <= 0 && SheildActive == true)
+        {
+            SheildCurrentHealth = 0;
+            SheildActive = false;
+            Destroy(sheild);
+            SheildHBar.gameObject.SetActive (false);
+            SheildLerpBar.gameObject.SetActive(false);
+            SheildTrigger = false;  
+        }
         if(CurrentHealth > MaxHealth)
         {
             CurrentHealth = MaxHealth;
@@ -44,7 +117,14 @@ public class Health : MonoBehaviour
 
         if(UseHealthBar == true)
         {
-            UpdtadeHealthUI();
+            if (SheildActive == true)
+            {
+                UpdtadeSheildUI();
+            }
+            else
+            {
+                UpdtadeHealthUI();
+            }
         }
     }
 
@@ -91,34 +171,81 @@ public class Health : MonoBehaviour
 
     }
 
+    public void UpdtadeSheildUI()
+    {
+        float FillHP = SheildHBar.fillAmount;
+        float FillLBar = SheildLerpBar.fillAmount;
+
+        float SFraction = SheildCurrentHealth / SheildMaxHealth;
+
+
+
+        if (FillLBar > SFraction)
+        {
+            SheildHBar.fillAmount = SFraction;
+
+            SheildLerpBar.color = LerpBarDamageColour;
+
+            lerpTimer += Time.deltaTime;
+            float PercentC = lerpTimer / Sheildtime;
+            SheildLerpBar.fillAmount = Mathf.Lerp(FillLBar, SFraction, PercentC);
+
+        }
+        if (FillHP < SFraction)
+        {
+
+            SheildLerpBar.color = LerpBarHealColour;
+            SheildLerpBar.fillAmount = SFraction;
+            lerpTimer += Time.deltaTime;
+            float PercentC = lerpTimer / Sheildtime;
+            SheildHBar.fillAmount = Mathf.Lerp(FillHP, SheildLerpBar.fillAmount, PercentC);
+        }
+
+    }
+
+
     public void Damage(float Damage)
     {
-        CurrentHealth -= Damage;
-
-      
-        lerpTimer = 0;
-        
-        if(CurrentHealth <= 0)
+        if (SheildActive == true)
         {
-            Dead = true;
+            SheildCurrentHealth -= Damage;
+
         }
-        PlayPS = true;
-        didCrit = false;
+        else
+        {
+            CurrentHealth -= Damage;
+
+
+            lerpTimer = 0;
+
+            if (CurrentHealth <= 0)
+            {
+                Dead = true;
+            }
+            PlayPS = true;
+            didCrit = false;
+        }
     }
 
     public void CRITDamage(float Damage)
     {
-        CurrentHealth -= (Damage * CritMUlt);
-
-
-        lerpTimer = 0;
-
-        if (CurrentHealth <= 0)
+        if (SheildActive == true)
         {
-            Dead = true;
+            SheildCurrentHealth -= (Damage * CritMUlt);
         }
-        PlayPS = true;
-        didCrit = true;
+        else
+        {
+            CurrentHealth -= (Damage * CritMUlt);
+
+            lerpTimer = 0;
+
+            if (CurrentHealth <= 0)
+            {
+                Dead = true;
+            }
+            PlayPS = true;
+            didCrit = true;
+        }
     }
     public void Heal(float AmountHealed)
     {

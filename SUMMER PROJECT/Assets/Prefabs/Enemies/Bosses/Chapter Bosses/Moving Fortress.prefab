@@ -890,6 +890,7 @@ MonoBehaviour:
   - 50
   - 200
   - 600
+  usingTurretDie: 1
   Death: {fileID: 6158126743721945858}
   Enemy: {fileID: 172045369123300148}
   time: 2
@@ -975,6 +976,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8b630600c6d4e48a8656dec6795ef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startSpawning: 0
+  FirstSpawnTime: 1
+  SpawnSpeed: 2
 --- !u!1 &2081241631339829496
 GameObject:
   m_ObjectHideFlags: 0
@@ -3664,6 +3668,8 @@ MonoBehaviour:
   - Player
   poofEffect: {fileID: 0}
   StoredObj: {fileID: 0}
+  clips: []
+  poofNoise: {fileID: 0}
 --- !u!54 &6761808162138215950
 Rigidbody:
   m_ObjectHideFlags: 0

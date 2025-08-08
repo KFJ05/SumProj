@@ -1397,7 +1397,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5a16ac6e185b8de46a96e581635df862, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8916,8 +8916,21 @@ MonoBehaviour:
   CritMUlt: 0
   HealthBar: {fileID: 8738682765441593400}
   LerpBar: {fileID: 6693487644296713255}
+  Segments: {fileID: 0}
+  SegmentMaterial: {fileID: 0}
+  SegMat: {fileID: 0}
+  HealthPerSegment: 0
   DamageEffect: {fileID: 0}
   CritDamageEffect: {fileID: 0}
+  SheildSize: 0
+  SheildActive: 0
+  SheildCurrentHealth: 0
+  SheildMaxHealth: 0
+  SheildPrefab: {fileID: 0}
+  SheildHBar: {fileID: 0}
+  SheildLerpBar: {fileID: 0}
+  Sheildtime: 4
+  YOffset: 0
 --- !u!114 &2936562961606995442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8935,6 +8948,8 @@ MonoBehaviour:
   ResetGunOnDeath: 0
   UsingGun: 0
   reset: 0
+  ResetMusic: 0
+  LevelMusic: {fileID: 0}
 --- !u!114 &1645100360800708675
 MonoBehaviour:
   m_ObjectHideFlags: 0

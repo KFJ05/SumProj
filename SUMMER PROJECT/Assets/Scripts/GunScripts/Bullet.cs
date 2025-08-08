@@ -132,7 +132,7 @@ public class Bullet : MonoBehaviour
                 {
                     // Health should be on the hit object or one of its parents
                     Health tempHP = other.GetComponent<Health>();
-                    Debug.Log(tempHP);
+                  //  Debug.Log(tempHP);
                     HealthBarMultiple tempHPM = null;
                     if (tempHP == null)
                     {

@@ -44,6 +44,46 @@ public class EnemyManager : MonoBehaviour
         return Enemies.Count;
     }
 
+    public GameObject LowestHealthEnemy()
+    {
+        float MinHealth = 9999;
+        GameObject LowestHpEnemy = null;
+        Health health;
+        HealthBarMultiple LHpM;
+
+        for(int i = 0; i < Enemies.Count; i++)
+        {
+            if (Enemies[i] != null)
+            {
+                health = Enemies[i].GetComponent<Health>();
+                if (health == null)
+                {
+                    LHpM = new HealthBarMultiple();
+                    if (LHpM != null)
+                    {
+                        if(MinHealth > LHpM.totalHealth && LHpM.totalHealth > 0)
+                        {
+                            MinHealth = LHpM.totalHealth;
+                            LowestHpEnemy = Enemies[i];
+                        }
+                    }
+                }
+                else
+                {
+                    if(MinHealth > health.CurrentHealth && health.CurrentHealth > 0)
+                    {
+                        MinHealth = health.CurrentHealth;
+                        LowestHpEnemy = Enemies[i];
+                    }
+                }
+            }
+        }
+
+        return(LowestHpEnemy);
+
+
+    }
+
     public void RESETALL()
     {
         for(int i = 0; i < Enemies.Count;)

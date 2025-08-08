@@ -33,6 +33,11 @@ public class HealthBarMultiple : MonoBehaviour
 
     bool PlayPS = false;
 
+    public GameObject[] Segments;
+    public float[] HealthPerSegment;
+    public Material SegmentMaterial;
+    public Material SegMat;
+
     public ParticleSystem DamageEffect;
     public ParticleSystem CritDamageEffect;
 
@@ -50,6 +55,31 @@ public class HealthBarMultiple : MonoBehaviour
                 totalHealth += CurrentHealthBarHP[i];
             }
         }
+    }
+
+    private void Start()
+    {
+        for (int i = 0; i < Segments.Length; i++)
+        {
+            if (Segments[i] != null)
+            {
+                SegmentMaterial = Segments[i].GetComponent<Image>().material;
+                SegMat = new Material(SegmentMaterial);
+            }
+            if (SegmentMaterial != null)
+            {
+                float segmentAmmount = MaxHealthPerHealthBar[i] / HealthPerSegment[i];
+                float NewSegmentAmount = segmentAmmount;
+
+                SetSegments(NewSegmentAmount, i);
+            }
+        }
+
+    }
+    public void SetSegments(float NewSegA, int i)
+    {
+        SegMat.SetFloat("_Frequency", NewSegA);
+        SegmentMaterial = Segments[i].GetComponent<Image>().material = SegMat;
     }
 
     private void Update()

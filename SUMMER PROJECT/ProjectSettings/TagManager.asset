@@ -16,6 +16,7 @@ TagManager:
   - SparePart
   - SharedHealthBar
   - GunStats
+  - PointList
   layers:
   - Default
   - TransparentFX

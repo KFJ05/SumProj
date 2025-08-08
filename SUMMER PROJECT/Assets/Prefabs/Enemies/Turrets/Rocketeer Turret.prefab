@@ -1021,7 +1021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 7dddbbe47f191f14fb559d432d72ecf8, type: 2}
   m_Color: {r: 1, g: 0.47058824, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1251,6 +1251,7 @@ MonoBehaviour:
   UseAnimator: 0
   Anim: {fileID: 0}
   turnSpeed: 15
+  TimeBeforeFire: 0
   FireFunctionCalledElsewhere: 0
   TurrRB: {fileID: 2334349190299322531}
   Rocket: {fileID: 2077613701241159719, guid: 07aaef9257a7548448d8fa1c0a8e6514, type: 3}
@@ -1283,11 +1284,20 @@ MonoBehaviour:
   CurrentHealthBarHP:
   - 45
   - 15
+  usingTurretDie: 1
   Death: {fileID: 5434953907515321968}
   Enemy: {fileID: 0}
   time: 2
   totalHealth: 0
   CritMUlt: 2
+  Segments:
+  - {fileID: 2405983306688641456}
+  - {fileID: 5472805636459596008}
+  HealthPerSegment:
+  - 10
+  - 10
+  SegmentMaterial: {fileID: 0}
+  SegMat: {fileID: 0}
   DamageEffect: {fileID: 0}
   CritDamageEffect: {fileID: 0}
 --- !u!114 &5434953907515321968
@@ -1743,7 +1753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 7dddbbe47f191f14fb559d432d72ecf8, type: 2}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}

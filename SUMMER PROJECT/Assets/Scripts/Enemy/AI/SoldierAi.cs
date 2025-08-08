@@ -63,10 +63,14 @@ public class SoldierAi : MonoBehaviour
     public HealthBarMultiple HealthBarMultiple;
     public bool usingMultipleHealthBars;
 
+    public Transform[] transforms;
+
     bool Move;
+    bool MovementOverRide;
 
+    float timer;
 
-
+    int R = -1;
 
     public
     enum SoldierState {Aiming, Running, Shooting, Dead}
@@ -75,6 +79,19 @@ public class SoldierAi : MonoBehaviour
 
     private void Start()
     {
+        pointList PL = GameObject.FindWithTag("PointList").GetComponent<pointList>();
+
+        transforms = PL.PointTransforms;
+
+        int b = UnityEngine.Random.RandomRange(0,3);
+        if(b == 0)
+        {
+            if(usingMultipleHealthBars == false)
+            {
+                Health.SheildActive = true;
+            }
+        }
+
         Player = GameObject.FindWithTag("Player");
 
         var newSourceArray = new WeightedTransformArray { new WeightedTransform(Player.transform, 1f)};
@@ -93,6 +110,7 @@ public class SoldierAi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if(!usingMultipleHealthBars)
         {
             if(Health.CurrentHealth <= 0)
@@ -111,23 +129,78 @@ public class SoldierAi : MonoBehaviour
 
         if (State == SoldierState.Running)
         {
+            if (timer > 0)
+            {
+                timer -= Time.deltaTime;
+            }
+            else if(timer <= 0)
+            {
+                MovementOverRide = false;
+            }
+
             Animator.SetLayerWeight(1, 0);
             Gun.SetActive(false);
             ReadyToPullGun = true;
             Shoulder.weight = 0;
 
-
-            if (Vector3.Distance(Player.transform.position, transform.position) > MinDistanceAwayAToAim)
+            if (Vector3.Distance(Player.transform.position, transform.position) > MinDistanceAwayAToAim && MovementOverRide == false)
             {
                 Agent.SetDestination(Player.transform.position);
             }
             else if (Vector3.Distance(Player.transform.position, transform.position) <= MinDistanceAwayAToAim)
             {
-                Agent.SetDestination(transform.position);
-                State = SoldierState.Aiming;
+                if (MovementOverRide == false)
+                {
+                    Agent.SetDestination(transform.position);
+                    State = SoldierState.Aiming;
+                }
+            }
+            else if(MovementOverRide == true)
+            {
+                if (R == -1)
+                {
+                    R = UnityEngine.Random.Range(0, transforms.Length);
+                }
+                if (transforms[R] != null)
+                {
+                    Agent.SetDestination(transforms[R].position);
+                }
+
+                if(Vector3.Distance (transform.position, transforms[R].position) <= 2)
+                {
+                    timer = 0;
+                }
             }
             Tba = TimeBetweenShots;
 
+            Vector3 toPlayer = (Player.transform.position - transform.position).normalized;
+            Vector3 forward = transform.forward;
+
+            Vector3 direction = Player.transform.position - transform.position;
+            float dotProduct = Vector3.Dot(direction, transform.right);
+
+            float angle = Vector3.Angle(forward, toPlayer);
+            float TempAngle = 0;
+
+            if (dotProduct > 0)
+            {
+                TempAngle = -angle;
+            }
+            else if (dotProduct < 0)
+            {
+                TempAngle = angle;
+            }
+
+            if (TempAngle > detectionAngle || TempAngle < -detectionAngle)
+            {
+                TurnOffContraints();
+            }
+            else
+            {
+                TurnOnContraints();
+            }
+       
+            /*
             if(Move == true)
             {
                 Transform P;
@@ -175,7 +248,9 @@ public class SoldierAi : MonoBehaviour
             if (TempAngle < -detectionAngle)
             {
                Move = true; 
-            }
+            }*/
+
+
 
             //ai Function here
         }
@@ -188,7 +263,14 @@ public class SoldierAi : MonoBehaviour
 
             if (Vector3.Distance(Player.transform.position, transform.position) > MaxDistanceToRun)
             {
+                int A = UnityEngine.Random.Range(0, 5);
+                if (A > 0)
+                {
+                    MovementOverRide = true;
+                }
+                timer = 7.5f;
                 State = SoldierState.Running;
+                R = -1;
                 Move = true;
             }
             else if (Tba <= 0)
@@ -281,6 +363,21 @@ public class SoldierAi : MonoBehaviour
              Contraints[i].weight = 1;
         }
         ReadyToPullGun = false;
+    }
+
+    public void TurnOffContraints()
+    {
+        for (int i = 0; i < Contraints.Length; i++)
+        {
+            Contraints[i].weight = 0;
+        }
+    }
+    public void TurnOnContraints()
+    {
+        for (int i = 0; i < Contraints.Length; i++)
+        {
+            Contraints[i].weight = 1;
+        }
     }
 }
 
