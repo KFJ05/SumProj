@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
     [Header("HPSettings")]
     public float CurrentHealth;
     public float MaxHealth;
+    float MH;
 
     public bool UseHealthBar;
     public bool useSharedHealthbar;
@@ -63,6 +64,8 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
+        MH = MaxHealth;
+
         if (Segments != null)
         {
             SegmentMaterial = Segments.GetComponent<Image>().material;
@@ -88,6 +91,26 @@ public class Health : MonoBehaviour
 
     void Update()
     {
+        if(MH != MaxHealth)
+        {
+            MH = MaxHealth;
+
+            if (Segments != null)
+            {
+                SegmentMaterial = Segments.GetComponent<Image>().material;
+                SegMat = new Material(SegmentMaterial);
+            }
+            if (SegmentMaterial != null)
+            {
+                float segmentAmmount = MaxHealth / HealthPerSegment;
+                float NewSegmentAmount = segmentAmmount;
+
+                SetSegments(NewSegmentAmount);
+            }
+            SheildHBar.gameObject.SetActive(false);
+            SheildLerpBar.gameObject.SetActive(false);
+        }
+
         if(SheildActive == true && SheildTrigger == false)
         {
             SheildCurrentHealth = SheildMaxHealth;

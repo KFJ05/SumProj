@@ -148,6 +148,15 @@ MonoBehaviour:
   HealthPerSegment: 10
   DamageEffect: {fileID: 8040127421383942365}
   CritDamageEffect: {fileID: 6330215278406851226}
+  SheildSize: 0
+  SheildActive: 0
+  SheildCurrentHealth: 0
+  SheildMaxHealth: 0
+  SheildPrefab: {fileID: 0}
+  SheildHBar: {fileID: 0}
+  SheildLerpBar: {fileID: 0}
+  Sheildtime: 4
+  YOffset: 0
 --- !u!65 &185963841682055301
 BoxCollider:
   m_ObjectHideFlags: 0

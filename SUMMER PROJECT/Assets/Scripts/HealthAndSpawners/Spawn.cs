@@ -12,17 +12,21 @@ public class Spawn : MonoBehaviour
 
     public bool AlreadySpawned = false;
 
+    Spawn spawn;
+
+    private void Start()
+    {
+        spawn = gameObject.GetComponent<Spawn>();
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
-
-
-
         if (other.gameObject.tag == SpawnTag && AlreadySpawned == false)
         {
-            for(int i = 0; i < spawnedEntities.Count(); i++)
+            AlreadySpawned = true;
+            for (int i = 0; i < spawnedEntities.Count(); i++)
             {
-
                 if (spawnLocations[i] != null)
                 {
                     GameObject G = Instantiate(spawnedEntities[i], spawnLocations[i].position, spawnLocations[i].rotation);
@@ -33,8 +37,10 @@ public class Spawn : MonoBehaviour
                     GameObject G = Instantiate(spawnedEntities[i], spawnedEntities[i].transform.position, spawnedEntities[i].transform.rotation);
                     EnemyManager.Instance.AddEnemy(G);
                 }
-                
-                
+            }
+            if(SpawnManager.Instance != null)
+            {
+                SpawnManager.Instance.TurnOnPointList(spawn);
             }
             AlreadySpawned = true;
         }

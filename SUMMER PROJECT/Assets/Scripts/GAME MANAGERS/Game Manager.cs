@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     public AudioSource MasterSoundSource;
 
+    public bool NormalGameCompleted;
+
     private static GameManager instance;
     public static GameManager Instance
     {

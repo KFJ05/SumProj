@@ -141,9 +141,7 @@ public class Fire : MonoBehaviour
         float x = Random.Range(-Spread, Spread);
         float y = Random.Range(-Spread, Spread);
 
-
         Vector3 FireDir = DirWithoutSpread + new Vector3(x, y, 0);
-
 
         GameObject CurrBullet = Instantiate(bullet, FireLocation.position, Quaternion.identity);
 
@@ -170,8 +168,6 @@ public class Fire : MonoBehaviour
         {
             Invoke("Shoot", timeBetweenShots);
         }
-
-
     }
 
     private void ResetShot()

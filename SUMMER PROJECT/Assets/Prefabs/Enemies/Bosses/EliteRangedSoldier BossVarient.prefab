@@ -790,6 +790,9 @@ MonoBehaviour:
   Spread: 0.15
   shootF: 60
   TimeBetweenShots: 0.1
+  UseFireTime: 0
+  FireTime: 10
+  MoveTime: 7.5
   Animator: {fileID: 4647724473847395209}
   MinDistanceAwayAToAim: 20
   MaxDistanceToRun: 35
@@ -803,6 +806,7 @@ MonoBehaviour:
   Health: {fileID: 5479662054487400166}
   HealthBarMultiple: {fileID: 0}
   usingMultipleHealthBars: 0
+  transforms: []
   State: 1
 --- !u!136 &2376399372417236297
 CapsuleCollider:
@@ -872,8 +876,21 @@ MonoBehaviour:
   CritMUlt: 0
   HealthBar: {fileID: 658658276934710878}
   LerpBar: {fileID: 153392485666028175}
+  Segments: {fileID: 0}
+  SegmentMaterial: {fileID: 0}
+  SegMat: {fileID: 0}
+  HealthPerSegment: 0
   DamageEffect: {fileID: 0}
   CritDamageEffect: {fileID: 0}
+  SheildSize: 0
+  SheildActive: 0
+  SheildCurrentHealth: 0
+  SheildMaxHealth: 0
+  SheildPrefab: {fileID: 0}
+  SheildHBar: {fileID: 0}
+  SheildLerpBar: {fileID: 0}
+  Sheildtime: 4
+  YOffset: 0
 --- !u!114 &6580539375822968788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -915,6 +932,7 @@ MonoBehaviour:
   Hp: {fileID: 5479662054487400166}
   HealthBarMultiple: {fileID: 0}
   usingMultipleHpBars: 0
+  HealthBar: {fileID: 0}
   WinLevelOnDeath: 0
 --- !u!1 &2022886715052631358
 GameObject:

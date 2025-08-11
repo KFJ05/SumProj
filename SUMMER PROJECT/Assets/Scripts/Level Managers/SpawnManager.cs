@@ -29,13 +29,17 @@ public class SpawnManager : MonoBehaviour
 
     }
 
-    public void TurnOnSpawner(Spawn spawn)
+    public void TurnOnPointList(Spawn spawn)
     {
         for (int i = 0; i < spawners.Length; i++)
         {
             if (spawners[i] == spawn)
             {
                 PointList[i].TurnOn();
+            }
+            if(spawners[i] != spawn)
+            {
+                PointList[i].turnoff();
             }
         }
 
@@ -45,8 +49,17 @@ public class SpawnManager : MonoBehaviour
     {
        for(int i = 0; i < spawners.Count(); i++)
         {
-            spawners[i].resetSpawner();
-            PointList[i].turnoff();
+            if (spawners[i] != null)
+            {
+                spawners[i].resetSpawner();
+            }
+            if (PointList.Count() > 0)
+            {
+                if (PointList[i] != null)
+                {
+                    PointList[i].turnoff();
+                }
+            }
         }
     }
 

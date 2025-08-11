@@ -6,8 +6,9 @@ using UnityEngine;
 public class MainMenu : MonoBehaviour
 {
 
-    public Canvas mainMenu, ChapterSelect;
+    public Canvas mainMenu, ChapterSelect, ChooseChapterSelect,ChapterSelectEX;
     public Canvas[] Chapters;
+    public Canvas[] EXChapters;
 
     public AudioClip MenuMusic;
 
@@ -28,14 +29,81 @@ public class MainMenu : MonoBehaviour
     {
         mainMenu.gameObject.SetActive(false);
 
+        if (GameManager.Instance.NormalGameCompleted == true)
+        {
+            ChooseChapterSelect.gameObject.SetActive(false);
+        }
+
         ChapterSelect.gameObject.SetActive(true);
     }
 
+
+    public void LoadEXChapterSelect()
+    {
+        mainMenu.gameObject.SetActive(false);
+
+        if (GameManager.Instance.NormalGameCompleted == true)
+        {
+            ChooseChapterSelect.gameObject.SetActive(false);
+        }
+
+        ChapterSelectEX.gameObject.SetActive(true);
+    }
+
+    public void LoadChapterNormalOrEX()
+    {
+        if (GameManager.Instance.NormalGameCompleted == true)
+        {
+            mainMenu.gameObject.SetActive(false);
+
+            ChooseChapterSelect.gameObject.SetActive(true);
+        }
+        else
+        {
+            LoadChapterSelect();
+        }
+    }
+
+    
+
     public void BackFromChapterSelect()
+    {
+        if (GameManager.Instance.NormalGameCompleted == true)
+        {
+            ChooseChapterSelect.gameObject.SetActive(true);
+
+            ChapterSelect.gameObject.SetActive(false);
+        }
+        else
+        {
+            mainMenu.gameObject.SetActive(true);
+
+            ChapterSelect.gameObject.SetActive(false);
+        }
+    }
+
+    public void BackFromEXChapterSelect()
+    {
+        if (GameManager.Instance.NormalGameCompleted == true)
+        {
+            ChooseChapterSelect.gameObject.SetActive(true);
+
+            ChapterSelectEX.gameObject.SetActive(false);
+        }
+        else
+        {
+            mainMenu.gameObject.SetActive(true);
+
+            ChapterSelectEX.gameObject.SetActive(false);
+        }
+    }
+
+
+    public void BackFromChooseChapterSelect()
     {
         mainMenu.gameObject.SetActive(true);
 
-        ChapterSelect.gameObject.SetActive(false);
+        ChooseChapterSelect.gameObject.SetActive(false);
     }
 
     public void SelectChapter(int i)
@@ -51,9 +119,22 @@ public class MainMenu : MonoBehaviour
 
         ChapterSelect.gameObject.SetActive(true);
     }
-    
+    public void SelectEXChapter(int i)
+    {
+        EXChapters[i].gameObject.SetActive(true);
 
-    
+        ChapterSelectEX.gameObject.SetActive(false);
+    }
+    public void ReturntoEXChapterSelect(int i)
+    {
+        Chapters[i].gameObject.SetActive(false);
+
+        ChapterSelectEX.gameObject.SetActive(true);
+    }
+
+
+
+
     public void ExitGame()
     {
         GameManager.Instance.EndGame();

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
@@ -42,6 +43,14 @@ public class SoldierAi : MonoBehaviour
     public float shootF;
 
     public float TimeBetweenShots;
+
+    public bool UseFireTime = false;
+
+    public float FireTime = 10;
+
+    public float MoveTime = 7.5f;
+
+    float ft;
 
     float Tba;
 
@@ -110,6 +119,12 @@ public class SoldierAi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(transforms.Count() == 0)
+        {
+            pointList PL = GameObject.FindWithTag("PointList").GetComponent<pointList>();
+
+            transforms = PL.PointTransforms;
+        }
         
         if(!usingMultipleHealthBars)
         {
@@ -129,6 +144,10 @@ public class SoldierAi : MonoBehaviour
 
         if (State == SoldierState.Running)
         {
+            if (UseFireTime)
+            {
+                ft = FireTime;
+            }
             if (timer > 0)
             {
                 timer -= Time.deltaTime;
@@ -143,19 +162,7 @@ public class SoldierAi : MonoBehaviour
             ReadyToPullGun = true;
             Shoulder.weight = 0;
 
-            if (Vector3.Distance(Player.transform.position, transform.position) > MinDistanceAwayAToAim && MovementOverRide == false)
-            {
-                Agent.SetDestination(Player.transform.position);
-            }
-            else if (Vector3.Distance(Player.transform.position, transform.position) <= MinDistanceAwayAToAim)
-            {
-                if (MovementOverRide == false)
-                {
-                    Agent.SetDestination(transform.position);
-                    State = SoldierState.Aiming;
-                }
-            }
-            else if(MovementOverRide == true)
+            if (MovementOverRide == true)
             {
                 if (R == -1)
                 {
@@ -166,11 +173,27 @@ public class SoldierAi : MonoBehaviour
                     Agent.SetDestination(transforms[R].position);
                 }
 
-                if(Vector3.Distance (transform.position, transforms[R].position) <= 2)
+                if (Vector3.Distance(transform.position, transforms[R].position) <= 2)
                 {
                     timer = 0;
                 }
             }
+            else if (Vector3.Distance(Player.transform.position, transform.position) > MinDistanceAwayAToAim)
+            {
+                if (MovementOverRide == false)
+                {
+                    Agent.SetDestination(Player.transform.position);
+                }
+            }
+            else if (Vector3.Distance(Player.transform.position, transform.position) <= MinDistanceAwayAToAim)
+            {
+                if (MovementOverRide == false)
+                {
+                    Agent.SetDestination(transform.position);
+                    State = SoldierState.Aiming;
+                }
+            }
+  
             Tba = TimeBetweenShots;
 
             Vector3 toPlayer = (Player.transform.position - transform.position).normalized;
@@ -256,6 +279,22 @@ public class SoldierAi : MonoBehaviour
         }
         if(State == SoldierState.Aiming)
         {
+            if(UseFireTime)
+            {
+                ft -= Time.deltaTime;
+            }
+            if(ft <= 0 && UseFireTime == true)
+            {
+                int A = UnityEngine.Random.Range(0, 5);
+                
+                MovementOverRide = true;
+                
+                timer = MoveTime;
+                State = SoldierState.Running;
+                R = -1;
+                Move = true;
+            }
+
             Animator.SetLayerWeight(1, 1);
             Gun.SetActive(true);
             if (ReadyToPullGun == true)
@@ -264,11 +303,10 @@ public class SoldierAi : MonoBehaviour
             if (Vector3.Distance(Player.transform.position, transform.position) > MaxDistanceToRun)
             {
                 int A = UnityEngine.Random.Range(0, 5);
-                if (A > 0)
-                {
-                    MovementOverRide = true;
-                }
-                timer = 7.5f;
+                
+                MovementOverRide = true;
+                
+                timer = MoveTime;
                 State = SoldierState.Running;
                 R = -1;
                 Move = true;

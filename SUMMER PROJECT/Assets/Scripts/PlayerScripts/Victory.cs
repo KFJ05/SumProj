@@ -27,6 +27,8 @@ public class Victory: MonoBehaviour
 
     bool W;
 
+    public bool unlockExMode;
+
 
     private void Awake()
     {
@@ -127,6 +129,14 @@ public class Victory: MonoBehaviour
         WinScreen.gameObject.SetActive(true);
 
         EnemyManager.Instance.RESETALL();
+
+        if(unlockExMode)
+        {
+            if(GameManager.Instance != null)
+            {
+                GameManager.Instance.NormalGameCompleted = true;
+            }
+        }
 
     }
 

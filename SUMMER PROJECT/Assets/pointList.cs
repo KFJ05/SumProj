@@ -15,6 +15,6 @@ public class pointList : MonoBehaviour
     }
     public void turnoff()
     {
-        gameObject.tag = "Default";
+        gameObject.tag = "Untagged";
     }
 }

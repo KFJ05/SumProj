@@ -186,8 +186,21 @@ MonoBehaviour:
   CritMUlt: 0
   HealthBar: {fileID: 0}
   LerpBar: {fileID: 0}
+  Segments: {fileID: 0}
+  SegmentMaterial: {fileID: 0}
+  SegMat: {fileID: 0}
+  HealthPerSegment: 0
   DamageEffect: {fileID: 0}
   CritDamageEffect: {fileID: 0}
+  SheildSize: 0
+  SheildActive: 0
+  SheildCurrentHealth: 0
+  SheildMaxHealth: 0
+  SheildPrefab: {fileID: 0}
+  SheildHBar: {fileID: 0}
+  SheildLerpBar: {fileID: 0}
+  Sheildtime: 4
+  YOffset: 0
 --- !u!114 &9214383146720806865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +223,7 @@ MonoBehaviour:
   WinLevelOnDeath: 0
   useParticles: 1
   DeathExplosiom: {fileID: 3044215201712980144}
-  IsEnemy: 0
+  IsEnemy: 1
   hasParts: 0
 --- !u!65 &586936894210420884
 BoxCollider:

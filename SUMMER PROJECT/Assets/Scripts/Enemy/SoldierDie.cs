@@ -23,6 +23,22 @@ public class SoldierDie : MonoBehaviour
     public bool WinLevelOnDeath = false;
 
     // Update is called once per frame
+
+    private void Start()
+    {
+     
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                colliders[i].isTrigger = true;
+            }
+            for (int i = 0; i < Bodies.Length; i++)
+            {
+                Bodies[i].isKinematic = true;
+            }
+            animator.enabled = true;
+        
+    }
+
     void Update()
     {
         if (!usingMultipleHpBars && Triggerd == false)

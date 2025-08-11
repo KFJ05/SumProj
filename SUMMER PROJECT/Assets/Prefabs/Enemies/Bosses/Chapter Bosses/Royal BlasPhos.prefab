@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 555574077711809229}
   - component: {fileID: 5615548765502470387}
   m_Layer: 0
-  m_Name: Royal Blasphos
+  m_Name: Royal BlasPhos
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -472,14 +472,18 @@ MonoBehaviour:
   CurrentHealthBarHP:
   - 75
   - 125
-  - 200
-  - 300
+  - 150
+  - 250
   usingTurretDie: 0
   Death: {fileID: 0}
   Enemy: {fileID: 0}
   time: 10
   totalHealth: 0
   CritMUlt: 0
+  Segments: []
+  HealthPerSegment: []
+  SegmentMaterial: {fileID: 0}
+  SegMat: {fileID: 0}
   DamageEffect: {fileID: 0}
   CritDamageEffect: {fileID: 0}
 --- !u!136 &7400024154726070462

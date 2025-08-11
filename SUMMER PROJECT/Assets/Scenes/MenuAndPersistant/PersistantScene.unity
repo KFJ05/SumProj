@@ -458,6 +458,7 @@ MonoBehaviour:
   CompletedLevels: []
   MasterMusicSource: {fileID: 1168270667}
   MasterSoundSource: {fileID: 429719294}
+  NormalGameCompleted: 1
 --- !u!114 &1222384136
 MonoBehaviour:
   m_ObjectHideFlags: 0
