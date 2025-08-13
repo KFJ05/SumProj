@@ -659,6 +659,7 @@ MonoBehaviour:
   - {fileID: 3622301092600986809, guid: 4183330e73ac8394c8c6c29236a630ea, type: 3}
   SpawnTag: Player
   AlreadySpawned: 0
+  OfficerRank: 0
 --- !u!65 &479733236
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1546,7 +1547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &755845721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3028,6 +3029,7 @@ MonoBehaviour:
   - {fileID: 3622301092600986809, guid: 7d0252dd3ceb4194ea2aacb49af00d67, type: 3}
   SpawnTag: Player
   AlreadySpawned: 0
+  OfficerRank: 0
 --- !u!1001 &1285860529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4458,10 +4460,11 @@ MonoBehaviour:
   spawnedEntities:
   - {fileID: 3622301092600986809, guid: 4183330e73ac8394c8c6c29236a630ea, type: 3}
   - {fileID: 3622301092600986809, guid: 4183330e73ac8394c8c6c29236a630ea, type: 3}
-  - {fileID: 1925130697391322004, guid: f7940ca29c8089440b510dfc2b052bf5, type: 3}
-  - {fileID: 1925130697391322004, guid: f7940ca29c8089440b510dfc2b052bf5, type: 3}
+  - {fileID: 1925130697391322004, guid: 261c4471329acc04e873ebecc8c8a353, type: 3}
+  - {fileID: 1925130697391322004, guid: 261c4471329acc04e873ebecc8c8a353, type: 3}
   SpawnTag: Player
   AlreadySpawned: 0
+  OfficerRank: 1
 --- !u!1 &1986963817
 GameObject:
   m_ObjectHideFlags: 0

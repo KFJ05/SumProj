@@ -14,6 +14,10 @@ public class Spawn : MonoBehaviour
 
     Spawn spawn;
 
+    [Range(1,5)]
+    public int OfficerRank;
+
+
     private void Start()
     {
         spawn = gameObject.GetComponent<Spawn>();
@@ -27,9 +31,17 @@ public class Spawn : MonoBehaviour
             AlreadySpawned = true;
             for (int i = 0; i < spawnedEntities.Count(); i++)
             {
+
+
+
                 if (spawnLocations[i] != null)
                 {
                     GameObject G = Instantiate(spawnedEntities[i], spawnLocations[i].position, spawnLocations[i].rotation);
+                    if(G.GetComponent<OfficerAI>() != null)
+                    {
+                        OfficerAI officerAI = G.GetComponent<OfficerAI>();
+                        officerAI.OfficerTeir = OfficerRank;
+                    }
                     EnemyManager.Instance.AddEnemy(G);
                 }
                 else

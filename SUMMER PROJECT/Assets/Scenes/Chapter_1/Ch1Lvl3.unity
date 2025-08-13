@@ -177,12 +177,13 @@ MonoBehaviour:
   - {fileID: 517193114}
   spawnedEntities:
   - {fileID: 3969387426335356671, guid: 622408a91521ef34c9c8665c60f728c0, type: 3}
-  - {fileID: 1925130697391322004, guid: f7940ca29c8089440b510dfc2b052bf5, type: 3}
-  - {fileID: 1925130697391322004, guid: f7940ca29c8089440b510dfc2b052bf5, type: 3}
+  - {fileID: 1925130697391322004, guid: 261c4471329acc04e873ebecc8c8a353, type: 3}
+  - {fileID: 1925130697391322004, guid: 261c4471329acc04e873ebecc8c8a353, type: 3}
   - {fileID: 1925130697391322004, guid: d9fc96005bcf394408eb3776ba45e5ce, type: 3}
   - {fileID: 1925130697391322004, guid: d9fc96005bcf394408eb3776ba45e5ce, type: 3}
   SpawnTag: Player
   AlreadySpawned: 0
+  OfficerRank: 1
 --- !u!65 &4445080
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2234,7 +2235,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 75a56bced55e92944b91ef5f3dd1456e, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 97f8447b48c95e84abf9745358d43fc0, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &328283362
 Transform:
@@ -7531,13 +7532,14 @@ MonoBehaviour:
   - {fileID: 1624235474}
   spawnedEntities:
   - {fileID: 1925130697391322004, guid: 2ef8544c887cd2e4d9fabc9c02862ad6, type: 3}
-  - {fileID: 1925130697391322004, guid: f7940ca29c8089440b510dfc2b052bf5, type: 3}
-  - {fileID: 1925130697391322004, guid: f7940ca29c8089440b510dfc2b052bf5, type: 3}
+  - {fileID: 1925130697391322004, guid: 261c4471329acc04e873ebecc8c8a353, type: 3}
+  - {fileID: 1925130697391322004, guid: 261c4471329acc04e873ebecc8c8a353, type: 3}
   - {fileID: 3622301092600986809, guid: 61ee6a8ef969d7345becf5368f413ac8, type: 3}
   - {fileID: 3622301092600986809, guid: 61ee6a8ef969d7345becf5368f413ac8, type: 3}
   - {fileID: 3622301092600986809, guid: 02def92802df7294989fe54f1ce4fc2b, type: 3}
   SpawnTag: Player
   AlreadySpawned: 0
+  OfficerRank: 1
 --- !u!65 &1120093462
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9364,6 +9366,7 @@ MonoBehaviour:
   - {fileID: 1925130697391322004, guid: af45e9a4d25eef845a08e2c54fbff1bf, type: 3}
   SpawnTag: Player
   AlreadySpawned: 0
+  OfficerRank: 0
 --- !u!65 &1322308634
 BoxCollider:
   m_ObjectHideFlags: 0

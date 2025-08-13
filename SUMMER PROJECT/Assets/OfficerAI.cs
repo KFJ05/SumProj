@@ -21,6 +21,7 @@ public class OfficerAI : MonoBehaviour
     public float FearRange;
 
     public float[] HealthTeirValues;
+    public float[] SheildTierValues;
 
     public GameObject[] EnemiesSpawned;
 
@@ -66,7 +67,7 @@ public class OfficerAI : MonoBehaviour
     public float[] ShootF;
     public float[] spread;
 
-
+    public float StoppinDistance;
     
 
 
@@ -155,6 +156,7 @@ public class OfficerAI : MonoBehaviour
                 if(OfficerTeir >= 3)
                 {
                     HP.SheildActive = true;
+                    HP.SheildMaxHealth = SheildTierValues[OfficerTeir - 1];
                     HP.SheildCurrentHealth = HP.SheildMaxHealth;
                 }
 
@@ -194,7 +196,7 @@ public class OfficerAI : MonoBehaviour
 
                 NavMeshAgent.SetDestination(Pointlist[R].position);
             }
-            if (Vector3.Distance(Pointlist[R].position, transform.position) > 2)
+            if (Vector3.Distance(Pointlist[R].position, transform.position) > StoppinDistance)
             {
                 animator.SetBool("Running", true);
             }

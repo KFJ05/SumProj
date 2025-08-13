@@ -89,6 +89,16 @@ public class GameManager : MonoBehaviour
         MasterSoundSource.clip = null;
     }
 
+    public void ChangeMusicVolume(float NewVolume)
+    {
+        MasterMusicSource.volume = NewVolume;
+    }
+
+    public float GetMusicVolume()
+    {
+        return MasterMusicSource.volume;
+    }
+
 
 
     public AudioClip GetMusic()

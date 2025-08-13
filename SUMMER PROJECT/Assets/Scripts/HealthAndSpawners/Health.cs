@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +11,7 @@ public class Health : MonoBehaviour
     float MH;
 
     public bool UseHealthBar;
-    public bool useSharedHealthbar;
+    public bool useSheildBar;
 
     public Color LerpBarDamageColour;
     public Color LerpBarHealColour;
@@ -149,6 +148,13 @@ public class Health : MonoBehaviour
                 UpdtadeHealthUI();
             }
         }
+        else if ( useSheildBar == true)
+        {
+            if (SheildActive == true)
+            {
+                UpdtadeSheildUI();
+            }
+        }
     }
 
     public void UpdtadeHealthUI()
@@ -246,6 +252,11 @@ public class Health : MonoBehaviour
                 Dead = true;
             }
             PlayPS = true;
+            if (DamageEffect != null && PlayPS == true && didCrit == false)
+            {
+                DamageEffect.Play();
+                PlayPS = false;
+            }
             didCrit = false;
         }
     }
@@ -267,6 +278,11 @@ public class Health : MonoBehaviour
                 Dead = true;
             }
             PlayPS = true;
+            if (CritDamageEffect != null && PlayPS == true && didCrit == true)
+            {
+                CritDamageEffect.Play();
+                PlayPS = false;
+            }
             didCrit = true;
         }
     }

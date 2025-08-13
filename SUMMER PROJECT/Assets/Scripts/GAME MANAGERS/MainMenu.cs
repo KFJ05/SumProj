@@ -6,7 +6,7 @@ using UnityEngine;
 public class MainMenu : MonoBehaviour
 {
 
-    public Canvas mainMenu, ChapterSelect, ChooseChapterSelect,ChapterSelectEX;
+    public Canvas mainMenu, ChapterSelect, ChooseChapterSelect,ChapterSelectEX,Credits,Settings;
     public Canvas[] Chapters;
     public Canvas[] EXChapters;
 
@@ -35,6 +35,32 @@ public class MainMenu : MonoBehaviour
         }
 
         ChapterSelect.gameObject.SetActive(true);
+    }
+
+    public void LoadCredits()
+    {
+        mainMenu.gameObject.SetActive (false);
+
+        Credits.gameObject.SetActive(true);
+    }
+    public void ExitCredits()
+    {
+        mainMenu.gameObject.SetActive(true);
+
+        Credits.gameObject.SetActive(false);
+    }
+
+    public void LoadSettings()
+    {
+        mainMenu.gameObject.SetActive(false);
+
+        Settings.gameObject.SetActive(true);
+    }
+    public void ExitSettings()
+    {
+        mainMenu.gameObject.SetActive(true);
+
+        Settings.gameObject.SetActive(false);
     }
 
 

@@ -13,15 +13,11 @@ public class PickUP : MonoBehaviour
     public Transform player, gunContainer, fpsCam;
     public Canvas Stats;
 
-    public string GunName;
-    public string GunDesc;
-    public string GunStats;
-    public string GunEffects;
 
-    public string GunNameGObjName;
-    public string GunDescGObjName;
-    public string GunStatsGObjName;
-    public string GunEffectsGObjName;
+    public TextMeshProUGUI GunNameTmp;
+    public TextMeshProUGUI GunDescTmp;
+    public TextMeshProUGUI GunStatsTmp;
+    public TextMeshProUGUI GunEffectsTmp;
 
 
     [Header("Pick up and throw stats")]
@@ -39,6 +35,8 @@ public class PickUP : MonoBehaviour
     [Header("KeyBinds")]
     public KeyCode PickUPWeapon = KeyCode.E;
     public KeyCode DropWeapon = KeyCode.Q;
+
+    bool Turnoff;
 
     private void Start()
     {
@@ -85,10 +83,26 @@ public class PickUP : MonoBehaviour
             if (!equipped && DTP <= pickUpRange && Input.GetKey(PickUPWeapon) && !slotFull)
             {
                 Pickup();
+                if (Turnoff == false)
+                {
+                    GunStatManager.Instance.turnOffPicture();
+                    Turnoff = true;
+                }
             }
 
             else if (DTP <= pickUpRange && !equipped)
             {
+               
+                    GunStatManager.Instance.setName(GunNameTmp.text);
+                    GunStatManager.Instance.SetDesc(GunDescTmp.text);
+                    GunStatManager.Instance.SetStats(GunStatsTmp.text);
+                    GunStatManager.Instance.SetEffects(GunEffectsTmp.text);
+
+                    GunStatManager.Instance.turnOnPicture();
+                Turnoff = false;
+                
+
+
                 //Stats.gameObject.SetActive(true);
                 /*TextMeshProUGUI Name = GameObject.Find(GunNameGObjName).GetComponent<TextMeshProUGUI>();
                 Name.text = GunName;
@@ -106,7 +120,13 @@ public class PickUP : MonoBehaviour
 
             else
             {
-               // GameObject.FindWithTag("GunStats").SetActive(false);
+                if (Turnoff == false)
+                {
+                    GunStatManager.Instance.turnOffPicture();
+                    Turnoff = true;
+                }
+
+                // GameObject.FindWithTag("GunStats").SetActive(false);
             }
 
       

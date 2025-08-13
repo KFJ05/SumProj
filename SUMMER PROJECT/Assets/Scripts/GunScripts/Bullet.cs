@@ -28,13 +28,15 @@ public class Bullet : MonoBehaviour
 
     private void Awake()
     {
-        int i = Random.RandomRange(0, clips.Length);
-        if (clips[i] != null)
+        if (clips.Length > 0)
         {
-            s = GetComponent<AudioSource>();
-            s.clip = clips[i];
-            s.Play();
-
+            int i = Random.RandomRange(0, clips.Length);
+            if (clips[i] != null)
+            {
+                s = GetComponent<AudioSource>();
+                s.clip = clips[i];
+                s.Play();
+            }
         }
             
 

@@ -43,6 +43,10 @@ public class Fire : MonoBehaviour
     public KeyCode FireKey = KeyCode.Mouse0;
     public KeyCode ReloadKey = KeyCode.R;
 
+    [Header("SoundEffects")]
+    public AudioClip Firesound;
+    public AudioSource source;
+
     [Header("Bug Fixing!!!")]
     public bool AllowInvoke = true;
 
@@ -113,6 +117,9 @@ public class Fire : MonoBehaviour
         {
             bulletsShot = 0;
 
+            source.clip = Firesound;
+            source.Play();
+
             Shoot();
         }
 
@@ -142,6 +149,7 @@ public class Fire : MonoBehaviour
         float y = Random.Range(-Spread, Spread);
 
         Vector3 FireDir = DirWithoutSpread + new Vector3(x, y, 0);
+
 
         GameObject CurrBullet = Instantiate(bullet, FireLocation.position, Quaternion.identity);
 
