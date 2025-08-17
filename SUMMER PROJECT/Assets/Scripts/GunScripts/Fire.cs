@@ -134,7 +134,7 @@ public class Fire : MonoBehaviour
         RaycastHit hit;
 
         Vector3 targetpoint;
-        if(Physics.Raycast(ray, out hit))
+        if(Physics.Raycast(ray, out hit) && hit.distance > 10f)
         {
             targetpoint = hit.point;
         }
@@ -153,7 +153,10 @@ public class Fire : MonoBehaviour
 
         GameObject CurrBullet = Instantiate(bullet, FireLocation.position, Quaternion.identity);
 
-        CurrBullet.transform.forward = FireDir;
+        CurrBullet.transform.forward = FireDir.normalized;
+
+        CurrBullet.GetComponent<Bullet>().V = FireDir;
+        CurrBullet.GetComponent<Bullet>().shootF = shootF;
 
         CurrBullet.GetComponent<Rigidbody>().AddForce(FireDir.normalized * shootF,ForceMode.Impulse);
         CurrBullet.GetComponent<Rigidbody>().AddForce(PlayerCam.transform.up * UpwardF, ForceMode.Impulse);

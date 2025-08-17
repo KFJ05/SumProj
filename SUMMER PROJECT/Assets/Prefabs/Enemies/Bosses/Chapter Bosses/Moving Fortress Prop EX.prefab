@@ -760,7 +760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpawning: 0
   FirstSpawnTime: 5
-  SpawnSpeed: 57.2
+  SpawnSpeed: 55
 --- !u!114 &3384840131191876216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,10 +845,10 @@ MonoBehaviour:
   - {fileID: 1240315557015425853}
   SpawnRelitiveToBoss: []
   enemiesSpawned:
-  - {fileID: 1925130697391322004, guid: 2ef8544c887cd2e4d9fabc9c02862ad6, type: 3}
-  - {fileID: 1925130697391322004, guid: 2843adfad66ed6f438f38b801de39a8a, type: 3}
-  - {fileID: 1925130697391322004, guid: 2ef8544c887cd2e4d9fabc9c02862ad6, type: 3}
-  - {fileID: 1925130697391322004, guid: 2843adfad66ed6f438f38b801de39a8a, type: 3}
+  - {fileID: 1925130697391322004, guid: 749d4606135861b45bdd44dcec1f375c, type: 3}
+  - {fileID: 1925130697391322004, guid: 5b0b6a885932a4848b4d3a3cb560cf76, type: 3}
+  - {fileID: 1925130697391322004, guid: 749d4606135861b45bdd44dcec1f375c, type: 3}
+  - {fileID: 1925130697391322004, guid: 5b0b6a885932a4848b4d3a3cb560cf76, type: 3}
 --- !u!1 &1726982038402199532
 GameObject:
   m_ObjectHideFlags: 0
@@ -3860,6 +3860,7 @@ MonoBehaviour:
   Damage: 10
   bulletLifeTime: 0
   Testing: 1
+  HitOnce: 0
   TagsToDamage:
   - Player
   poofEffect: {fileID: 0}

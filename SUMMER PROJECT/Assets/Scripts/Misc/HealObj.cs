@@ -8,19 +8,25 @@ public class HealObk : MonoBehaviour
 
     public float HealthHealed;
 
+   
+
+
     private void OnCollisionEnter(Collision collision)
     {
-        Health hp = collision.collider.GetComponent<Health>();
-        if(hp == null)
+        if (collision.gameObject.tag == "Player")
         {
-            hp = collision.collider.GetComponentInParent<Health>();
-        }
-        
-        if(hp != null)
-        {
-            hp.Heal(HealthHealed);
-        }
+            Health hp = collision.collider.GetComponent<Health>();
+            if (hp == null)
+            {
+                hp = collision.collider.GetComponentInParent<Health>();
+            }
 
-                
+            if (hp != null)
+            {
+                hp.Heal(HealthHealed);
+            }
+            gameObject.SetActive(false);
+
+        }  
     }
 }

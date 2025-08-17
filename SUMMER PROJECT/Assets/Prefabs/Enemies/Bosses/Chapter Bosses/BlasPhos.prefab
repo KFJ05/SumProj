@@ -197,6 +197,8 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 4205745262319320453}
+  - {fileID: 6519951875583189449}
   - {fileID: 6711691221927266659}
   - {fileID: 1745474797628348194}
   - {fileID: 133336076024679971}
@@ -247,6 +249,10 @@ MonoBehaviour:
   Meteor: {fileID: 2077613701241159719, guid: e8ff16d0f061f3343abeb1ceb42f62be, type: 3}
   GigaMeteor: {fileID: 2077613701241159719, guid: f76febd77f72fe942b34cac6259fca25, type: 3}
   FireAttack: {fileID: 2748235505803824763}
+  FireSpots:
+  - {fileID: 3166790493501435931}
+  - {fileID: 8686088751442585504}
+  SweepTime: 3
   FireRing: {fileID: 7021183697068171511}
   Phase2HealthLimit: 300
   Phase2Start: 0
@@ -856,7 +862,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 1.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1405,7 +1411,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 10
+    angle: 15
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -2057,8 +2063,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 0, a: 1}
-        key1: {r: 1, g: 0, b: 0, a: 1}
+        key0: {r: 1, g: 1, b: 0, a: 0.5019608}
+        key1: {r: 1, g: 0, b: 0, a: 0.5019608}
         key2: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -5526,8 +5532,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 30c51a2c4fed33d4dbe7e4b4243e7451, type: 2}
-  - {fileID: 2100000, guid: 30c51a2c4fed33d4dbe7e4b4243e7451, type: 2}
+  - {fileID: 2100000, guid: e7741aee318a15e469ab89adfef202fe, type: 2}
+  - {fileID: 2100000, guid: e7741aee318a15e469ab89adfef202fe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7000,8 +7006,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0, b: 0, a: 1}
-        key1: {r: 1, g: 0.43529415, b: 0, a: 0}
+        key0: {r: 1, g: 0, b: 0, a: 0.5019608}
+        key1: {r: 1, g: 0.43529415, b: 0, a: 0.5019608}
         key2: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -10469,8 +10475,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 30c51a2c4fed33d4dbe7e4b4243e7451, type: 2}
-  - {fileID: 2100000, guid: 30c51a2c4fed33d4dbe7e4b4243e7451, type: 2}
+  - {fileID: 2100000, guid: e7741aee318a15e469ab89adfef202fe, type: 2}
+  - {fileID: 2100000, guid: e7741aee318a15e469ab89adfef202fe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10670,7 +10676,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 1.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -11219,7 +11225,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 5
+    angle: 15
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -15340,7 +15346,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 30c51a2c4fed33d4dbe7e4b4243e7451, type: 2}
+  - {fileID: 2100000, guid: e7741aee318a15e469ab89adfef202fe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25521,12 +25527,44 @@ MonoBehaviour:
   Damage: 3
   bulletLifeTime: 0
   Testing: 1
+  HitOnce: 0
   TagsToDamage:
   - Player
   poofEffect: {fileID: 0}
   StoredObj: {fileID: 0}
   clips: []
   poofNoise: {fileID: 0}
+--- !u!1 &3166790493501435931
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4205745262319320453}
+  m_Layer: 0
+  m_Name: B_FireLocation1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4205745262319320453
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3166790493501435931}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3554252303201867848}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3801153616167857982
 GameObject:
   m_ObjectHideFlags: 0
@@ -31593,7 +31631,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 1.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -32142,7 +32180,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 10
+    angle: 15
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -36331,6 +36369,7 @@ MonoBehaviour:
   Damage: 2
   bulletLifeTime: 0
   Testing: 1
+  HitOnce: 0
   TagsToDamage:
   - Player
   poofEffect: {fileID: 0}
@@ -37849,7 +37888,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 0, g: 0, b: 0, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 0}
+        key1: {r: 1, g: 1, b: 1, a: 0.5019608}
         key2: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -41317,7 +41356,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 30c51a2c4fed33d4dbe7e4b4243e7451, type: 2}
+  - {fileID: 2100000, guid: e7741aee318a15e469ab89adfef202fe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -41683,6 +41722,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &8686088751442585504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6519951875583189449}
+  m_Layer: 0
+  m_Name: B_fireLocation2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6519951875583189449
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8686088751442585504}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3554252303201867848}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9184749608472051093
 GameObject:
   m_ObjectHideFlags: 0

@@ -178,7 +178,7 @@ MonoBehaviour:
   CurrentHealth: 40
   MaxHealth: 40
   UseHealthBar: 0
-  useSharedHealthbar: 0
+  useSheildBar: 0
   LerpBarDamageColour: {r: 0, g: 0, b: 0, a: 0}
   LerpBarHealColour: {r: 0, g: 0, b: 0, a: 0}
   time: 2
@@ -265,8 +265,8 @@ MonoBehaviour:
   colour: {r: 0, g: 0, b: 0, a: 0}
   usingColour: 1
   UseR: 1
-  UseG: 0
-  UseB: 0
+  UseG: 1
+  UseB: 1
 --- !u!135 &5777894559016331768
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5274,15 +5274,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3142950351343403454, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3142950351343403454, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3142950351343403454, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3142950351343403454, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5398,7 +5398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5930585626228336749, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
       propertyPath: CollisionModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5930585626228336749, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
       propertyPath: ShapeModule.radius.mode
@@ -5538,11 +5538,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8936611429553236713, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
       propertyPath: Damage
-      value: 999
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936611429553236713, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
+      propertyPath: HitOnce
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8936611429553236713, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
       propertyPath: TagsToDamage.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8936611429553236713, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
       propertyPath: TagsToDamage.Array.data[1]
@@ -5551,13 +5555,42 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4099850047249004648, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 387047474316659050}
   m_SourcePrefab: {fileID: 100100000, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
 --- !u!198 &3044215201712980144 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 5930585626228336749, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
   m_PrefabInstance: {fileID: 8679163999147976925}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4654191253241974965 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4099850047249004648, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
+  m_PrefabInstance: {fileID: 8679163999147976925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &387047474316659050
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4654191253241974965}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &6047372351607253347 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3142950351343403454, guid: 13922a85db721534b9f658e7c25ad144, type: 3}

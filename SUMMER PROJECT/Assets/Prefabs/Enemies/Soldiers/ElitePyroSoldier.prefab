@@ -630,9 +630,9 @@ MonoBehaviour:
   DamageEffect: {fileID: 0}
   CritDamageEffect: {fileID: 0}
   SheildSize: 3
-  SheildActive: 1
-  SheildCurrentHealth: 12
-  SheildMaxHealth: 12
+  SheildActive: 0
+  SheildCurrentHealth: 6
+  SheildMaxHealth: 6
   SheildPrefab: {fileID: 6330724444806739072, guid: f555ffa5c715dc8418e41ed71a239e50, type: 3}
   SheildHBar: {fileID: 1636658897056639285}
   SheildLerpBar: {fileID: 3277069813687797152}
@@ -675,7 +675,7 @@ MonoBehaviour:
   - {fileID: 6765229549399805666}
   - {fileID: 4715850447219099049}
   animator: {fileID: 4647724473847395209}
-  TimeToDestroy: 12
+  TimeToDestroy: 2
   Hp: {fileID: 5479662054487400166}
   HealthBarMultiple: {fileID: 0}
   usingMultipleHpBars: 0

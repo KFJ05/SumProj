@@ -839,17 +839,17 @@ MonoBehaviour:
   Spread: 0.25
   useBaseLookAt: 0
   Range: 40
-  shootF: 20
+  shootF: 30
   UseAnimator: 1
   Anim: {fileID: 6413976782436890711}
-  turnSpeed: 15
+  turnSpeed: 30
   TimeBeforeFire: 0
   FireFunctionCalledElsewhere: 0
   TurrRB: {fileID: 1171496755902192077}
   Rocket: {fileID: 2077613701241159719, guid: 07aaef9257a7548448d8fa1c0a8e6514, type: 3}
   fireRocketlocation: {fileID: 2883242140264362414}
   FireRockets: 0
-  RocketFireRate: 4
+  RocketFireRate: 3
 --- !u!114 &7429843317942626475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -969,7 +969,7 @@ MonoBehaviour:
   RemoveRocketsOnHpInterval: 0
   AddBulletsOnHpInterval: 0
   RemoveBulletsOnHpInterval: 0
-  HpInterval: 45
+  HpInterval: 50
   BaseHP: {fileID: 0}
   MultHP: {fileID: 7429843317942626475}
   TurrAI: {fileID: 3734730040426074004}

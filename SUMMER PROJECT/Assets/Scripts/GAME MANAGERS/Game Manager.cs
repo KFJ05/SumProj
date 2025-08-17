@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
 
     public bool NormalGameCompleted;
 
+    float mouseSensitivity = 500f;
+
+
     private static GameManager instance;
     public static GameManager Instance
     {
@@ -99,6 +102,14 @@ public class GameManager : MonoBehaviour
         return MasterMusicSource.volume;
     }
 
+    public float GetmouseSensitivity()
+    {
+        return mouseSensitivity;
+    }
+    public void ChangemouseSensitivity(float NewSensitivity)
+    {
+        mouseSensitivity = NewSensitivity;
+    }
 
 
     public AudioClip GetMusic()

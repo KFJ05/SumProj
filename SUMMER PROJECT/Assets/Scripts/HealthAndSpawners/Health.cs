@@ -77,8 +77,11 @@ public class Health : MonoBehaviour
 
             SetSegments(NewSegmentAmount);
         }
-        SheildHBar.gameObject.SetActive(false);
-        SheildLerpBar.gameObject.SetActive(false);
+        if (SheildHBar != null && SheildLerpBar != null)
+        {
+            SheildHBar.gameObject.SetActive(false);
+            SheildLerpBar.gameObject.SetActive(false);
+        }
 
     }
 
@@ -112,25 +115,31 @@ public class Health : MonoBehaviour
 
         if(SheildActive == true && SheildTrigger == false)
         {
-            SheildCurrentHealth = SheildMaxHealth;
-            sheild = Instantiate(SheildPrefab);
-            sheild.transform.parent = gameObject.transform;
-            sheild.transform.localScale = Vector3.one * SheildSize;
-            SheildHBar.gameObject.SetActive(true);
-            SheildLerpBar.gameObject.SetActive(true);
-            SheildTrigger = true;
+            if (SheildPrefab != null)
+            {
+                SheildCurrentHealth = SheildMaxHealth;
+                sheild = Instantiate(SheildPrefab);
+                sheild.transform.parent = gameObject.transform;
+                sheild.transform.localScale = Vector3.one * SheildSize;
+                SheildHBar.gameObject.SetActive(true);
+                SheildLerpBar.gameObject.SetActive(true);
+                SheildTrigger = true;
 
-            Sheild S = sheild.gameObject.GetComponent<Sheild>();
-            S.YOffset = YOffset;
+                Sheild S = sheild.gameObject.GetComponent<Sheild>();
+                S.YOffset = YOffset;
+            }
         }
         if(SheildCurrentHealth <= 0 && SheildActive == true)
         {
-            SheildCurrentHealth = 0;
-            SheildActive = false;
-            Destroy(sheild);
-            SheildHBar.gameObject.SetActive (false);
-            SheildLerpBar.gameObject.SetActive(false);
-            SheildTrigger = false;  
+            if (SheildPrefab != null)
+            {
+                SheildCurrentHealth = 0;
+                SheildActive = false;
+                Destroy(sheild);
+                SheildHBar.gameObject.SetActive(false);
+                SheildLerpBar.gameObject.SetActive(false);
+                SheildTrigger = false;
+            }
         }
         if(CurrentHealth > MaxHealth)
         {
@@ -142,6 +151,7 @@ public class Health : MonoBehaviour
             if (SheildActive == true)
             {
                 UpdtadeSheildUI();
+                UpdtadeHealthUI();
             }
             else
             {
@@ -202,6 +212,12 @@ public class Health : MonoBehaviour
 
     public void UpdtadeSheildUI()
     {
+        if (SheildPrefab == null)
+        {
+            SheildActive = false;
+            return;
+        }
+
         float FillHP = SheildHBar.fillAmount;
         float FillLBar = SheildLerpBar.fillAmount;
 

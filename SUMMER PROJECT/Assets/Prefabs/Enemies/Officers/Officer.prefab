@@ -749,6 +749,7 @@ GameObject:
   - component: {fileID: 5529788330227815722}
   - component: {fileID: 8555815138409148780}
   - component: {fileID: 6663617801157948224}
+  - component: {fileID: 8819458607910408030}
   m_Layer: 0
   m_Name: Officer
   m_TagString: Enemy
@@ -814,7 +815,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51fc89dcd996e3459288957bc909ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OfficerTeir: 3
+  OfficerTeir: 5
+  Royal: 0
   NavMeshAgent: {fileID: 190962273764691674}
   OfficerCoat: {fileID: 3790108237484805239}
   OfficerHat: {fileID: 1510580764658935538}
@@ -825,19 +827,19 @@ MonoBehaviour:
   - 40
   - 50
   - 60
-  - 100
+  - 80
   SheildTierValues:
   - 0
   - 0
-  - 20
-  - 25
-  - 35
+  - 5
+  - 10
+  - 15
   EnemiesSpawned:
   - {fileID: 1925130697391322004, guid: 261c4471329acc04e873ebecc8c8a353, type: 3}
   - {fileID: 1925130697391322004, guid: d9fc96005bcf394408eb3776ba45e5ce, type: 3}
   - {fileID: 1925130697391322004, guid: 1eea728b16523c644937be75ea988f4f, type: 3}
   - {fileID: 1925130697391322004, guid: 2843adfad66ed6f438f38b801de39a8a, type: 3}
-  - {fileID: 1925130697391322004, guid: 2ef8544c887cd2e4d9fabc9c02862ad6, type: 3}
+  - {fileID: 1925130697391322004, guid: 749d4606135861b45bdd44dcec1f375c, type: 3}
   SpawnLocations:
   - {fileID: 1520736326410308031}
   - {fileID: 1573030662892396675}
@@ -849,8 +851,8 @@ MonoBehaviour:
   - 45
   - 40
   - 40
-  - 35
-  - 30
+  - 60
+  - 75
   Ability: {fileID: 2941365142645218798}
   Pointlist: []
   Shotgun: {fileID: 3875257105830905936}
@@ -874,10 +876,12 @@ MonoBehaviour:
   spread:
   - 0
   - 0
-  - 0.6
-  - 0.4
+  - 0.3
   - 0.2
+  - 0.1
   StoppinDistance: 10
+  source: {fileID: 8819458607910408030}
+  SoundClip: {fileID: 8300000, guid: 5a0b3d9403f147c46aeb9c6b74cc8e8e, type: 3}
   state: 0
 --- !u!195 &190962273764691674
 NavMeshAgent:
@@ -1009,6 +1013,102 @@ MonoBehaviour:
   usingMultipleHpBars: 0
   HealthBar: {fileID: 2911318358659554318}
   WinLevelOnDeath: 0
+--- !u!82 &8819458607910408030
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6037562090520907634}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 250
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6227847322407748293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1362,7 +1462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1543,7 +1643,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 128f3ba776877e6479ee767ac21863d5, type: 2}
     - target: {fileID: 260279599535362619, guid: 62244ecc40fc06f468ac30a171182bb2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 569059893735976765, guid: 62244ecc40fc06f468ac30a171182bb2, type: 3}
       propertyPath: m_IsActive

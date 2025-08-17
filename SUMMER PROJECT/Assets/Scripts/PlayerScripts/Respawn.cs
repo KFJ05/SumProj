@@ -12,6 +12,8 @@ public class Respawn : MonoBehaviour
     PlayerCam Cam;
     Health HP;
 
+    public GameObject HealthObj;
+
     Transform SpawnPoint;
 
     [Header("Game Over Screen")]
@@ -25,6 +27,7 @@ public class Respawn : MonoBehaviour
     public bool reset = false;
 
     public bool ResetMusic = false;
+    public SwapMusic SwapMusic = null;
     public AudioClip LevelMusic;
     
     void Update()
@@ -99,10 +102,18 @@ public class Respawn : MonoBehaviour
 
     public void RESPAWN()
     {
+        PauseManager.Instance.IsPaused = false;
+
+        if (HealthObj != null)
+        {
+            HealthObj.gameObject.SetActive(true);
+        }
+
         if(ResetMusic == true)
         {
             GameManager.Instance.StopMusic();
             GameManager.Instance.PlayMusic(LevelMusic, true);
+            SwapMusic.triggered = false;
         }
 
         HealthBar.gameObject.SetActive(true);
@@ -136,7 +147,10 @@ public class Respawn : MonoBehaviour
         if (UsingGun == true)
         {
             Fire fire = Gun.GetComponent<Fire>();
-            fire.enabled = false;
+            if(fire != null) 
+                fire.enabled = false;
+
+            GunManager.Instance.SpawnNewGun();
         }
 
         Cursor.lockState = CursorLockMode.Locked;

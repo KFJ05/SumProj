@@ -65,6 +65,12 @@ public class RocketAi : MonoBehaviour
 
             if (triggerd == true)
             {
+                Collider c = rocketExplode.gameObject.GetComponent<Collider>();
+                if (c != null)
+                {
+                    c.enabled = true;
+                }
+
                 rocketExplode.gameObject.transform.parent = null;
                 rocketExplode.Play();
 

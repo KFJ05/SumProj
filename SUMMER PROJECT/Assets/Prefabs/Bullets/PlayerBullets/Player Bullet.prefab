@@ -153,6 +153,7 @@ MonoBehaviour:
   Damage: 15
   bulletLifeTime: 6
   Testing: 0
+  HitOnce: 0
   TagsToDamage:
   - Enemy
   poofEffect: {fileID: 8305827655552785994}

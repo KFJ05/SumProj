@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Chapter_1/Ch1Lvl5.unity
     guid: 2358ba78ad23fe140b2d8168b0bcd468
   - enabled: 1
+    path: Assets/Scenes/Chapter_2/Ch2Lvl1.unity
+    guid: 8c3deb725c25d9642b4abf0b99cc6358
+  - enabled: 1
     path: Assets/Scenes/Chapter_1/Extra/Ch1Lvl1EX.unity
     guid: 400492785da56aa4780bd7b44c7bcf23
   - enabled: 1

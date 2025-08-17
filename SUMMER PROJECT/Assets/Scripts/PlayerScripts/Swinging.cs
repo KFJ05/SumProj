@@ -50,20 +50,27 @@ public class Swinging : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(swingKey))
+        if (PauseManager.Instance != null)
         {
-            StartSwing();
-        }
-        if(Input.GetKeyUp(swingKey))
-        {
-            StopSwing();
-        }
+            if (PauseManager.Instance.IsPaused == false)
+            {
 
-        CheckforSwingPoints();
+                if (Input.GetKeyDown(swingKey))
+                {
+                    StartSwing();
+                }
+                if (Input.GetKeyUp(swingKey))
+                {
+                    StopSwing();
+                }
 
-        if(joint != null)
-        {
-            AirControl();
+                CheckforSwingPoints();
+
+                if (joint != null)
+                {
+                    AirControl();
+                }
+            }
         }
         
     }

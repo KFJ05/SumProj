@@ -780,9 +780,9 @@ MonoBehaviour:
   LerpBarDamageColour: {r: 1, g: 1, b: 1, a: 1}
   LerpBarHealColour: {r: 0, g: 1, b: 0, a: 1}
   MaxHealthPerHealthBar:
-  - 200
+  - 150
   CurrentHealthBarHP:
-  - 200
+  - 150
   usingTurretDie: 1
   Death: {fileID: 2755473710745229827}
   Enemy: {fileID: 0}
@@ -3829,6 +3829,7 @@ MonoBehaviour:
   Damage: 10
   bulletLifeTime: 0
   Testing: 1
+  HitOnce: 0
   TagsToDamage:
   - Player
   poofEffect: {fileID: 0}

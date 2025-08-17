@@ -31,6 +31,11 @@ public class Die : MonoBehaviour
     private void Awake()
     {
         health = gameObject.GetComponent<Health>();
+
+        if(health == null )
+        {
+            health = gameObject.GetComponentInParent<Health>();
+        }
     }
 
 
@@ -56,6 +61,12 @@ public class Die : MonoBehaviour
 
         if(useParticles == true)
         {
+            Collider c = DeathExplosiom.gameObject.GetComponent<Collider>();
+            if (c != null)
+            {
+                c.enabled = true;
+            }
+
             DeathExplosiom.gameObject.transform.SetParent(null);
             DeathExplosiom.Play();
         }

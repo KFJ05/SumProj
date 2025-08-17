@@ -17,6 +17,7 @@ TagManager:
   - SharedHealthBar
   - GunStats
   - PointList
+  - DronePointList
   layers:
   - Default
   - TransparentFX

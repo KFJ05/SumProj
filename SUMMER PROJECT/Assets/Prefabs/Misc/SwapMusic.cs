@@ -10,7 +10,9 @@ public class SwapMusic : MonoBehaviour
     public AudioClip Clip2;
     public AudioSource source;
 
-    bool triggered = false;
+    public bool triggered = false;
+
+    public string ActivateTag;
 
     
 
@@ -26,7 +28,7 @@ public class SwapMusic : MonoBehaviour
         //{
         //    source.clip = Clip2;
         //}
-        if (triggered == false)
+        if (triggered == false && other.gameObject.tag == ActivateTag)
         {
             GameManager.Instance.StopMusic();
             GameManager.Instance.PlayMusic(Clip1, true);

@@ -58,16 +58,22 @@ public class Slideing : MonoBehaviour
 
     private void Update()
     {
-        HI = Input.GetAxisRaw("Horizontal");
-        VI = Input.GetAxisRaw("Vertical");
+        if (PauseManager.Instance != null)
+        {
+            if (PauseManager.Instance.IsPaused == false)
+            {
+                HI = Input.GetAxisRaw("Horizontal");
+                VI = Input.GetAxisRaw("Vertical");
 
-        if(Input.GetKeyDown(slideKey) && (HI != 0 || VI != 0) )
-        {
-            startSlide();
-        }
-        if(Input.GetKeyUp(slideKey) && pm.sliding)
-        {
-            stopSlide();
+                if (Input.GetKeyDown(slideKey) && (HI != 0 || VI != 0))
+                {
+                    startSlide();
+                }
+                if (Input.GetKeyUp(slideKey) && pm.sliding)
+                {
+                    stopSlide();
+                }
+            }
         }
     }
 

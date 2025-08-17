@@ -10,7 +10,14 @@ public class VolumeManager : MonoBehaviour
 
     public InputField VolumeField;
 
+    public Slider SensSlider;
+
+    public InputField SensField;
+
+
     bool volumeChanged = false;
+
+    bool SensitivityChanged = false;
 
 
     private void OnEnable()
@@ -19,6 +26,11 @@ public class VolumeManager : MonoBehaviour
 
         VolumeField.text = Convert.ToString(Math.Floor(100 * MusicvolumeSlider.value));
         VolumeField.text += "%";
+
+        SensSlider.value = GameManager.Instance.GetmouseSensitivity() / 1000;
+
+        SensField.text = Convert.ToString(Math.Floor(100 * SensSlider.value));
+        SensField.text += "%";
     }
 
     public void ChangeVolume()
@@ -38,6 +50,23 @@ public class VolumeManager : MonoBehaviour
         volumeChanged = true;
     }
 
+    public void ChangeSens()
+    {
+        GameManager.Instance.ChangemouseSensitivity(SensSlider.value * 1000);
+
+        SensitivityChanged = true;
+    }
+    public void ChangeSensByText()
+    {
+        float sens = float.Parse(SensField.text);
+
+        sens *= 10;
+
+        GameManager.Instance.ChangemouseSensitivity(sens);
+
+        SensitivityChanged = true;
+    }
+
     private void Update()
     {
         if (volumeChanged)
@@ -47,6 +76,16 @@ public class VolumeManager : MonoBehaviour
 
             VolumeField.text = Convert.ToString(Math.Floor(100 * MusicvolumeSlider.value));
             VolumeField.text += "%";
+
+        }
+
+        if (SensitivityChanged)
+        {
+            SensitivityChanged = false;
+            SensSlider.value = (GameManager.Instance.GetmouseSensitivity()/1000);
+
+            SensField.text = Convert.ToString(Math.Floor(100 * SensSlider.value));
+            SensField.text += "%";
 
         }
     }

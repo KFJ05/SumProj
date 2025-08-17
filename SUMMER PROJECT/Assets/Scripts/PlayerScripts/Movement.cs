@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -91,11 +92,14 @@ public class Movement : MonoBehaviour
     KeyCode jumpKey = KeyCode.Space;
     [SerializeField]
     KeyCode CrouchAndSlideKey = KeyCode.C;
-
+    public KeyCode PauseKey = KeyCode.Escape;
 
     [Header("Refrences")]
     public ParticleSystem Wind;
     public float StartWindFreshhold;
+    public Canvas PauseMenu;
+
+
 
     
 
@@ -131,6 +135,8 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (PauseMenu != null)
+            PauseMenu.gameObject.SetActive(false);
         rb = GetComponent<Rigidbody>();
 
         DMoveSpeed = walkspeed;
@@ -145,35 +151,60 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Grounded = Physics.Raycast(transform.position, Vector3.down, playerheight * 0.5f + 0.2f, whatisGround);
-
-        getInput();
-
-        SpeedControl();
-
-        stateHandler();
-
-        if(Grounded)
+        if(Input.GetKeyDown(PauseKey))
         {
-            rb.drag = groundDrag;
+            if(PauseManager.Instance!= null)
+            {
+                PauseManager.Instance.IsPaused = true;
+                if(PauseMenu != null)
+                {
+                    PauseMenu.gameObject.SetActive(true);
+                }
+            }
         }
-        else
+        if (PauseManager.Instance != null)
         {
-            rb.drag = 0;
-        }
+            if (PauseManager.Instance.IsPaused == false)
+            {
+                PauseMenu.gameObject.SetActive(false);
+
+                rb.isKinematic = false;
+
+                Grounded = Physics.Raycast(transform.position, Vector3.down, playerheight * 0.5f + 0.2f, whatisGround);
+
+                getInput();
+
+                SpeedControl();
+
+                stateHandler();
+
+                if (Grounded)
+                {
+                    rb.drag = groundDrag;
+                }
+                else
+                {
+                    rb.drag = 0;
+                }
 
 
-        if (moveSpeed >= MAX_SPEED)
-        {
-            moveSpeed = MAX_SPEED;
-        }
-        else if (moveSpeed < walkspeed && preserve == false)
-        {
-            moveSpeed = walkspeed;
-        }
-        else if(preserve == true)
-        {
-            moveSpeed = lastPreservedSpeed;
+                if (moveSpeed >= MAX_SPEED)
+                {
+                    moveSpeed = MAX_SPEED;
+                }
+                else if (moveSpeed < walkspeed && preserve == false)
+                {
+                    moveSpeed = walkspeed;
+                }
+                else if (preserve == true)
+                {
+                    moveSpeed = lastPreservedSpeed;
+                }
+            }
+            else if (PauseManager.Instance.IsPaused == true)
+            {
+                rb.isKinematic = true;
+            }
         }
 
 

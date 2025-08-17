@@ -157,6 +157,7 @@ MonoBehaviour:
   LockOnTag: Player
   turnSpeed: 5
   RocketSpeed: 10
+  useParticles: 1
   rocketExplode: {fileID: 3044215201712980144}
   notDetnatedBy: []
 --- !u!114 &211628936326351383
@@ -174,7 +175,7 @@ MonoBehaviour:
   CurrentHealth: 2
   MaxHealth: 2
   UseHealthBar: 0
-  useSharedHealthbar: 0
+  useSheildBar: 0
   LerpBarDamageColour: {r: 0, g: 0, b: 0, a: 0}
   LerpBarHealColour: {r: 0, g: 0, b: 0, a: 0}
   time: 2
@@ -182,8 +183,21 @@ MonoBehaviour:
   CritMUlt: 0
   HealthBar: {fileID: 0}
   LerpBar: {fileID: 0}
+  Segments: {fileID: 0}
+  SegmentMaterial: {fileID: 0}
+  SegMat: {fileID: 0}
+  HealthPerSegment: 0
   DamageEffect: {fileID: 0}
   CritDamageEffect: {fileID: 0}
+  SheildSize: 0
+  SheildActive: 0
+  SheildCurrentHealth: 0
+  SheildMaxHealth: 0
+  SheildPrefab: {fileID: 0}
+  SheildHBar: {fileID: 0}
+  SheildLerpBar: {fileID: 0}
+  Sheildtime: 4
+  YOffset: 0
 --- !u!114 &9214383146720806865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +219,7 @@ MonoBehaviour:
   useHealth: 1
   WinLevelOnDeath: 0
   useParticles: 0
-  DeathExplosiom: {fileID: 0}
+  DeathExplosiom: {fileID: 3044215201712980144}
   IsEnemy: 0
   hasParts: 0
 --- !u!65 &586936894210420884
@@ -246,6 +260,7 @@ MonoBehaviour:
   GetRenderer: 1
   Mat: {fileID: 0}
   colour: {r: 0, g: 0, b: 0, a: 0}
+  usingColour: 1
   UseR: 1
   UseG: 0
   UseB: 0
@@ -5245,6 +5260,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4099037642511104114, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
+      propertyPath: TimetoLast
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4099850047249004648, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
       propertyPath: m_Name
       value: RocketExplosionEnemy
@@ -5279,7 +5298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5930585626228336749, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
       propertyPath: CollisionModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5930585626228336749, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
       propertyPath: SizeModule.curve.scalar
@@ -5307,7 +5326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8936611429553236713, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
       propertyPath: Damage
-      value: 45
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8936611429553236713, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
       propertyPath: TagsToDamage.Array.size
@@ -5320,13 +5339,42 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4099850047249004648, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5538838197655624237}
   m_SourcePrefab: {fileID: 100100000, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
 --- !u!198 &3044215201712980144 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 5930585626228336749, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
   m_PrefabInstance: {fileID: 8679163999147976925}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4654191253241974965 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4099850047249004648, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
+  m_PrefabInstance: {fileID: 8679163999147976925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &5538838197655624237
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4654191253241974965}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &6047372351607253347 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3142950351343403454, guid: 13922a85db721534b9f658e7c25ad144, type: 3}

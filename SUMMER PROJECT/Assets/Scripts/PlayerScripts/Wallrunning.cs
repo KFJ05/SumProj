@@ -86,15 +86,29 @@ public class Wallrunning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckForWall();
-        StateMachine();
+        if (PauseManager.Instance != null)
+        {
+            if (PauseManager.Instance.IsPaused == false)
+            {
+
+                CheckForWall();
+                StateMachine();
+            }
+        }
     }
 
     private void FixedUpdate()
     {
-        if(pm.wallRunning)
+        if (PauseManager.Instance != null)
         {
-            wallrunningMovment();
+            if (PauseManager.Instance.IsPaused == false)
+            {
+
+                if (pm.wallRunning)
+                {
+                    wallrunningMovment();
+                }
+            }
         }
     }
 
