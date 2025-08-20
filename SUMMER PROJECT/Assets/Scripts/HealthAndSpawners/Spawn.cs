@@ -53,7 +53,9 @@ public class Spawn : MonoBehaviour
             if(SpawnManager.Instance != null)
             {
                 SpawnManager.Instance.TurnOnPointList(spawn);
+                SpawnManager.Instance.TurnOnDronePointList(spawn);
             }
+            
             AlreadySpawned = true;
         }
     }

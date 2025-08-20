@@ -64,64 +64,70 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-
-        if (moveToPoints != true)
+        if (PauseManager.Instance != null)
         {
-            playerinSightRange = Physics.CheckSphere(transform.position, SightRange, PlayerLayer);
-            playerinAttackRange = Physics.CheckSphere(transform.position, AttackRange, PlayerLayer);
-
-            if (playerinSightRange && !playerinAttackRange)
+            if (PauseManager.Instance.IsPaused == false)
             {
-                moveToPlayer();
-                //CancelInvoke();
-            }
-            else if (playerinAttackRange && playerinSightRange)
-            {
-                stopmoving();
-                //Fire();
-                // Fired = false;
 
-
-            }
-            // else if (playerinAttackRange && playerinSightRange && Fired == false)
-            //  {
-            //Invoke(nameof(ResetFire), TBA);
-            // }
-            else if (!playerinSightRange && !playerinAttackRange)
-            {
-                stopmoving();
-            }
-            if(HP != null)
-                CheckHealth();
-
-        }
-        else
-        {
-            for(int i =0; i < MoveL.Count; i++)
-            {
-                if (MoveL[i] == null)
+                if (moveToPoints != true)
                 {
-                    i = 0;
+                    playerinSightRange = Physics.CheckSphere(transform.position, SightRange, PlayerLayer);
+                    playerinAttackRange = Physics.CheckSphere(transform.position, AttackRange, PlayerLayer);
+
+                    if (playerinSightRange && !playerinAttackRange)
+                    {
+                        moveToPlayer();
+                        //CancelInvoke();
+                    }
+                    else if (playerinAttackRange && playerinSightRange)
+                    {
+                        stopmoving();
+                        //Fire();
+                        // Fired = false;
+
+
+                    }
+                    // else if (playerinAttackRange && playerinSightRange && Fired == false)
+                    //  {
+                    //Invoke(nameof(ResetFire), TBA);
+                    // }
+                    else if (!playerinSightRange && !playerinAttackRange)
+                    {
+                        stopmoving();
+                    }
+                    if (HP != null)
+                        CheckHealth();
+
                 }
-
-                if (body.transform.position.x == MoveL[i].transform.position.x && body.transform.position.z == MoveL[i].transform.position.z)
+                else
                 {
-                    Debug.Log("Move");
+                    for (int i = 0; i < MoveL.Count; i++)
+                    {
+                        if (MoveL[i] == null)
+                        {
+                            i = 0;
+                        }
+
+                        if (body.transform.position.x == MoveL[i].transform.position.x && body.transform.position.z == MoveL[i].transform.position.z)
+                        {
+                            Debug.Log("Move");
 
 
-                    if (i + 1 < MoveL.Count)
-                    {
-                        MovetoSpot(MoveL[i + 1].transform);
+                            if (i + 1 < MoveL.Count)
+                            {
+                                MovetoSpot(MoveL[i + 1].transform);
+                            }
+                            else
+                            {
+                                MovetoSpot(MoveL[0].transform);
+                            }
+
+                        }
                     }
-                    else
-                    {
-                        MovetoSpot(MoveL[0].transform);
-                    }
-                 
+                    if (HP != null)
+                        CheckHealth();
                 }
             }
-            if(HP != null)
-                CheckHealth();
         }
 
        // agent.destination = Player.position;

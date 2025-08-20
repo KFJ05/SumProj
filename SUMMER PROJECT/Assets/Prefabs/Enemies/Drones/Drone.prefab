@@ -97,6 +97,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: -3600
+  RotateX: 0
+  RotateZ: 0
+  RotateY: 1
 --- !u!1 &1494437649013881541
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,6 +197,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 3600
+  RotateX: 0
+  RotateZ: 0
+  RotateY: 1
 --- !u!1 &2295462832957512113
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   YHeight: 0
-  Agent: {fileID: 0}
+  Agent: {fileID: 2699343213209067491}
   AngleOffset:
     value:
       x: 0
@@ -447,6 +453,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: -3600
+  RotateX: 0
+  RotateZ: 0
+  RotateY: 1
 --- !u!1 &4546616995799877040
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,6 +735,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 3600
+  RotateX: 0
+  RotateZ: 0
+  RotateY: 1
 --- !u!1001 &89156549309355302
 PrefabInstance:
   m_ObjectHideFlags: 0

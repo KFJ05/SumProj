@@ -10,6 +10,9 @@ public class PropellerSpin : MonoBehaviour
 
     public float rotateSpeed;
 
+    public bool RotateX, RotateZ;
+    public bool RotateY = true;
+
     void Start()
     {
         hp = gameObject.GetComponentInParent<Health>();
@@ -22,7 +25,14 @@ public class PropellerSpin : MonoBehaviour
         {
             if (hp.CurrentHealth > 0)
             {
-                transform.Rotate(0, rotateSpeed * Time.deltaTime, 0);      
+                if(RotateX)
+                {
+                    transform.Rotate(rotateSpeed * Time.deltaTime,0, 0);
+                }
+                if(RotateY)
+                    transform.Rotate(0, rotateSpeed * Time.deltaTime, 0); 
+                if(RotateZ)
+                    transform.Rotate(0, 0, rotateSpeed * Time.deltaTime);
             }
         }
         

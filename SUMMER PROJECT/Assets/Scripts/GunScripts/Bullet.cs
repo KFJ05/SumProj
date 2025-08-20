@@ -47,10 +47,12 @@ public class Bullet : MonoBehaviour
                 s.Play();
             }
         }
-            
+          
         rb = gameObject.GetComponent<Rigidbody>();
-        
-        V = rb.GetAccumulatedForce();
+        if (rb != null)
+        {
+            V = rb.GetAccumulatedForce();
+        }
 
     }
 
@@ -83,6 +85,7 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {   
+
                 if (!Testing)
                 {
                     bulletLifeTime -= Time.deltaTime;
@@ -176,60 +179,65 @@ public class Bullet : MonoBehaviour
     
     private void OnParticleCollision(GameObject other)
     {
-
-        
-            for (int i = 0; i < TagsToDamage.Length; i++)
+        if (PauseManager.Instance != null)
+        {
+            if (PauseManager.Instance.IsPaused == false)
             {
-                if (other.CompareTag(TagsToDamage[i]))
+
+                for (int i = 0; i < TagsToDamage.Length; i++)
                 {
-                    // Health should be on the hit object or one of its parents
-                    Health tempHP = other.GetComponent<Health>();
-                  //  Debug.Log(tempHP);
-                    HealthBarMultiple tempHPM = null;
-                    if (tempHP == null)
+                    if (other.CompareTag(TagsToDamage[i]))
                     {
-                        tempHP = other.GetComponentInParent<Health>();
-                    }
-
-                    if (tempHP == null)
-                    {
-
-                        tempHPM = other.GetComponent<HealthBarMultiple>();
-                        if (tempHPM == null)
+                        // Health should be on the hit object or one of its parents
+                        Health tempHP = other.GetComponent<Health>();
+                        //  Debug.Log(tempHP);
+                        HealthBarMultiple tempHPM = null;
+                        if (tempHP == null)
                         {
-                            tempHPM = other.GetComponentInParent<HealthBarMultiple>();
+                            tempHP = other.GetComponentInParent<Health>();
                         }
 
+                        if (tempHP == null)
+                        {
+
+                            tempHPM = other.GetComponent<HealthBarMultiple>();
+                            if (tempHPM == null)
+                            {
+                                tempHPM = other.GetComponentInParent<HealthBarMultiple>();
+                            }
+
+                        }
+
+                        // Check if the actual collider that was hit has the WeakSpot
+
+
+                        if (tempHP != null)
+                        {
+
+                            tempHP.Damage(Damage);
+
+                        }
+                        if (tempHPM != null)
+                        {
+
+                            tempHPM.Damage(Damage);
+
+                        }
+
+                        break;
                     }
 
-                    // Check if the actual collider that was hit has the WeakSpot
-
-
-                    if (tempHP != null)
-                    {
-
-                        tempHP.Damage(Damage);
-
-                    }
-                    if (tempHPM != null)
-                    {
-
-                        tempHPM.Damage(Damage);
-
-                    }
-
-                    break;
                 }
-            
-        }
 
 
-        if (!Testing)
-        {
-            poofEffect.transform.parent = null;
-            poofEffect.Play();
+                if (!Testing)
+                {
+                    poofEffect.transform.parent = null;
+                    poofEffect.Play();
 
-            Destroy(gameObject);
+                    Destroy(gameObject);
+                }
+            }
         }
     }
     private void OnParticleTrigger()

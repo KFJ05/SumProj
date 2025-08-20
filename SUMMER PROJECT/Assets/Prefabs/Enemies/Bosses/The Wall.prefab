@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5412300343960974081}
   - component: {fileID: 5495903187244839858}
   - component: {fileID: 8758154687765255959}
+  - component: {fileID: 5201498739333564349}
   m_Layer: 0
   m_Name: The Wall
   m_TagString: Untagged
@@ -49,7 +50,7 @@ MonoBehaviour:
   CurrentHealth: 500
   MaxHealth: 500
   UseHealthBar: 1
-  useSharedHealthbar: 0
+  useSheildBar: 0
   LerpBarDamageColour: {r: 1, g: 1, b: 1, a: 1}
   LerpBarHealColour: {r: 0, g: 1, b: 0, a: 1}
   time: 2
@@ -57,8 +58,21 @@ MonoBehaviour:
   CritMUlt: 7
   HealthBar: {fileID: 2804372969806006304}
   LerpBar: {fileID: 5747342248234481067}
+  Segments: {fileID: 0}
+  SegmentMaterial: {fileID: 0}
+  SegMat: {fileID: 0}
+  HealthPerSegment: 0
   DamageEffect: {fileID: 3005846444728371024}
   CritDamageEffect: {fileID: 2953854090809843384}
+  SheildSize: 0
+  SheildActive: 0
+  SheildCurrentHealth: 0
+  SheildMaxHealth: 0
+  SheildPrefab: {fileID: 0}
+  SheildHBar: {fileID: 0}
+  SheildLerpBar: {fileID: 0}
+  Sheildtime: 4
+  YOffset: 0
 --- !u!114 &8758154687765255959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,6 +94,30 @@ MonoBehaviour:
   TimeToDestroy: 3
   HealTimer: 999
   WallAnimator: {fileID: 2984885213174069311}
+--- !u!114 &5201498739333564349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7863665120205185418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7cc2993a7d990a4b97981b4b7f7d362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usingMultipleHpBars: 0
+  parts: []
+  explosiveRange: 0
+  anim: {fileID: 2984885213174069311}
+  useAnimator: 0
+  TriggerDeath: 0
+  useHealth: 1
+  WinLevelOnDeath: 1
+  useParticles: 0
+  DeathExplosiom: {fileID: 0}
+  IsEnemy: 1
+  hasParts: 1
 --- !u!1001 &6668717189625973017
 PrefabInstance:
   m_ObjectHideFlags: 0

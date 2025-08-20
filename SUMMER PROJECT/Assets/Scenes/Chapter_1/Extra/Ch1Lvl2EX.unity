@@ -3346,6 +3346,10 @@ PrefabInstance:
       propertyPath: HealthObj
       value: 
       objectReference: {fileID: 224692956}
+    - target: {fileID: 2936562961606995442, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
+      propertyPath: ResetGunOnDeath
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3292401950971859266, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
       propertyPath: m_LocalPosition.x
       value: 390.89926

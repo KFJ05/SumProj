@@ -52,6 +52,10 @@ public class TurretAI : MonoBehaviour
 
     public Rigidbody TurrRB;
 
+    public bool isGunshipTurret;
+    public float GunshipTurretRotClampX, GunshipTurretRotClampY, GunshipTurretRotClampZ;
+    public bool AllowedToAttck;
+
 
 
     [Header("Rocket Settings")]
@@ -77,97 +81,165 @@ public class TurretAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (TimetoWaitOnSpawn <= 0)
+        if (PauseManager.Instance != null)
         {
-            if (FireFunctionCalledElsewhere == false)
+            if (PauseManager.Instance.IsPaused == false)
             {
 
-
-                if (ATS <= 0)
+                if(isGunshipTurret)
                 {
-                    ST = StunTimer;
-                    ATS = AttacksBeforeStun;
+                   // Mathf.Clamp(transform.rotation.x, -GunshipTurretRotClampX, GunshipTurretRotClampX);
+                   // Mathf.Clamp(transform.rotation.x, -GunshipTurretRotClampY, GunshipTurretRotClampY);
+                   // Mathf.Clamp(transform.rotation.z, -GunshipTurretRotClampZ, GunshipTurretRotClampZ);
                 }
-                if (ST > 0)
+
+                if (TimetoWaitOnSpawn <= 0)
                 {
-                    if (UseAnimator)
+                    if (FireFunctionCalledElsewhere == false)
                     {
-                        Anim.SetBool("IsFiring", false);
+
+
+                        if (ATS <= 0)
+                        {
+                            ST = StunTimer;
+                            ATS = AttacksBeforeStun;
+                        }
+                        if (ST > 0)
+                        {
+                            if (UseAnimator)
+                            {
+                                Anim.SetBool("IsFiring", false);
+                            }
+
+                            Firetimer = TimeBeforeFire;
+
+                            ST -= Time.deltaTime;
+                        }
+                        else
+                        {
+
+
+                            float D = Vector3.Distance(gameObject.transform.position, GameObject.FindWithTag("Player").transform.position);
+                            if (D <= Range)
+                            {
+                                if (isGunshipTurret)
+                                {
+                                    if (AllowedToAttck)
+                                    {
+
+                                        if (useBaseLookAt == true)
+                                        {
+                                            MainBody.LookAt(GameObject.FindWithTag("Player").transform);
+                                        }
+                                        else
+                                        {
+
+                                            var rocketTargetrot = Quaternion.LookRotation(Player.transform.position - MainBody.position);
+                                            TurrRB.MoveRotation(Quaternion.RotateTowards(MainBody.rotation, rocketTargetrot, turnSpeed));
+                                        }
+
+                                        if (UseAnimator)
+                                        {
+                                            // Debug.Log(Anim);
+                                            Anim.SetBool("IsFiring", true);
+
+
+                                        }
+                                        if (FR <= 0 && FireBullets == true && Firetimer <= 0)
+                                        {
+                                            //fire
+                                            FireTurrBullet();
+
+                                            ATS -= 1;
+                                            FR = FireRate;
+
+                                        }
+                                        else
+                                        {
+                                            FR -= Time.deltaTime;
+
+                                            Firetimer -= Time.deltaTime;
+                                        }
+
+
+                                        if (FireRockets == true)
+                                        {
+                                            RocketTimer -= Time.deltaTime;
+
+                                            if (RocketTimer <= 0)
+                                            {
+                                                FireRocket();
+                                                RocketTimer = RocketFireRate;
+                                            }
+                                        }
+                                    }
+                                }
+                                else
+                                {
+
+                                    if (useBaseLookAt == true)
+                                    {
+                                        MainBody.LookAt(GameObject.FindWithTag("Player").transform);
+                                    }
+                                    else
+                                    {
+
+                                        var rocketTargetrot = Quaternion.LookRotation(Player.transform.position - MainBody.position);
+                                        TurrRB.MoveRotation(Quaternion.RotateTowards(MainBody.rotation, rocketTargetrot, turnSpeed));
+                                    }
+
+                                    if (UseAnimator)
+                                    {
+                                        // Debug.Log(Anim);
+                                        Anim.SetBool("IsFiring", true);
+
+
+                                    }
+                                    if (FR <= 0 && FireBullets == true && Firetimer <= 0)
+                                    {
+                                        //fire
+                                        FireTurrBullet();
+
+                                        ATS -= 1;
+                                        FR = FireRate;
+
+                                    }
+                                    else
+                                    {
+                                        FR -= Time.deltaTime;
+
+                                        Firetimer -= Time.deltaTime;
+                                    }
+
+
+                                    if (FireRockets == true)
+                                    {
+                                        RocketTimer -= Time.deltaTime;
+
+                                        if (RocketTimer <= 0)
+                                        {
+                                            FireRocket();
+                                            RocketTimer = RocketFireRate;
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
                     }
-
-                    Firetimer = TimeBeforeFire;
-
-                    ST -= Time.deltaTime;
+                    else
+                    {
+                        MainBody.LookAt(GameObject.FindWithTag("Player").transform);
+                    }
                 }
                 else
                 {
-
-
-                    float D = Vector3.Distance(gameObject.transform.position, GameObject.FindWithTag("Player").transform.position);
-                    if (D <= Range)
-                    {
-
-                        if (useBaseLookAt == true)
-                        {
-                            MainBody.LookAt(GameObject.FindWithTag("Player").transform);
-                        }
-                        else
-                        {
-
-                            var rocketTargetrot = Quaternion.LookRotation(Player.transform.position - MainBody.position);
-                            TurrRB.MoveRotation(Quaternion.RotateTowards(MainBody.rotation, rocketTargetrot, turnSpeed));
-                        }
-
-                        if (UseAnimator)
-                        {
-                            // Debug.Log(Anim);
-                            Anim.SetBool("IsFiring", true);
-
-                            
-                        }
-                        if (FR <= 0 && FireBullets == true && Firetimer <= 0)
-                        {
-                            //fire
-                            FireTurrBullet();
-
-                            ATS -= 1;
-                            FR = FireRate;
-
-                        }
-                        else
-                        {
-                            FR -= Time.deltaTime;
-
-                            Firetimer -= Time.deltaTime;
-                        }
-
-
-                        if (FireRockets == true)
-                        {
-                            RocketTimer -= Time.deltaTime;
-
-                            if (RocketTimer <= 0)
-                            {
-                                FireRocket();
-                                RocketTimer = RocketFireRate;
-                            }
-                        }
-                    }
-
+                    TimetoWaitOnSpawn -= Time.deltaTime;
                 }
-            }
-            else
-            {
-                MainBody.LookAt(GameObject.FindWithTag("Player").transform);
+
+
             }
         }
-        else
-        {
-            TimetoWaitOnSpawn -= Time.deltaTime;
-        }
-
-
-
     }
 
     public void FireTurrBullet()

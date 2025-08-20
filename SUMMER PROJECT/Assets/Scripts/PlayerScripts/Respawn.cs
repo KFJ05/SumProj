@@ -29,7 +29,24 @@ public class Respawn : MonoBehaviour
     public bool ResetMusic = false;
     public SwapMusic SwapMusic = null;
     public AudioClip LevelMusic;
-    
+
+    private void Start()
+    {
+        if (move == null)
+            move = gameObject.GetComponent<Movement>();
+        if (Slide == null)
+            Slide = gameObject.GetComponent<Slideing>();
+        if (wallRun == null)
+            wallRun = gameObject.GetComponent<Wallrunning>();
+        if (Swing == null)
+            Swing = gameObject.GetComponent<Swinging>();
+        if (Cam == null)
+            Cam = gameObject.GetComponentInChildren<PlayerCam>();
+        if (Gun == null)
+        {
+            Gun = GameObject.FindWithTag("Gun");
+        }
+    }
     void Update()
     {
         if(HP == null)

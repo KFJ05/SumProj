@@ -24,25 +24,27 @@ public class BossSpawnEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (spawnTigger)
+        if (PauseManager.Instance != null)
         {
-            GameObject G;
-            for (int i = 0; i < enemiesSpawned.Length; i++)
+            if (spawnTigger && PauseManager.Instance.IsPaused == false)
             {
-                if (SpawnBasedOnBossTransform == false)
+                GameObject G;
+                for (int i = 0; i < enemiesSpawned.Length; i++)
                 {
-                    G = Instantiate(enemiesSpawned[i], spawnLocations[i].position, spawnLocations[i].rotation);
-                }
-                else
-                {
-                    G = Instantiate(enemiesSpawned[i], transform.position + SpawnRelitiveToBoss[i], transform.rotation);
-                }
-                EnemyManager.Instance.AddEnemy(G);
+                    if (SpawnBasedOnBossTransform == false)
+                    {
+                        G = Instantiate(enemiesSpawned[i], spawnLocations[i].position, spawnLocations[i].rotation);
+                    }
+                    else
+                    {
+                        G = Instantiate(enemiesSpawned[i], transform.position + SpawnRelitiveToBoss[i], transform.rotation);
+                    }
+                    EnemyManager.Instance.AddEnemy(G);
 
 
+                }
+                spawnTigger = false;
             }
-            spawnTigger = false;
         }
 
     }

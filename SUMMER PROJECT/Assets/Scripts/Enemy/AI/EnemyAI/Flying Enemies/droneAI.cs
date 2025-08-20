@@ -71,94 +71,100 @@ public class droneAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(upOrDown == false)
+        if (PauseManager.Instance != null)
         {
-            if(Agent.baseOffset >= B_Offset + BobbingLimit)
+            if (PauseManager.Instance.IsPaused == false)
             {
-                upOrDown = true;
-            }
-            Agent.baseOffset += Time.deltaTime * BobbingSpeed;
-            
-        }
-        else if (upOrDown == true)
-        {
-            if (Agent.baseOffset <= B_Offset - BobbingLimit)
-            {
-                upOrDown = false;
-            }
-            Agent.baseOffset -= Time.deltaTime * BobbingSpeed;
-        }
 
-
-
-        if(health.CurrentHealth <= 0)
-        {
-            states = DroneStates.dead;
-        }
-
-        if(states == DroneStates.moving)
-        {
-
-
-            float currentX = Body.transform.eulerAngles.x;
-            float targetX = stopLimit; // the cap you want
-
-            // Smoothly rotate towards the stop limit
-            float newX = Mathf.LerpAngle(currentX, targetX, Time.deltaTime * DampingSpeed);
-
-            Body.transform.rotation = Quaternion.Euler(newX, Body.transform.eulerAngles.y, Body.transform.eulerAngles.z);
-
-            Agent.Resume();
-            if (pointchosen == false)
-            {
-              
-
-                r = UnityEngine.Random.Range(0, Movetransforms.Length);
-                if (Movetransforms[r] != null)
+                if (upOrDown == false)
                 {
-                    Agent.SetDestination(Movetransforms[r].position);
+                    if (Agent.baseOffset >= B_Offset + BobbingLimit)
+                    {
+                        upOrDown = true;
+                    }
+                    Agent.baseOffset += Time.deltaTime * BobbingSpeed;
+
                 }
-                pointchosen = true;
-            }
-            if(Vector3.Distance(transform.position, Movetransforms[r].position) <= 10)
-            {
-                states = DroneStates.inplace;
+                else if (upOrDown == true)
+                {
+                    if (Agent.baseOffset <= B_Offset - BobbingLimit)
+                    {
+                        upOrDown = false;
+                    }
+                    Agent.baseOffset -= Time.deltaTime * BobbingSpeed;
+                }
+
+
+
+                if (health.CurrentHealth <= 0)
+                {
+                    states = DroneStates.dead;
+                }
+
+                if (states == DroneStates.moving)
+                {
+
+
+                    float currentX = Body.transform.eulerAngles.x;
+                    float targetX = stopLimit; // the cap you want
+
+                    // Smoothly rotate towards the stop limit
+                    float newX = Mathf.LerpAngle(currentX, targetX, Time.deltaTime * DampingSpeed);
+
+                    Body.transform.rotation = Quaternion.Euler(newX, Body.transform.eulerAngles.y, Body.transform.eulerAngles.z);
+
+                    Agent.Resume();
+                    if (pointchosen == false)
+                    {
+
+
+                        r = UnityEngine.Random.Range(0, Movetransforms.Length);
+                        if (Movetransforms[r] != null)
+                        {
+                            Agent.SetDestination(Movetransforms[r].position);
+                        }
+                        pointchosen = true;
+                    }
+                    if (Vector3.Distance(transform.position, Movetransforms[r].position) <= 10)
+                    {
+                        states = DroneStates.inplace;
+                    }
+                }
+                if (states == DroneStates.inplace)
+                {
+                    float currentX = Body.transform.eulerAngles.x;
+                    float targetX = 0f; // back to zero angle
+
+                    float newX = Mathf.LerpAngle(currentX, targetX, Time.deltaTime * DampingSpeed);
+
+                    Body.transform.rotation = Quaternion.Euler(newX, Body.transform.eulerAngles.y, Body.transform.eulerAngles.z);
+
+                    Agent.Stop();
+                    SST -= Time.deltaTime;
+                    if (SST <= 0)
+                    {
+                        SST = TimeToStandStill;
+                        states = DroneStates.moving;
+                        pointchosen = false;
+                    }
+
+                }
+                if (states == DroneStates.dead)
+                {
+
+                    Agent.Stop();
+                    Agent.enabled = false;
+                    rb.isKinematic = false;
+                    rb.AddTorque(new Vector3(12, 12, 12));
+                    if (EnemyManager.Instance != null)
+                    {
+                        EnemyManager.Instance.RemoveEnemy(gameObject);
+                    }
+                    Destroy(gameObject, 3);
+                    this.enabled = false;
+                }
             }
         }
-        if (states == DroneStates.inplace)
-        {
-            float currentX = Body.transform.eulerAngles.x;
-            float targetX = 0f; // back to zero angle
-
-            float newX = Mathf.LerpAngle(currentX, targetX, Time.deltaTime * DampingSpeed);
-
-            Body.transform.rotation = Quaternion.Euler(newX, Body.transform.eulerAngles.y, Body.transform.eulerAngles.z);
-
-            Agent.Stop();
-            SST -= Time.deltaTime;
-            if(SST <= 0)
-            {
-                SST = TimeToStandStill;
-                states = DroneStates.moving;
-                pointchosen = false;
-            }
-
-        }
-        if (states == DroneStates.dead)
-        {
-            
-            Agent.Stop();
-            Agent.enabled = false;
-            rb.isKinematic = false;
-            rb.AddTorque(new Vector3 (12, 12, 12));
-            if(EnemyManager.Instance != null)
-            {
-                EnemyManager.Instance.RemoveEnemy(gameObject);
-            }
-            Destroy(gameObject, 3);
-            this.enabled = false;
-        }
-
 
     }
 }

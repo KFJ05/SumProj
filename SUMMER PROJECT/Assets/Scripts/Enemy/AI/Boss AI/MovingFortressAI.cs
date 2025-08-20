@@ -34,16 +34,23 @@ public class MovingFortressAI : MonoBehaviour
 
     private void Update()
     {
-        if (startSpawning)
+        if (PauseManager.Instance != null)
         {
-            spawnS -= Time.deltaTime;
-
-            if (spawnS <= 0)
+            if (PauseManager.Instance.IsPaused == false)
             {
-                spawnS = SpawnSpeed;
-                BossSpawnEnemy.SetSTrigger(true);
-            }
 
+                if (startSpawning)
+                {
+                    spawnS -= Time.deltaTime;
+
+                    if (spawnS <= 0)
+                    {
+                        spawnS = SpawnSpeed;
+                        BossSpawnEnemy.SetSTrigger(true);
+                    }
+
+                }
+            }
         }
     }
 

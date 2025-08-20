@@ -26,51 +26,57 @@ public class WallBossAI : MonoBehaviour
 
     private void Update()
     {
-
-        if (Whp == null)
+        if (PauseManager.Instance != null)
         {
-            Whp = gameObject.GetComponent<Health>();
-        }
-
-        if(Whp != null && Whp.CurrentHealth <= 0)
-        {
-
-            for (int i = 0; i < Turrets.Count(); i++)
+            if (PauseManager.Instance.IsPaused == false)
             {
-                if (Turrets[i] != null)
-                {
-                    TurretAI T = Turrets[i].gameObject.GetComponent<TurretAI>();
-                    if (T != null)
-                    {
-                        T.enabled = false;
-                    }
-                    Die D = Turrets[i].gameObject.GetComponent<Die>();
 
-                    if (D != null)
-                    {
-                        D.TriggerDeath = true;
-                    }
+
+                if (Whp == null)
+                {
+                    Whp = gameObject.GetComponent<Health>();
                 }
-            
+
+                if (Whp != null && Whp.CurrentHealth <= 0)
+                {
+
+                    for (int i = 0; i < Turrets.Count(); i++)
+                    {
+                        if (Turrets[i] != null)
+                        {
+                            TurretAI T = Turrets[i].gameObject.GetComponent<TurretAI>();
+                            if (T != null)
+                            {
+                                T.enabled = false;
+                            }
+                            Die D = Turrets[i].gameObject.GetComponent<Die>();
+
+                            if (D != null)
+                            {
+                                D.TriggerDeath = true;
+                            }
+                        }
+
+
+                    }
+                    WallAnimator.SetBool("Spawn", false);
+
+                    WallAnimator.SetBool("Die", true);
+                    Invoke(nameof(DestroyWall), TimeToDestroy);
+
+                    EnemyManager.Instance.RemoveEnemy(gameObject);
+                }
+
+                //TimerLeft -= Time.deltaTime;
+                if (TimerLeft <= 0)
+                {
+                    Heal();
+                    TimerLeft = HealTimer;
+                }
+
 
             }
-            WallAnimator.SetBool("Spawn", false);
-
-            WallAnimator.SetBool("Die", true);
-            Invoke(nameof(DestroyWall), TimeToDestroy);
-
-            EnemyManager.Instance.RemoveEnemy(gameObject);
         }
-
-        //TimerLeft -= Time.deltaTime;
-        if(TimerLeft <= 0)
-        {
-            Heal();
-            TimerLeft = HealTimer;
-        }
-
-
-
         
 
     }

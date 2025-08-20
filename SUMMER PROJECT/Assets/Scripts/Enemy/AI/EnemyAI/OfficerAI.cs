@@ -138,181 +138,188 @@ public class OfficerAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(HP.CurrentHealth <= 0)
+        if (PauseManager.Instance != null)
         {
-            state = OfficerState.dead;
-        }
-
-        animator.SetBool("Summoning", false);
-        if (state == OfficerState.Summon)
-        {
-            Shotgun.gameObject.SetActive(false);
-            animator.SetBool("Aiming", false);
-
-            transform.LookAt(player.transform.position);
-
-            Debug.Log("Summon");
-
-            animator.SetBool("Summoning", true);
-
-            animator.SetInteger("Salute", Random.Range(1, 4));
-            if (summoned == false)
+            if (PauseManager.Instance.IsPaused == false)
             {
-                if(OfficerTeir >= 3)
+
+                if (HP.CurrentHealth <= 0)
                 {
-                    HP.SheildActive = true;
-                    HP.SheildMaxHealth = SheildTierValues[OfficerTeir - 1];
-                    HP.SheildCurrentHealth = HP.SheildMaxHealth;
+                    state = OfficerState.dead;
                 }
 
-                if (OfficerTeir < 4 || Royal == false)
+                animator.SetBool("Summoning", false);
+                if (state == OfficerState.Summon)
                 {
-                    summonEnemiesTeir1To3();
+                    Shotgun.gameObject.SetActive(false);
+                    animator.SetBool("Aiming", false);
+
+                    transform.LookAt(player.transform.position);
+
+                    Debug.Log("Summon");
+
+                    animator.SetBool("Summoning", true);
+
+                    animator.SetInteger("Salute", Random.Range(1, 4));
+                    if (summoned == false)
+                    {
+                        if (OfficerTeir >= 3)
+                        {
+                            HP.SheildActive = true;
+                            HP.SheildMaxHealth = SheildTierValues[OfficerTeir - 1];
+                            HP.SheildCurrentHealth = HP.SheildMaxHealth;
+                        }
+
+                        if (OfficerTeir < 4 || Royal == false)
+                        {
+                            summonEnemiesTeir1To3();
+                        }
+                        else if (Royal == true)
+                        {
+                            summonEnemiesTeir4To5();
+                        }
+                        summoned = true;
+                    }
+
+                    NavMeshAgent.SetDestination(transform.position);
+
+                    StillTimer += Time.deltaTime;
+
+                    pauseTimer = true;
+
+                    if (StillTimer > 7.5)
+                    {
+                        StillTimer = 0;
+                        R = -1;
+                        state = OfficerState.moving;
+                    }
+
                 }
-                else if(Royal == true)
+
+                if (state == OfficerState.moving)
                 {
-                    summonEnemiesTeir4To5();
+                    Shotgun.gameObject.SetActive(false);
+                    animator.SetBool("Aiming", false);
+                    if (R == -1)
+                    {
+                        R = Random.Range(0, Pointlist.Length);
+
+                        NavMeshAgent.SetDestination(Pointlist[R].position);
+                    }
+                    if (Vector3.Distance(Pointlist[R].position, transform.position) > StoppinDistance)
+                    {
+                        animator.SetBool("Running", true);
+                    }
+                    else
+                    {
+                        animator.SetBool("Running", false);
+                        if (OfficerTeir < 3)
+                        {
+                            state = OfficerState.idle;
+                        }
+                        else
+                        {
+                            state = OfficerState.Aiming;
+                        }
+                    }
                 }
-                summoned = true;
-            }
 
-            NavMeshAgent.SetDestination(transform.position);
-
-            StillTimer += Time.deltaTime;
-
-            pauseTimer = true;
-
-            if (StillTimer > 7.5)
-            {
-                StillTimer = 0;
-                R = -1;
-                state = OfficerState.moving;
-            }
-
-        }
-
-        if(state == OfficerState.moving)
-        {
-            Shotgun.gameObject.SetActive(false);
-            animator.SetBool("Aiming", false);
-            if (R == -1)
-            {
-                R = Random.Range(0, Pointlist.Length);
-
-                NavMeshAgent.SetDestination(Pointlist[R].position);
-            }
-            if (Vector3.Distance(Pointlist[R].position, transform.position) > StoppinDistance)
-            {
-                animator.SetBool("Running", true);
-            }
-            else
-            {
-                animator.SetBool("Running", false);
-                if (OfficerTeir < 3)
+                if (state == OfficerState.idle)
                 {
-                    state = OfficerState.idle;
+                    Shotgun.gameObject.SetActive(false);
+                    animator.SetBool("Aiming", false);
+                    transform.LookAt(player.transform.position);
                 }
-                else
+                if (state == OfficerState.Aiming)
                 {
-                    state = OfficerState.Aiming;
+                    Shotgun.gameObject.SetActive(true);
+                    Shotgun.transform.position = ShotgunLocation.position;
+                    transform.LookAt(player.transform.position);
+                    animator.SetBool("Aiming", true);
+
+                    TBS -= Time.deltaTime;
+                    if (TBS <= 0)
+                    {
+                        TBS = TimeBetweenShots;
+                        FireShotgun();
+                    }
+
+                }
+
+                if (ST >= SummonTimers[OfficerTeir - 1])
+                {
+                    ST = 0;
+
+                    state = OfficerState.Summon;
+
+                    summoned = false;
+
+                }
+
+                if (Ot != OfficerTeir)
+                {
+                    Ot = OfficerTeir;
+                    BullS = BulletsShot[OfficerTeir - 1];
+                    if (OfficerTeir == 1)
+                    {
+                        OfficerCoat.SetActive(false);
+                        OfficerHat.SetActive(false);
+                        OfficerS_Pads.SetActive(false);
+                        HP.MaxHealth = HealthTeirValues[OfficerTeir - 1];
+                        HP.CurrentHealth = HealthTeirValues[OfficerTeir - 1];
+                    }
+                    else if (OfficerTeir == 2)
+                    {
+                        OfficerCoat.SetActive(true);
+                        OfficerHat.SetActive(false);
+                        OfficerS_Pads.SetActive(false);
+                        HP.MaxHealth = HealthTeirValues[OfficerTeir - 1];
+                        HP.CurrentHealth = HealthTeirValues[OfficerTeir - 1];
+                    }
+                    else if (OfficerTeir == 3)
+                    {
+                        OfficerCoat.SetActive(true);
+                        OfficerHat.SetActive(true);
+                        OfficerS_Pads.SetActive(false);
+                        HP.MaxHealth = HealthTeirValues[OfficerTeir - 1];
+                        HP.CurrentHealth = HealthTeirValues[OfficerTeir - 1];
+                    }
+                    else if (OfficerTeir == 4)
+                    {
+                        OfficerCoat.SetActive(true);
+                        OfficerHat.SetActive(true);
+                        OfficerS_Pads.SetActive(true);
+                        HP.MaxHealth = HealthTeirValues[OfficerTeir - 1];
+                        HP.CurrentHealth = HealthTeirValues[OfficerTeir - 1];
+                    }
+                    else if (OfficerTeir == 5)
+                    {
+                        OfficerCoat.SetActive(true);
+                        OfficerHat.SetActive(true);
+                        OfficerS_Pads.SetActive(true);
+                        HP.MaxHealth = HealthTeirValues[OfficerTeir - 1];
+                        HP.CurrentHealth = HealthTeirValues[OfficerTeir - 1];
+                    }
+                }
+
+                if (pauseTimer == false)
+                {
+                    ST += Time.deltaTime;
+
+                    Ability.fillAmount = (ST / SummonTimers[OfficerTeir - 1]);
+                }
+
+                if (OfficerTeir == 1 && Vector3.Distance(gameObject.transform.position, player.transform.position) <= FearRange)
+                {
+                    animator.SetBool("Scared", true);
+                    pauseTimer = true;
+                }
+                else if ((OfficerTeir == 1 && Vector3.Distance(gameObject.transform.position, player.transform.position) > FearRange) || OfficerTeir > 1)
+                {
+                    animator.SetBool("Scared", false);
+                    pauseTimer = false;
                 }
             }
-        }
-
-        if (state == OfficerState.idle)
-        {
-            Shotgun.gameObject.SetActive(false);
-            animator.SetBool("Aiming", false);
-            transform.LookAt(player.transform.position);
-        }
-        if (state == OfficerState.Aiming)
-        {
-            Shotgun.gameObject.SetActive(true);
-            Shotgun.transform.position = ShotgunLocation.position;
-            transform.LookAt(player.transform.position);
-            animator.SetBool("Aiming", true);
-
-            TBS -= Time.deltaTime;
-            if(TBS <= 0)
-            {
-                TBS = TimeBetweenShots;
-                FireShotgun();
-            }    
-
-        }
-
-        if (ST >= SummonTimers[OfficerTeir-1])
-        {
-            ST = 0;
-
-            state = OfficerState.Summon;
-             
-            summoned = false;
-
-        }
-        
-        if(Ot != OfficerTeir)
-        {
-            Ot = OfficerTeir;
-            BullS = BulletsShot[OfficerTeir - 1];
-            if (OfficerTeir == 1)
-            {
-                OfficerCoat.SetActive(false);
-                OfficerHat.SetActive(false);
-                OfficerS_Pads.SetActive(false);
-                HP.MaxHealth = HealthTeirValues[OfficerTeir - 1];
-                HP.CurrentHealth = HealthTeirValues[OfficerTeir - 1];
-            }
-            else if (OfficerTeir == 2)
-            {
-                OfficerCoat.SetActive(true);
-                OfficerHat.SetActive(false);
-                OfficerS_Pads.SetActive(false);
-                HP.MaxHealth = HealthTeirValues[OfficerTeir - 1];
-                HP.CurrentHealth = HealthTeirValues[OfficerTeir - 1];
-            }
-            else if (OfficerTeir == 3)
-            {
-                OfficerCoat.SetActive(true);
-                OfficerHat.SetActive(true);
-                OfficerS_Pads.SetActive(false);
-                HP.MaxHealth = HealthTeirValues[OfficerTeir - 1];
-                HP.CurrentHealth = HealthTeirValues[OfficerTeir - 1];
-            }
-            else if (OfficerTeir == 4)
-            {
-                OfficerCoat.SetActive(true);
-                OfficerHat.SetActive(true);
-                OfficerS_Pads.SetActive(true);
-                HP.MaxHealth = HealthTeirValues[OfficerTeir - 1];
-                HP.CurrentHealth = HealthTeirValues[OfficerTeir - 1];
-            }
-            else if (OfficerTeir == 5)
-            {
-                OfficerCoat.SetActive(true);
-                OfficerHat.SetActive(true);
-                OfficerS_Pads.SetActive(true);
-                HP.MaxHealth = HealthTeirValues[OfficerTeir - 1];
-                HP.CurrentHealth = HealthTeirValues[OfficerTeir - 1];
-            }
-        }
-
-        if(pauseTimer == false)
-        {
-            ST += Time.deltaTime;
-
-            Ability.fillAmount = (ST / SummonTimers[OfficerTeir - 1]);
-        }
-
-        if (OfficerTeir == 1 && Vector3.Distance(gameObject.transform.position, player.transform.position) <= FearRange)
-        {
-            animator.SetBool("Scared", true);
-            pauseTimer = true;
-        }
-        else if ((OfficerTeir == 1 && Vector3.Distance(gameObject.transform.position, player.transform.position) > FearRange) || OfficerTeir > 1)
-        {
-            animator.SetBool("Scared", false);
-            pauseTimer = false;
         }
 
     }

@@ -119,268 +119,275 @@ public class SoldierAi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transforms.Count() == 0)
+        if (PauseManager.Instance != null)
         {
-            pointList PL = GameObject.FindWithTag("PointList").GetComponent<pointList>();
+            if (PauseManager.Instance.IsPaused == false)
+            {
 
-            transforms = PL.PointTransforms;
-        }
-        
-        if(!usingMultipleHealthBars)
-        {
-            if(Health.CurrentHealth <= 0)
-            {
-                State = SoldierState.Dead;
-            }
-        }
-        if (usingMultipleHealthBars)
-        {
-            if (HealthBarMultiple.totalHealth <= 0)
-            {
-                State = SoldierState.Dead;
-            }
-        }
-
-
-        if (State == SoldierState.Running)
-        {
-            if (UseFireTime)
-            {
-                ft = FireTime;
-            }
-            if (timer > 0)
-            {
-                timer -= Time.deltaTime;
-            }
-            else if(timer <= 0)
-            {
-                MovementOverRide = false;
-            }
-
-            Animator.SetLayerWeight(1, 0);
-            Gun.SetActive(false);
-            ReadyToPullGun = true;
-            Shoulder.weight = 0;
-
-            if (MovementOverRide == true)
-            {
-                if (R == -1)
+                if (transforms.Count() == 0)
                 {
-                    R = UnityEngine.Random.Range(0, transforms.Length);
-                }
-                if (transforms[R] != null)
-                {
-                    Agent.SetDestination(transforms[R].position);
+                    pointList PL = GameObject.FindWithTag("PointList").GetComponent<pointList>();
+
+                    transforms = PL.PointTransforms;
                 }
 
-                if (Vector3.Distance(transform.position, transforms[R].position) <= 2)
+                if (!usingMultipleHealthBars)
                 {
-                    timer = 0;
+                    if (Health.CurrentHealth <= 0)
+                    {
+                        State = SoldierState.Dead;
+                    }
                 }
-            }
-            else if (Vector3.Distance(Player.transform.position, transform.position) > MinDistanceAwayAToAim)
-            {
-                if (MovementOverRide == false)
+                if (usingMultipleHealthBars)
                 {
-                    Agent.SetDestination(Player.transform.position);
+                    if (HealthBarMultiple.totalHealth <= 0)
+                    {
+                        State = SoldierState.Dead;
+                    }
                 }
-            }
-            else if (Vector3.Distance(Player.transform.position, transform.position) <= MinDistanceAwayAToAim)
-            {
-                if (MovementOverRide == false)
+
+
+                if (State == SoldierState.Running)
                 {
+                    if (UseFireTime)
+                    {
+                        ft = FireTime;
+                    }
+                    if (timer > 0)
+                    {
+                        timer -= Time.deltaTime;
+                    }
+                    else if (timer <= 0)
+                    {
+                        MovementOverRide = false;
+                    }
+
+                    Animator.SetLayerWeight(1, 0);
+                    Gun.SetActive(false);
+                    ReadyToPullGun = true;
+                    Shoulder.weight = 0;
+
+                    if (MovementOverRide == true)
+                    {
+                        if (R == -1)
+                        {
+                            R = UnityEngine.Random.Range(0, transforms.Length);
+                        }
+                        if (transforms[R] != null)
+                        {
+                            Agent.SetDestination(transforms[R].position);
+                        }
+
+                        if (Vector3.Distance(transform.position, transforms[R].position) <= 2)
+                        {
+                            timer = 0;
+                        }
+                    }
+                    else if (Vector3.Distance(Player.transform.position, transform.position) > MinDistanceAwayAToAim)
+                    {
+                        if (MovementOverRide == false)
+                        {
+                            Agent.SetDestination(Player.transform.position);
+                        }
+                    }
+                    else if (Vector3.Distance(Player.transform.position, transform.position) <= MinDistanceAwayAToAim)
+                    {
+                        if (MovementOverRide == false)
+                        {
+                            Agent.SetDestination(transform.position);
+                            State = SoldierState.Aiming;
+                        }
+                    }
+
+                    Tba = TimeBetweenShots;
+
+                    Vector3 toPlayer = (Player.transform.position - transform.position).normalized;
+                    Vector3 forward = transform.forward;
+
+                    Vector3 direction = Player.transform.position - transform.position;
+                    float dotProduct = Vector3.Dot(direction, transform.right);
+
+                    float angle = Vector3.Angle(forward, toPlayer);
+                    float TempAngle = 0;
+
+                    if (dotProduct > 0)
+                    {
+                        TempAngle = -angle;
+                    }
+                    else if (dotProduct < 0)
+                    {
+                        TempAngle = angle;
+                    }
+
+                    if (TempAngle > detectionAngle || TempAngle < -detectionAngle)
+                    {
+                        TurnOffContraints();
+                    }
+                    else
+                    {
+                        TurnOnContraints();
+                    }
+
+                    /*
+                    if(Move == true)
+                    {
+                        Transform P;
+                        float[] XL = { MinDistanceAwayAToAim, -MinDistanceAwayAToAim };
+                        float[] XZ = { MinDistanceAwayAToAim, -MinDistanceAwayAToAim };
+
+                        var HowManyTX = XL.Length;
+                        var howmanyTZ = XL.Length;
+
+                        var RX = UnityEngine.Random.Range(0, HowManyTX);
+                        var RZ = UnityEngine.Random.Range(0, howmanyTZ);
+
+                        float A = RX == 0 ? 0 : 1;
+                        Debug.Log(A);
+
+                        Agent.SetDestination(Player.transform.position + new Vector3(RX,0,RZ));
+
+                        V3 = Player.transform.position + new Vector3(RX, 0, RZ);
+
+                        Move = false;
+                    }
+
+                    Vector3 toPlayer = (Player.transform.position - transform.position).normalized;
+                    Vector3 forward = transform.forward;
+
+                    Vector3 direction = Player.transform.position - transform.position;
+                    float dotProduct = Vector3.Dot(direction, transform.right);
+
+                    float angle = Vector3.Angle(forward, toPlayer);
+                    float TempAngle = 0;
+
+                    if (dotProduct > 0)
+                    {
+                        TempAngle = -angle;
+                    }
+                    else if (dotProduct < 0)
+                    {
+                        TempAngle = angle;
+                    }
+
+                    if (TempAngle > detectionAngle)
+                    {
+                       Move = true;
+                    }
+                    if (TempAngle < -detectionAngle)
+                    {
+                       Move = true; 
+                    }*/
+
+
+
+                    //ai Function here
+                }
+                if (State == SoldierState.Aiming)
+                {
+                    if (UseFireTime)
+                    {
+                        ft -= Time.deltaTime;
+                    }
+                    if (ft <= 0 && UseFireTime == true)
+                    {
+                        int A = UnityEngine.Random.Range(0, 5);
+
+                        MovementOverRide = true;
+
+                        timer = MoveTime;
+                        State = SoldierState.Running;
+                        R = -1;
+                        Move = true;
+                    }
+
+                    Animator.SetLayerWeight(1, 1);
+                    Gun.SetActive(true);
+                    if (ReadyToPullGun == true)
+                        StartCoroutine(PulloutGun());
+
+                    if (Vector3.Distance(Player.transform.position, transform.position) > MaxDistanceToRun)
+                    {
+                        int A = UnityEngine.Random.Range(0, 5);
+
+                        MovementOverRide = true;
+
+                        timer = MoveTime;
+                        State = SoldierState.Running;
+                        R = -1;
+                        Move = true;
+                    }
+                    else if (Tba <= 0)
+                    {
+                        State = SoldierState.Shooting;
+                    }
+                    Tba -= Time.deltaTime;
+
+                    Vector3 toPlayer = (Player.transform.position - transform.position).normalized;
+                    Vector3 forward = transform.forward;
+
+                    Vector3 direction = Player.transform.position - transform.position;
+                    float dotProduct = Vector3.Dot(direction, transform.right);
+
+                    float angle = Vector3.Angle(forward, toPlayer);
+                    float TempAngle = 0;
+
+                    if (dotProduct > 0)
+                    {
+                        TempAngle = -angle;
+                    }
+                    else if (dotProduct < 0)
+                    {
+                        TempAngle = angle;
+                    }
+
+                    if (TempAngle > detectionAngle)
+                    {
+                        transform.Rotate(new Vector3(0, -RotateSpeed, 0), Space.Self);
+                    }
+                    if (TempAngle < -detectionAngle)
+                    {
+                        transform.Rotate(new Vector3(0, RotateSpeed, 0), Space.Self);
+                    }
+
                     Agent.SetDestination(transform.position);
+                }
+                if (State == SoldierState.Shooting)
+                {
+                    if (usingPartice)
+                    {
+                        particleSystem.Play();
+
+                    }
+                    if (!usingPartice)
+                    {
+
+                        Vector3 DirWithoutSpread = firelocation.position - Gun.transform.position;
+
+
+
+                        float x = UnityEngine.Random.Range(-Spread, Spread);
+                        float y = UnityEngine.Random.Range(-Spread, Spread);
+
+
+                        Vector3 FireDir = DirWithoutSpread + new Vector3(x, y, 0);
+
+
+                        GameObject CurrBullet = Instantiate(bullet, firelocation.position, Quaternion.identity);
+
+                        CurrBullet.transform.forward = FireDir;
+
+                        CurrBullet.GetComponent<Rigidbody>().AddForce(FireDir.normalized * shootF, ForceMode.Impulse);
+
+
+                    }
+                    Tba = TimeBetweenShots;
                     State = SoldierState.Aiming;
                 }
+                if (State == SoldierState.Dead)
+                {
+
+                }
             }
-  
-            Tba = TimeBetweenShots;
-
-            Vector3 toPlayer = (Player.transform.position - transform.position).normalized;
-            Vector3 forward = transform.forward;
-
-            Vector3 direction = Player.transform.position - transform.position;
-            float dotProduct = Vector3.Dot(direction, transform.right);
-
-            float angle = Vector3.Angle(forward, toPlayer);
-            float TempAngle = 0;
-
-            if (dotProduct > 0)
-            {
-                TempAngle = -angle;
-            }
-            else if (dotProduct < 0)
-            {
-                TempAngle = angle;
-            }
-
-            if (TempAngle > detectionAngle || TempAngle < -detectionAngle)
-            {
-                TurnOffContraints();
-            }
-            else
-            {
-                TurnOnContraints();
-            }
-       
-            /*
-            if(Move == true)
-            {
-                Transform P;
-                float[] XL = { MinDistanceAwayAToAim, -MinDistanceAwayAToAim };
-                float[] XZ = { MinDistanceAwayAToAim, -MinDistanceAwayAToAim };
-
-                var HowManyTX = XL.Length;
-                var howmanyTZ = XL.Length;
-            
-                var RX = UnityEngine.Random.Range(0, HowManyTX);
-                var RZ = UnityEngine.Random.Range(0, howmanyTZ);
-
-                float A = RX == 0 ? 0 : 1;
-                Debug.Log(A);
-
-                Agent.SetDestination(Player.transform.position + new Vector3(RX,0,RZ));
-
-                V3 = Player.transform.position + new Vector3(RX, 0, RZ);
-
-                Move = false;
-            }
-
-            Vector3 toPlayer = (Player.transform.position - transform.position).normalized;
-            Vector3 forward = transform.forward;
-
-            Vector3 direction = Player.transform.position - transform.position;
-            float dotProduct = Vector3.Dot(direction, transform.right);
-
-            float angle = Vector3.Angle(forward, toPlayer);
-            float TempAngle = 0;
-
-            if (dotProduct > 0)
-            {
-                TempAngle = -angle;
-            }
-            else if (dotProduct < 0)
-            {
-                TempAngle = angle;
-            }
-
-            if (TempAngle > detectionAngle)
-            {
-               Move = true;
-            }
-            if (TempAngle < -detectionAngle)
-            {
-               Move = true; 
-            }*/
-
-
-
-            //ai Function here
-        }
-        if(State == SoldierState.Aiming)
-        {
-            if(UseFireTime)
-            {
-                ft -= Time.deltaTime;
-            }
-            if(ft <= 0 && UseFireTime == true)
-            {
-                int A = UnityEngine.Random.Range(0, 5);
-                
-                MovementOverRide = true;
-                
-                timer = MoveTime;
-                State = SoldierState.Running;
-                R = -1;
-                Move = true;
-            }
-
-            Animator.SetLayerWeight(1, 1);
-            Gun.SetActive(true);
-            if (ReadyToPullGun == true)
-                StartCoroutine(PulloutGun());
-
-            if (Vector3.Distance(Player.transform.position, transform.position) > MaxDistanceToRun)
-            {
-                int A = UnityEngine.Random.Range(0, 5);
-                
-                MovementOverRide = true;
-                
-                timer = MoveTime;
-                State = SoldierState.Running;
-                R = -1;
-                Move = true;
-            }
-            else if (Tba <= 0)
-            {
-                State = SoldierState.Shooting;
-            }
-            Tba -= Time.deltaTime;
-
-            Vector3 toPlayer = (Player.transform.position - transform.position).normalized;
-            Vector3 forward = transform.forward;
-
-            Vector3 direction = Player.transform.position - transform.position;
-            float dotProduct = Vector3.Dot(direction, transform.right);
-
-            float angle = Vector3.Angle(forward, toPlayer);
-            float TempAngle = 0;
-
-            if (dotProduct > 0)
-            {
-                TempAngle = -angle;
-            }
-            else if (dotProduct < 0)
-            {
-                TempAngle = angle;
-            }
-
-            if (TempAngle > detectionAngle)
-            {
-                transform.Rotate(new Vector3(0,-RotateSpeed,0), Space.Self);
-            }
-            if (TempAngle < -detectionAngle)
-            {
-                transform.Rotate(new Vector3(0, RotateSpeed, 0), Space.Self);
-            }
-
-            Agent.SetDestination(transform.position);
-        }
-        if (State == SoldierState.Shooting)
-        {
-            if(usingPartice)
-            {
-                particleSystem.Play();
-
-            }
-            if (!usingPartice)
-            {
-
-                Vector3 DirWithoutSpread = firelocation.position - Gun.transform.position;
-
-
-
-                float x = UnityEngine.Random.Range(-Spread, Spread);
-                float y = UnityEngine.Random.Range(-Spread, Spread);
-
-
-                Vector3 FireDir = DirWithoutSpread + new Vector3(x, y, 0);
-
-
-                GameObject CurrBullet = Instantiate(bullet, firelocation.position, Quaternion.identity);
-
-                CurrBullet.transform.forward = FireDir;
-
-                CurrBullet.GetComponent<Rigidbody>().AddForce(FireDir.normalized * shootF, ForceMode.Impulse);
- 
-               
-            }
-            Tba = TimeBetweenShots;
-            State = SoldierState.Aiming;
-        }
-        if(State == SoldierState.Dead)
-        {
-
         }
  
     }

@@ -122,130 +122,145 @@ public class BlasPhosAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if(Phase2Start == false)
+        if (PauseManager.Instance != null)
         {
-            if(Hbm.totalHealth <= Phase2HealthLimit)
+            if (PauseManager.Instance.IsPaused == false)
             {
-                Phase2Start = true;
-            }
-        }
 
-        if(Hbm.totalHealth <=0)
-        { 
-            State = BlasphosState.Dead;
-            FireRing.Stop();
-            FireAttack.Stop();
-        }
-        if(State == BlasphosState.Waiting)
-        {
-            Wt -= Time.deltaTime;
-            if(Wt <= 0)
-            {
-                State = BlasphosState.Moving;
-            }
-        }
-        if(State == BlasphosState.Moving)
-        {
 
-            if (UseFire == false)
-            {
-                BlasphosFire();
-            }
-            else if (UseFire == true)
-            {
-                Ft -= Time.deltaTime;
-                if (Ft <= 0)
+                if (Phase2Start == false)
                 {
-                    FireBullet();
+                    if (Hbm.totalHealth <= Phase2HealthLimit)
+                    {
+                        Phase2Start = true;
+                    }
                 }
-            }
-            //animation          
-            agent.Stop();
-            S_A_T -= Time.deltaTime;
 
-            transform.LookAt(GameObject.FindWithTag("Player").transform);
-            transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0),Space.Self);
-
-            if (Phase2Start == true)
-            {
-                MT -= Time.deltaTime;
-                if (MT <= 0)
+                if (Hbm.totalHealth <= 0)
                 {
-                    MT = MeteorTime;
-                    SpecialAttackMeteor();
+                    State = BlasphosState.Dead;
+                    FireRing.Stop();
+                    FireAttack.Stop();
                 }
+                if (State == BlasphosState.Waiting)
+                {
+                    Wt -= Time.deltaTime;
+                    if (Wt <= 0)
+                    {
+                        State = BlasphosState.Moving;
+                    }
+                }
+                if (State == BlasphosState.Moving)
+                {
+
+                    if (UseFire == false)
+                    {
+                        BlasphosFire();
+                    }
+                    else if (UseFire == true)
+                    {
+                        Ft -= Time.deltaTime;
+                        if (Ft <= 0)
+                        {
+                            FireBullet();
+                        }
+                    }
+                    //animation          
+                    agent.Stop();
+                    S_A_T -= Time.deltaTime;
+
+                    transform.LookAt(GameObject.FindWithTag("Player").transform);
+                    transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0), Space.Self);
+
+                    if (Phase2Start == true)
+                    {
+                        MT -= Time.deltaTime;
+                        if (MT <= 0)
+                        {
+                            MT = MeteorTime;
+                            SpecialAttackMeteor();
+                        }
+                    }
+
+
+                    if (S_A_T <= 0)
+                    {
+                        State = BlasphosState.ChangePosition;
+                        MT = MeteorTime;
+                        S_A_T = SpecialAttackTimer;
+
+                    }
+                }
+                if (State == BlasphosState.ChangePosition)
+                {
+                    animator.SetBool(AnimatorVariableNames[1], true);
+                    FireAttack.Stop();
+                    agent.Resume();
+
+                    int i = Random.Range(0, Movepoints.Length);
+
+                    GameObject go = Movepoints[i];
+                    Storedpos = go;
+
+                    agent.SetDestination(go.transform.position);
+
+                    State = BlasphosState.SpecialAttack;
+
+                }
+                if (State == BlasphosState.SpecialAttack)
+                {
+                    if (transform.position.x == Storedpos.transform.position.x && transform.position.z == Storedpos.transform.position.z)
+                    {
+                        animator.SetBool(AnimatorVariableNames[2], true);
+                        animator.SetBool(AnimatorVariableNames[1], false);
+                        transform.LookAt(GameObject.FindWithTag("Player").transform);
+                        PreformSpecialAttack = true;
+                    }
+
+                }
+
             }
-
-
-            if (S_A_T <= 0)
-            {
-                State = BlasphosState.ChangePosition;
-                MT = MeteorTime;
-                S_A_T = SpecialAttackTimer;
-
-            }
-       }
-        if(State == BlasphosState.ChangePosition)
-        {
-            animator.SetBool(AnimatorVariableNames[1], true);
-            FireAttack.Stop();
-            agent.Resume();
-
-            int i = Random.Range(0, Movepoints.Length);
-
-            GameObject go = Movepoints[i];
-            Storedpos = go;
-
-            agent.SetDestination(go.transform.position);
-
-            State = BlasphosState.SpecialAttack;
-
         }
-        if(State == BlasphosState.SpecialAttack)
-        {
-            if(transform.position.x == Storedpos.transform.position.x && transform.position.z == Storedpos.transform.position.z)
-            {
-                animator.SetBool(AnimatorVariableNames[2], true);
-                animator.SetBool(AnimatorVariableNames[1], false);
-                transform.LookAt(GameObject.FindWithTag("Player").transform);
-                PreformSpecialAttack = true;
-            }
-
-        }
-
-
     }
 
     public IEnumerator SwapSpeed()
     {
         while (true)
         {
-            if ((PreformSpecialAttack == false))
-            {
-                yield return new WaitForSeconds(swapSpeedCounter);
-                {
-                    int f = Random.RandomRange(0, 3);
 
-                    if (f == 0)
+                    if ((PreformSpecialAttack == false))
                     {
-                        speed *= -1;
-                        animator.SetFloat(AnimatorVariableNames[0], speed);
+                        yield return new WaitForSeconds(swapSpeedCounter);
+                        {
+                            int f = Random.RandomRange(0, 3);
 
-                        // swap animation
+                            if (f == 0)
+                            {
+                                if (PauseManager.Instance != null)
+                                 {
+                                    if (PauseManager.Instance.IsPaused == false)
+                                    {
+                                        speed *= -1;
+                                        animator.SetFloat(AnimatorVariableNames[0], speed);
+                                    }
+                                }
+
+                                // swap animation
+                            }
+                        }
                     }
-                }
-            }
-            else if ((PreformSpecialAttack == true))
-            {
-                yield return null;
-                //yield break;
-                ChooseSpecialAttack();
+                    else if ((PreformSpecialAttack == true))
+                    {
+                        yield return null;
+                        //yield break;
+                        ChooseSpecialAttack();
 
-                Debug.Log("specialAttack");
-                yield return new WaitForSeconds(postSpecialAttackWaitTime);
-                BacktoMoving();
-            }
+                        Debug.Log("specialAttack");
+                        yield return new WaitForSeconds(postSpecialAttackWaitTime);
+                        BacktoMoving();
+                    }
+                
+            
         }
     }
 

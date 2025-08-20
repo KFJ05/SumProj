@@ -37,17 +37,27 @@ public class RocketAi : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!RocketyRb)
+        if (PauseManager.Instance != null)
         {
-            return;
+            if (PauseManager.Instance.IsPaused == false)
+            {
+                if (!RocketyRb)
+                {
+                    return;
+                }
+
+                RocketyRb.velocity = rocketT.forward * RocketSpeed;
+
+                var rocketTargetrot = Quaternion.LookRotation(RocketTarget.transform.position - rocketT.position);
+
+
+                RocketyRb.MoveRotation(Quaternion.RotateTowards(rocketT.rotation, rocketTargetrot, turnSpeed));
+            }
+            else if(PauseManager.Instance.IsPaused)
+            {
+                RocketyRb.velocity = Vector3.zero;
+            }
         }
-
-        RocketyRb.velocity = rocketT.forward * RocketSpeed;
-
-        var rocketTargetrot = Quaternion.LookRotation(RocketTarget.transform.position - rocketT.position);
-        
-
-        RocketyRb.MoveRotation(Quaternion.RotateTowards(rocketT.rotation, rocketTargetrot, turnSpeed));
     }
 
     private void OnCollisionEnter(Collision collision)

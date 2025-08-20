@@ -41,64 +41,71 @@ public class SoldierDie : MonoBehaviour
 
     void Update()
     {
-        if (!usingMultipleHpBars && Triggerd == false)
+        if (PauseManager.Instance != null)
         {
-            if (Hp.CurrentHealth <= 0)
+            if (PauseManager.Instance.IsPaused == false)
             {
-                for (int i = 0; i < colliders.Length; i++)
+                if (!usingMultipleHpBars && Triggerd == false)
                 {
-                    colliders[i].isTrigger = false;
+                    if (Hp.CurrentHealth <= 0)
+                    {
+                        for (int i = 0; i < colliders.Length; i++)
+                        {
+                            colliders[i].isTrigger = false;
+                        }
+                        for (int i = 0; i < Bodies.Length; i++)
+                        {
+                            Bodies[i].isKinematic = false;
+                        }
+                        animator.enabled = false;
+                        Triggerd = true;
+                    }
                 }
-                for (int i = 0; i < Bodies.Length; i++)
+
+
+                if (usingMultipleHpBars && Triggerd == false)
                 {
-                    Bodies[i].isKinematic = false;
+                    if (HealthBarMultiple.totalHealth <= 0)
+                    {
+                        for (int i = 0; i < colliders.Length; i++)
+                        {
+                            colliders[i].isTrigger = false;
+                        }
+                        for (int i = 0; i < Bodies.Length; i++)
+                        {
+                            Bodies[i].isKinematic = false;
+                        }
+                        animator.enabled = false;
+                        Triggerd = true;
+                    }
                 }
-                animator.enabled = false;
-                Triggerd = true;
-            }
-        }
 
-        if (usingMultipleHpBars && Triggerd == false)
-        {
-            if (HealthBarMultiple.totalHealth <= 0)
-            {
-                for (int i = 0; i < colliders.Length; i++)
+                if (Triggerd == true)
                 {
-                    colliders[i].isTrigger = false;
+                    if (HealthBar != null)
+                    {
+                        HealthBar.gameObject.SetActive(false);
+                    }
+                    TimeToDestroy -= Time.deltaTime;
                 }
-                for (int i = 0; i < Bodies.Length; i++)
+                if (TimeToDestroy <= 0)
                 {
-                    Bodies[i].isKinematic = false;
+                    if (EnemyManager.Instance != null)
+                    {
+                        EnemyManager.Instance.RemoveEnemy(gameObject);
+                    }
+
+                    Destroy(gameObject);
                 }
-                animator.enabled = false;
-                Triggerd = true;
+
+                if (WinLevelOnDeath == true && Triggerd == true)
+                {
+                    Victory V = GameObject.FindWithTag("Player").GetComponent<Victory>();
+
+                    V.SetWin();
+
+                }
             }
-        }
-
-        if (Triggerd == true)
-        {
-            if (HealthBar != null)
-            {
-                HealthBar.gameObject.SetActive(false);
-            }
-            TimeToDestroy -= Time.deltaTime;
-        }
-        if(TimeToDestroy <= 0)
-        {
-            if (EnemyManager.Instance != null)
-            {
-                EnemyManager.Instance.RemoveEnemy(gameObject);
-            }
-
-            Destroy(gameObject);
-        }
-
-        if (WinLevelOnDeath == true && Triggerd == true)
-        {
-            Victory V = GameObject.FindWithTag("Player").GetComponent<Victory>();
-
-            V.SetWin();
-
         }
     }
 }

@@ -47,63 +47,69 @@ public class Quadruped_AI : MonoBehaviour
 
     private void Update()
     {
-        if (QuadHP == null)
+        if (PauseManager.Instance != null)
         {
-            QuadHP = gameObject.GetComponent<Health>();
-        }
-
-        
-        
-
-
-
-        if(QuadHP != null && QuadHP.CurrentHealth > 0)
-        {
-
-
-            if (LockY == true)
+            if (PauseManager.Instance.IsPaused == false)
             {
-                transform.LookAt(new Vector3(Player.transform.position.x, 0, Player.transform.position.z));
-            }
-            else
-            {
-                transform.LookAt(Player.transform.position);
-            }
 
-            transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.Self);
-        }
-
-        if (QuadHP != null && QuadHP.CurrentHealth <= 0)
-        {
-
-            for (int i = 0; i < Turrets.Count(); i++)
-            {
-                if (Turrets[i] != null)
+                if (QuadHP == null)
                 {
-                    TurretAI T = Turrets[i].gameObject.GetComponent<TurretAI>();
-                    if (T != null)
-                    {
-                        T.enabled = false;
-                    }
-                    Die D = Turrets[i].gameObject.GetComponent<Die>();
-
-                    if (D != null)
-                    {
-                        D.TriggerDeath = true;
-                    }
+                    QuadHP = gameObject.GetComponent<Health>();
                 }
 
 
+
+
+
+
+                if (QuadHP != null && QuadHP.CurrentHealth > 0)
+                {
+
+
+                    if (LockY == true)
+                    {
+                        transform.LookAt(new Vector3(Player.transform.position.x, 0, Player.transform.position.z));
+                    }
+                    else
+                    {
+                        transform.LookAt(Player.transform.position);
+                    }
+
+                    transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.Self);
+                }
+
+                if (QuadHP != null && QuadHP.CurrentHealth <= 0)
+                {
+
+                    for (int i = 0; i < Turrets.Count(); i++)
+                    {
+                        if (Turrets[i] != null)
+                        {
+                            TurretAI T = Turrets[i].gameObject.GetComponent<TurretAI>();
+                            if (T != null)
+                            {
+                                T.enabled = false;
+                            }
+                            Die D = Turrets[i].gameObject.GetComponent<Die>();
+
+                            if (D != null)
+                            {
+                                D.TriggerDeath = true;
+                            }
+                        }
+
+
+                    }
+
+                    EnemyManager.Instance.RemoveEnemy(gameObject);
+
+                    ProAnim.enabled = false;
+                    ProBody.enabled = false;
+
+                    Invoke(nameof(DestroyLegs), TimeToDestroyLegs);
+                }
             }
-
-            EnemyManager.Instance.RemoveEnemy(gameObject);
-
-            ProAnim.enabled = false;
-            ProBody.enabled = false;
-
-            Invoke(nameof(DestroyLegs), TimeToDestroyLegs);
         }
-
       
     }
 
