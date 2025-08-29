@@ -6716,6 +6716,7 @@ MonoBehaviour:
   StoredObj: {fileID: 0}
   clips: []
   poofNoise: {fileID: 0}
+  InstantKillPlayer: 0
   V: {x: 0, y: 0, z: 0}
   shootF: 0
   UpwardF: 0
@@ -7662,9 +7663,9 @@ MonoBehaviour:
   - {fileID: 367633362}
   - {fileID: 1624235474}
   spawnedEntities:
-  - {fileID: 3622301092600986809, guid: 7d0252dd3ceb4194ea2aacb49af00d67, type: 3}
+  - {fileID: 3622301092600986809, guid: 217c9cf8d11f299468b03fc1b92ec9e3, type: 3}
   - {fileID: 6037562090520907634, guid: 325970c8229c63f4fab468824f5c4d3b, type: 3}
-  - {fileID: 6037562090520907634, guid: 325970c8229c63f4fab468824f5c4d3b, type: 3}
+  - {fileID: 1925130697391322004, guid: 98f242332166c6a48b2f72050ebd3bac, type: 3}
   - {fileID: 1925130697391322004, guid: 749d4606135861b45bdd44dcec1f375c, type: 3}
   - {fileID: 1925130697391322004, guid: 749d4606135861b45bdd44dcec1f375c, type: 3}
   - {fileID: 1925130697391322004, guid: 5b0b6a885932a4848b4d3a3cb560cf76, type: 3}
@@ -8770,7 +8771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentLevel: Ch1Lvl3EX
   NextLevel: Ch1Lvl4EX
-  LevelMusic: {fileID: 8300000, guid: 4c4cb19b8fcaf694ba02deb7c8af1882, type: 3}
+  LevelMusic: {fileID: 8300000, guid: 963431f7057e41048b7c748987c44edd, type: 3}
   LoopMusic: 1
   PlayMusic: 1
   StopMusicOnLeave: 1

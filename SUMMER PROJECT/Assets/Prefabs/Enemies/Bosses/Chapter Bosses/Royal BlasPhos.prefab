@@ -432,7 +432,7 @@ MonoBehaviour:
   - {fileID: 8539283225527375866}
   SweepTime: 1
   FireRing: {fileID: 7021183697068171511}
-  Phase2HealthLimit: 400
+  Phase2HealthLimit: 500
   Phase2Start: 0
   MeteorTime: 8
   animator: {fileID: 736019630477689270}
@@ -10636,6 +10636,10 @@ MonoBehaviour:
   StoredObj: {fileID: 0}
   clips: []
   poofNoise: {fileID: 0}
+  InstantKillPlayer: 0
+  V: {x: 0, y: 0, z: 0}
+  shootF: 0
+  UpwardF: 0
 --- !u!1 &1618994222995976499
 GameObject:
   m_ObjectHideFlags: 0
@@ -20860,6 +20864,10 @@ MonoBehaviour:
   StoredObj: {fileID: 0}
   clips: []
   poofNoise: {fileID: 0}
+  InstantKillPlayer: 0
+  V: {x: 0, y: 0, z: 0}
+  shootF: 0
+  UpwardF: 0
 --- !u!1 &3262182364523747332
 GameObject:
   m_ObjectHideFlags: 0

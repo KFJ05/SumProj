@@ -745,8 +745,8 @@ MonoBehaviour:
   SegmentMaterial: {fileID: 0}
   SegMat: {fileID: 0}
   HealthPerSegment: 10
-  DamageEffect: {fileID: 0}
-  CritDamageEffect: {fileID: 0}
+  DamageEffect: {fileID: 1031050774428880508}
+  CritDamageEffect: {fileID: 1031050774428880508}
   SheildSize: 3
   SheildActive: 1
   SheildCurrentHealth: 15
@@ -3700,6 +3700,11 @@ PrefabInstance:
       addedObject: {fileID: 6260888445033420177}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22383462d72c86947b32da5d17ba5089, type: 3}
+--- !u!198 &1031050774428880508 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2410331822531123629, guid: 22383462d72c86947b32da5d17ba5089, type: 3}
+  m_PrefabInstance: {fileID: 3403664906056112081}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2517294982358962938 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 996145722960184619, guid: 22383462d72c86947b32da5d17ba5089, type: 3}

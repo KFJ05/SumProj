@@ -13,6 +13,8 @@ public class PropellerSpin : MonoBehaviour
     public bool RotateX, RotateZ;
     public bool RotateY = true;
 
+    public bool OverRide;
+
     void Start()
     {
         hp = gameObject.GetComponentInParent<Health>();
@@ -21,7 +23,7 @@ public class PropellerSpin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hp != null)
+        if (hp != null && OverRide == false)
         {
             if (hp.CurrentHealth > 0)
             {
@@ -35,6 +37,18 @@ public class PropellerSpin : MonoBehaviour
                     transform.Rotate(0, 0, rotateSpeed * Time.deltaTime);
             }
         }
-        
+        else if ((OverRide == true))
+        {
+            if (RotateX)
+            {
+                transform.Rotate(rotateSpeed * Time.deltaTime, 0, 0);
+            }
+            if (RotateY)
+                transform.Rotate(0, rotateSpeed * Time.deltaTime, 0);
+            if (RotateZ)
+                transform.Rotate(0, 0, rotateSpeed * Time.deltaTime);
+
+        }
+
     }
 }

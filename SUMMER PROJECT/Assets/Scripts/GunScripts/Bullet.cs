@@ -28,6 +28,8 @@ public class Bullet : MonoBehaviour
 
     AudioSource s;
 
+    public bool InstantKillPlayer = false;
+
     Rigidbody rb;
     public Vector3 V;
     public float shootF;
@@ -37,6 +39,8 @@ public class Bullet : MonoBehaviour
 
     private void Awake()
     {
+
+
         if (clips.Length > 0)
         {
             int i = Random.RandomRange(0, clips.Length);
@@ -58,6 +62,17 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
+        if (InstantKillPlayer == true)
+        {
+            Collider collider = gameObject.GetComponent<Collider>();
+            if (collider.enabled == true)
+            {
+
+                Health PH = GameObject.FindWithTag("Player").GetComponent<Health>();
+                PH.CurrentHealth = 0;
+            }
+        }
+
         if (rb != null)
         {
             if (PauseManager.Instance != null)
@@ -70,6 +85,15 @@ public class Bullet : MonoBehaviour
                 }
                 else
                 {
+                    if (!Testing)
+                    {
+                        bulletLifeTime -= Time.deltaTime;
+                        if (bulletLifeTime <= 0)
+                        {
+                            Destroy(gameObject);
+                        }
+                    }
+
                     rb.isKinematic = false;
                     if (AppliedForce == false)
                     {
@@ -84,16 +108,7 @@ public class Bullet : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision)
-    {   
-
-                if (!Testing)
-                {
-                    bulletLifeTime -= Time.deltaTime;
-                    if (bulletLifeTime <= 0)
-                    {
-                        Destroy(gameObject);
-                    }
-                }
+    {
 
                 if (poofNoise != null)
                 {
@@ -247,4 +262,7 @@ public class Bullet : MonoBehaviour
 
 
 
-}
+    }
+
+
+

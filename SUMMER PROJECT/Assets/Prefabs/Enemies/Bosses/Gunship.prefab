@@ -679,7 +679,7 @@ MonoBehaviour:
   DamageEffect: {fileID: 6599756738034415715}
   CritDamageEffect: {fileID: 6599756738034415715}
   SheildSize: 10
-  SheildActive: 1
+  SheildActive: 0
   SheildCurrentHealth: 50
   SheildMaxHealth: 50
   SheildPrefab: {fileID: 6330724444806739072, guid: f555ffa5c715dc8418e41ed71a239e50, type: 3}
@@ -700,7 +700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   State: 0
-  Agent: {fileID: 0}
+  Agent: {fileID: 8671641203259576857}
   Bullets: {fileID: 0}
   Rocket: {fileID: 2077613701241159719, guid: 07aaef9257a7548448d8fa1c0a8e6514, type: 3}
   RocketTimer: 6
@@ -821,7 +821,7 @@ MonoBehaviour:
   useAnimator: 0
   TriggerDeath: 0
   useHealth: 1
-  WinLevelOnDeath: 0
+  WinLevelOnDeath: 1
   useParticles: 1
   DeathExplosiom: {fileID: 8220727997417847100}
   IsEnemy: 1
@@ -913,7 +913,7 @@ GameObject:
   m_Layer: 0
   m_Name: Movepoint 2
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -944,7 +944,7 @@ GameObject:
   m_Layer: 0
   m_Name: Movepoint 3
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1160,7 +1160,7 @@ GameObject:
   m_Layer: 0
   m_Name: Movepoint 1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1266,7 +1266,7 @@ GameObject:
   m_Layer: 0
   m_Name: Movepoint 4
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1613,6 +1613,7 @@ MonoBehaviour:
   RotateX: 0
   RotateZ: 0
   RotateY: 1
+  OverRide: 0
 --- !u!64 &7605311254659321092
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2178,6 +2179,7 @@ MonoBehaviour:
   RotateX: 1
   RotateZ: 0
   RotateY: 0
+  OverRide: 0
 --- !u!54 &5223665643582663342
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2570,6 +2572,7 @@ MonoBehaviour:
   RotateX: 0
   RotateZ: 0
   RotateY: 1
+  OverRide: 0
 --- !u!64 &6215975320660937271
 MeshCollider:
   m_ObjectHideFlags: 0

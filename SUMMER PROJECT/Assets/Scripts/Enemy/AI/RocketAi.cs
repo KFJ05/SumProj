@@ -41,21 +41,33 @@ public class RocketAi : MonoBehaviour
         {
             if (PauseManager.Instance.IsPaused == false)
             {
-                if (!RocketyRb)
+                RocketyRb.isKinematic = false;
+                if (RocketSpeed > 0)
                 {
-                    return;
+                    if (!RocketyRb)
+                    {
+                        return;
+                    }
+
+                    RocketyRb.velocity = rocketT.forward * RocketSpeed;
+
+                    var rocketTargetrot = Quaternion.LookRotation(RocketTarget.transform.position - rocketT.position);
+
+
+                    RocketyRb.MoveRotation(Quaternion.RotateTowards(rocketT.rotation, rocketTargetrot, turnSpeed));
                 }
-
-                RocketyRb.velocity = rocketT.forward * RocketSpeed;
-
-                var rocketTargetrot = Quaternion.LookRotation(RocketTarget.transform.position - rocketT.position);
-
-
-                RocketyRb.MoveRotation(Quaternion.RotateTowards(rocketT.rotation, rocketTargetrot, turnSpeed));
             }
             else if(PauseManager.Instance.IsPaused)
             {
-                RocketyRb.velocity = Vector3.zero;
+                if (RocketSpeed > 0)
+                {
+
+                    RocketyRb.velocity = Vector3.zero;
+                }
+                else
+                {
+                    RocketyRb.isKinematic = true;
+                }
             }
         }
     }

@@ -390,7 +390,7 @@ GameObject:
   m_Layer: 0
   m_Name: Movepoint 4
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -650,7 +650,7 @@ GameObject:
   m_Layer: 0
   m_Name: Movepoint 2
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1130,7 +1130,7 @@ GameObject:
   m_Layer: 0
   m_Name: Movepoint 1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1161,7 +1161,7 @@ GameObject:
   m_Layer: 0
   m_Name: Movepoint 3
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1433,6 +1433,10 @@ PrefabInstance:
       propertyPath: parts.Array.data[2]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3565590094193519687, guid: 63769d56b7abca44ebed218e2f45bc58, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1640ea3082bf74d4bba717003a5e0580, type: 2}
     - target: {fileID: 3622301092600986809, guid: 63769d56b7abca44ebed218e2f45bc58, type: 3}
       propertyPath: m_Name
       value: MovingFortressTurret (1)
@@ -1441,6 +1445,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 3779750986068488649, guid: 63769d56b7abca44ebed218e2f45bc58, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5fda4fa1fa197c54488e110a8520fc9e, type: 2}
     - target: {fileID: 4759598679492070457, guid: 63769d56b7abca44ebed218e2f45bc58, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -1614,6 +1622,7 @@ MonoBehaviour:
   RotateX: 0
   RotateZ: 0
   RotateY: 1
+  OverRide: 0
 --- !u!64 &8489534736770817927
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2006,6 +2015,7 @@ MonoBehaviour:
   RotateX: 1
   RotateZ: 0
   RotateY: 0
+  OverRide: 0
 --- !u!64 &7180524840474514178
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2149,6 +2159,10 @@ PrefabInstance:
       propertyPath: parts.Array.data[2]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3565590094193519687, guid: 63769d56b7abca44ebed218e2f45bc58, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1640ea3082bf74d4bba717003a5e0580, type: 2}
     - target: {fileID: 3622301092600986809, guid: 63769d56b7abca44ebed218e2f45bc58, type: 3}
       propertyPath: m_Name
       value: MovingFortressTurret
@@ -2157,6 +2171,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 3779750986068488649, guid: 63769d56b7abca44ebed218e2f45bc58, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5fda4fa1fa197c54488e110a8520fc9e, type: 2}
     - target: {fileID: 4759598679492070457, guid: 63769d56b7abca44ebed218e2f45bc58, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -2571,6 +2589,7 @@ MonoBehaviour:
   RotateX: 0
   RotateZ: 0
   RotateY: 1
+  OverRide: 0
 --- !u!64 &5127551036067617763
 MeshCollider:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class droneAI : MonoBehaviour
 {
@@ -38,6 +39,19 @@ public class droneAI : MonoBehaviour
     float B_Offset;
     bool upOrDown;
 
+    public bool Bomber;
+
+    public float BomberTimer;
+    float Btime;
+
+    public bool MultipleBombs;
+    public float NewBombTimer;
+    float NBT;
+
+    bool droppedBomb;
+
+    public GameObject Bomb;
+    public GameObject VisualBomb;
 
     public Rigidbody rb;
 
@@ -46,6 +60,12 @@ public class droneAI : MonoBehaviour
 
     void Start()
     {
+        if(Bomber == true)
+        {
+            Btime = BomberTimer;
+            droppedBomb = true;
+        }
+
         DronePointList d = GameObject.FindWithTag("DronePointList").gameObject.GetComponent<DronePointList>();
 
         Movetransforms = d.PointTransforms;
@@ -71,6 +91,33 @@ public class droneAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Bomber == true)
+        {
+            Btime -= Time.deltaTime;
+
+            if(Btime <= 0 && droppedBomb == true)
+            {
+                VisualBomb.SetActive(false);
+                GameObject B = Instantiate(Bomb, VisualBomb.transform.position, VisualBomb.transform.rotation);
+
+                droppedBomb = false;
+
+
+
+            }
+            else if(droppedBomb == false && MultipleBombs == true)
+            {
+                NBT += Time.deltaTime;
+                if(NBT >= NewBombTimer)
+                {
+                    Btime = BomberTimer;
+                    NBT = 0;
+                    droppedBomb = true;
+                    VisualBomb.SetActive (true);
+                }
+            }
+        }
+
         if (PauseManager.Instance != null)
         {
             if (PauseManager.Instance.IsPaused == false)

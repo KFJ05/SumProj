@@ -33,6 +33,10 @@ public class SpawnManager : MonoBehaviour
 
     public void TurnOnPointList(Spawn spawn)
     {
+        if(PointList.Length == 0)
+        {
+            return;
+        }
         for (int i = 0; i < spawners.Length; i++)
         {
             if (spawners[i] == spawn)
@@ -49,6 +53,10 @@ public class SpawnManager : MonoBehaviour
 
     public void TurnOnDronePointList(Spawn spawn)
     {
+        if (dronePointLists.Length == 0)
+        {
+            return;
+        }
         for (int i = 0; i < spawners.Length; i++)
         {
             if (spawners[i] == spawn)

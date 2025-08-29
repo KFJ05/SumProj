@@ -2272,7 +2272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentLevel: Ch1Lvl5
   NextLevel: MainMenu
-  LevelMusic: {fileID: 8300000, guid: 4c4cb19b8fcaf694ba02deb7c8af1882, type: 3}
+  LevelMusic: {fileID: 8300000, guid: dc38a524534d4324ba6f376d68d8b90c, type: 3}
   LoopMusic: 1
   PlayMusic: 1
   StopMusicOnLeave: 1
@@ -2443,7 +2443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9157dc458c02ba9419abe724033f2237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Clip1: {fileID: 8300000, guid: 13321495e7dc04244ac5ed4a85bbea73, type: 3}
+  Clip1: {fileID: 8300000, guid: cd466cd7015f15d4e9a31f430015e0f0, type: 3}
   Clip2: {fileID: 0}
   source: {fileID: 0}
   triggered: 0
@@ -2547,6 +2547,7 @@ MonoBehaviour:
   StoredObj: {fileID: 0}
   clips: []
   poofNoise: {fileID: 0}
+  InstantKillPlayer: 0
   V: {x: 0, y: 0, z: 0}
   shootF: 0
   UpwardF: 0

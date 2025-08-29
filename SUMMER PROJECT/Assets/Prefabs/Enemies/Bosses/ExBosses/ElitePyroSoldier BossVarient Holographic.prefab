@@ -587,7 +587,7 @@ MonoBehaviour:
   MoveTime: 4
   Animator: {fileID: 4647724473847395209}
   MinDistanceAwayAToAim: 8
-  MaxDistanceToRun: 14
+  MaxDistanceToRun: 30
   Contraints:
   - {fileID: 7637565034541004055}
   - {fileID: 5474982148706347896}

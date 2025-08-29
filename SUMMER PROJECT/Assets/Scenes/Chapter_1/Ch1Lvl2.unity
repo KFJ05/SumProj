@@ -2550,6 +2550,7 @@ MonoBehaviour:
   StoredObj: {fileID: 0}
   clips: []
   poofNoise: {fileID: 0}
+  InstantKillPlayer: 0
   V: {x: 0, y: 0, z: 0}
   shootF: 0
   UpwardF: 0
@@ -2898,7 +2899,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentLevel: Ch1Lvl2
   NextLevel: Ch1Lvl3
-  LevelMusic: {fileID: 8300000, guid: 1def56b26780f9e41a8c7e98b8ea3ff0, type: 3}
+  LevelMusic: {fileID: 8300000, guid: 0903ffb577d58c1499c3e8de909d1688, type: 3}
   LoopMusic: 1
   PlayMusic: 1
   StopMusicOnLeave: 1
