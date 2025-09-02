@@ -88,9 +88,16 @@ public class SoldierAi : MonoBehaviour
 
     private void Start()
     {
+
         pointList PL = GameObject.FindWithTag("PointList").GetComponent<pointList>();
 
         transforms = PL.PointTransforms;
+
+        if (PL != null)
+        {
+            MovementOverRide = true;
+            timer = MoveTime;
+        }
 
         int b = UnityEngine.Random.RandomRange(0,3);
         if(b == 0)
@@ -149,6 +156,7 @@ public class SoldierAi : MonoBehaviour
 
                 if (State == SoldierState.Running)
                 {
+                  
                     if (UseFireTime)
                     {
                         ft = FireTime;
@@ -284,6 +292,17 @@ public class SoldierAi : MonoBehaviour
                 }
                 if (State == SoldierState.Aiming)
                 {
+                    if (MovementOverRide == true)
+                    {
+                        //int A = UnityEngine.Random.Range(0, 5);
+
+                        MovementOverRide = true;
+
+                        timer = MoveTime;
+                        State = SoldierState.Running;
+                        R = -1;
+                        Move = true;
+                    }
                     if (UseFireTime)
                     {
                         ft -= Time.deltaTime;
@@ -299,6 +318,7 @@ public class SoldierAi : MonoBehaviour
                         R = -1;
                         Move = true;
                     }
+ 
 
                     Animator.SetLayerWeight(1, 1);
                     Gun.SetActive(true);

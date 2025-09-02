@@ -948,7 +948,7 @@ PrefabInstance:
       objectReference: {fileID: 856261338}
     - target: {fileID: 1645100360800708675, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
       propertyPath: unlockExMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1645100360800708675, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
       propertyPath: LowestEnemiesAliveNeededToWin
@@ -956,7 +956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2256372721544301189, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2936562961606995442, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
       propertyPath: UsingGun
@@ -1121,7 +1121,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
 --- !u!223 &856261338 stripped
 Canvas:
-  m_CorrespondingSourceObject: {fileID: 7409799845204957262, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3962187284134831772, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
   m_PrefabInstance: {fileID: 856261337}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &893384729

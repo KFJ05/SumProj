@@ -2106,7 +2106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLevel: Ch3Lvl5
-  NextLevel: MainMenu
+  NextLevel: Ch3Lvl6
   LevelMusic: {fileID: 8300000, guid: 0903ffb577d58c1499c3e8de909d1688, type: 3}
   LoopMusic: 1
   PlayMusic: 1
