@@ -205,6 +205,7 @@ MonoBehaviour:
   turnSpeed: 0
   Dropping: 0
   DropTime: 25
+  FirstDropTime: 0
   navMeshDropHeight: 2
   NavMeshDropSpeed: 0.25
   DropPoint: {fileID: 3610507407065772809}

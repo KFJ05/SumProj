@@ -634,7 +634,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 82d1b2c0247e9b64883b606b90670e69, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 2eaf65b0eb8e4c744b9afdde59b93588, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &641106270
 Transform:
@@ -969,7 +969,7 @@ PrefabInstance:
     - target: {fileID: 2936562961606995442, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
       propertyPath: LevelMusic
       value: 
-      objectReference: {fileID: 8300000, guid: 4c4cb19b8fcaf694ba02deb7c8af1882, type: 3}
+      objectReference: {fileID: 8300000, guid: dc38a524534d4324ba6f376d68d8b90c, type: 3}
     - target: {fileID: 2936562961606995442, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
       propertyPath: ResetMusic
       value: 1

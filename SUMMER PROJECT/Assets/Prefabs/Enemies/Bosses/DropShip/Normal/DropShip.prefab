@@ -34,6 +34,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 8320472271868131964}
   - {fileID: 5839934994674444765}
   - {fileID: 5063221111389146399}
   - {fileID: 6022716676177792760}
@@ -42,7 +43,6 @@ Transform:
   - {fileID: 7848870685162921305}
   - {fileID: 8709935246811938311}
   - {fileID: 7006095264265668616}
-  - {fileID: 8320472271868131964}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6973131242118991964
@@ -85,6 +85,7 @@ MonoBehaviour:
   turnSpeed: 0
   Dropping: 0
   DropTime: 20
+  FirstDropTime: 0
   navMeshDropHeight: 2
   NavMeshDropSpeed: 0.25
   DropPoint: {fileID: 3610507407065772809}
