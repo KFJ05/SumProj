@@ -92,6 +92,8 @@ public class DropshipAI : MonoBehaviour
     public float TurretTurnSpeed = 1f;
     public bool Fireturret;
 
+    public Canvas HeathBar;
+
     
 
     public enum DropShipStates {  Moving, Droping, dead, Idle, MovingAround}
@@ -116,8 +118,23 @@ public class DropshipAI : MonoBehaviour
         HPM = gameObject.GetComponent<HealthBarMultiple>();
         EnemySpawnLocation.transform.parent = null;
         EnemySpawnLocation.transform.position -= new Vector3(0, EnemySpawnLocation.transform.position.y, 0);
-        DT = DropTime;
-        mt = MoveTimer;
+
+        if(FirstDropTime > 0)
+        {
+            mt = FirstDropTime;
+
+            DT = FirstDropTime;
+        }
+        else if (FirstDropTime <=0)
+        {
+            mt = MoveTimer;
+            DT = DropTime;
+        }
+
+        
+
+        
+        
 
         for (int i = 0; i < movePoints.Length; i++)
         {
@@ -356,7 +373,11 @@ public class DropshipAI : MonoBehaviour
 
             rb.isKinematic = false;
 
+            this.enabled = false;
+
             Destroy(gameObject, 10f);
+
+            HeathBar.enabled = false;
 
             if (EnemyManager.Instance != null)
             {

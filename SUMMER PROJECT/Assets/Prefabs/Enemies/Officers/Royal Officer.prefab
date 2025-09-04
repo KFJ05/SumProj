@@ -1008,7 +1008,7 @@ MonoBehaviour:
   - {fileID: 7628699577054281649}
   - {fileID: 5356199563718744061}
   animator: {fileID: 8153101485922657356}
-  TimeToDestroy: 3
+  TimeToDestroy: 2
   Hp: {fileID: 5529788330227815722}
   HealthBarMultiple: {fileID: 0}
   usingMultipleHpBars: 0
