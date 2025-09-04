@@ -293,7 +293,7 @@ MonoBehaviour:
   Enemy: {fileID: 0}
   time: 2
   totalHealth: 0
-  CritMUlt: 100
+  CritMUlt: 10
   Segments: []
   HealthPerSegment: []
   SegmentMaterial: {fileID: 0}

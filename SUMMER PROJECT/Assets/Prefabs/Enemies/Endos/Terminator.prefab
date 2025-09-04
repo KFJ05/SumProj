@@ -51,7 +51,7 @@ MonoBehaviour:
   CurrentHealth: 125
   MaxHealth: 125
   UseHealthBar: 1
-  useSharedHealthbar: 0
+  useSheildBar: 0
   LerpBarDamageColour: {r: 1, g: 1, b: 1, a: 1}
   LerpBarHealColour: {r: 0, g: 1, b: 0, a: 1}
   time: 2
@@ -97,6 +97,9 @@ MonoBehaviour:
   State: 0
   amountOfShots: 0
   ShotObject: {fileID: 0}
+  Health: {fileID: 0}
+  HBM: {fileID: 0}
+  dead: 0
 --- !u!136 &4739599169779651253
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -154,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -10}
+  m_AnchoredPosition: {x: 0, y: -11}
   m_SizeDelta: {x: 780, y: 12.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6190463358071244866
@@ -229,7 +232,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -30}
+  m_AnchoredPosition: {x: 0, y: -29}
   m_SizeDelta: {x: 780, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7758610618203084778
@@ -304,7 +307,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -30}
+  m_AnchoredPosition: {x: 0, y: -29}
   m_SizeDelta: {x: 780, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7245570344763110697
@@ -671,7 +674,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -30}
+  m_AnchoredPosition: {x: 0, y: -29}
   m_SizeDelta: {x: 750, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1384907512215940071

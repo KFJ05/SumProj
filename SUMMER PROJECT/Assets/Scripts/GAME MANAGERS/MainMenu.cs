@@ -153,7 +153,7 @@ public class MainMenu : MonoBehaviour
     }
     public void ReturntoEXChapterSelect(int i)
     {
-        Chapters[i].gameObject.SetActive(false);
+        EXChapters[i].gameObject.SetActive(false);
 
         ChapterSelectEX.gameObject.SetActive(true);
     }

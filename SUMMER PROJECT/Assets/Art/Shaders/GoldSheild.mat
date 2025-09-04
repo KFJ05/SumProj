@@ -60,6 +60,6 @@ Material:
     - _QueueOffset: 0
     - _ScroolSpeed: 0.1
     m_Colors:
-    - _EmisColour: {r: 32768.023, g: 15420.246, b: 0, a: 0}
+    - _EmisColour: {r: 5.992158, g: 2.819839, b: 0, a: 0}
     - _Tiling: {r: 3, g: 3, b: 0, a: 0}
   m_BuildTextureStacks: []

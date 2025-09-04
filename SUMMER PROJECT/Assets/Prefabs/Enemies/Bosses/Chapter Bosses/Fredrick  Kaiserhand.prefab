@@ -49,7 +49,7 @@ MonoBehaviour:
   CurrentHealth: 100
   MaxHealth: 100
   UseHealthBar: 0
-  useSharedHealthbar: 0
+  useSheildBar: 0
   LerpBarDamageColour: {r: 0, g: 0, b: 0, a: 0}
   LerpBarHealColour: {r: 0, g: 0, b: 0, a: 0}
   time: 2

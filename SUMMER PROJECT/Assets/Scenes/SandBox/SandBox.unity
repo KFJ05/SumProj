@@ -1427,6 +1427,11 @@ Transform:
   - {fileID: 1404576668}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!198 &458814082 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5498054467943839891, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
+  m_PrefabInstance: {fileID: 951679111}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &481722761
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2956,11 +2961,11 @@ PrefabInstance:
     - target: {fileID: 6816036524232502646, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
       propertyPath: DamageEffect
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 458814082}
     - target: {fileID: 6816036524232502646, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
       propertyPath: CritDamageEffect
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 458814082}
     - target: {fileID: 7500332198566086975, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -3839,7 +3844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1252318039683207249, guid: d4ef16d5ad0a6d84cb38f321f51a51bd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -18.538773
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 1252318039683207249, guid: d4ef16d5ad0a6d84cb38f321f51a51bd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7847,9 +7852,9 @@ SceneRoots:
   - {fileID: 1904199299}
   - {fileID: 1486746657}
   - {fileID: 556012672}
-  - {fileID: 481722761}
   - {fileID: 1823307617}
   - {fileID: 41441497}
+  - {fileID: 481722761}
   - {fileID: 1473433008}
   - {fileID: 53177288876437164}
   - {fileID: 362559132809431805}
