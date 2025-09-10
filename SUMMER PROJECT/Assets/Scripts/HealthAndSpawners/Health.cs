@@ -36,6 +36,8 @@ public class Health : MonoBehaviour
 
     public float HealthPerSegment;
 
+    public GameObject damageText;
+
     public ParticleSystem DamageEffect;
     public ParticleSystem CritDamageEffect;
 
@@ -57,6 +59,9 @@ public class Health : MonoBehaviour
     GameObject sheild;
     public float YOffset;
 
+    public bool isPlayer = false;
+
+    float D = 0;
 
 
 
@@ -184,6 +189,7 @@ public class Health : MonoBehaviour
 
             if (DamageEffect != null && PlayPS == true && didCrit == false)
             {
+                
                 DamageEffect.Play();
                 PlayPS = false;
             }
@@ -251,6 +257,7 @@ public class Health : MonoBehaviour
 
     public void Damage(float Damage)
     {
+        D = Damage;
         if (SheildActive == true)
         {
             SheildCurrentHealth -= Damage;
@@ -270,6 +277,7 @@ public class Health : MonoBehaviour
             PlayPS = true;
             if (DamageEffect != null && PlayPS == true && didCrit == false)
             {
+                ShowText();
                 DamageEffect.Play();
                 PlayPS = false;
             }
@@ -279,6 +287,7 @@ public class Health : MonoBehaviour
 
     public void CRITDamage(float Damage)
     {
+        D = (Damage * CritMUlt);
         if (SheildActive == true)
         {
             SheildCurrentHealth -= (Damage * CritMUlt);
@@ -296,6 +305,7 @@ public class Health : MonoBehaviour
             PlayPS = true;
             if (CritDamageEffect != null && PlayPS == true && didCrit == true)
             {
+                ShowText();
                 CritDamageEffect.Play();
                 PlayPS = false;
             }
@@ -315,6 +325,16 @@ public class Health : MonoBehaviour
         }
     }
 
+    public void ShowText()
+    {
+        if(damageText == null)
+        {
+            return;
+        }
+
+        var DTxt = Instantiate(damageText, transform.position, Quaternion.identity, transform);
+        DTxt.GetComponent<TextMesh>().text = D.ToString();
+    }
 
 
 

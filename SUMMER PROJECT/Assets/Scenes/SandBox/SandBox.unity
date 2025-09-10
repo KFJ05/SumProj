@@ -6960,7 +6960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1925130697391322004, guid: 261c4471329acc04e873ebecc8c8a353, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5341493593779503068, guid: 261c4471329acc04e873ebecc8c8a353, type: 3}
       propertyPath: Spread
@@ -6990,6 +6990,10 @@ PrefabInstance:
       propertyPath: Sheildtime
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5479662054487400166, guid: 261c4471329acc04e873ebecc8c8a353, type: 3}
+      propertyPath: damageText
+      value: 
+      objectReference: {fileID: 6939732467756362259, guid: 1b23b527341eda74b8cfb8c5cc853186, type: 3}
     - target: {fileID: 5479662054487400166, guid: 261c4471329acc04e873ebecc8c8a353, type: 3}
       propertyPath: SheildActive
       value: 0
@@ -7051,7 +7055,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7431025284761131796, guid: 261c4471329acc04e873ebecc8c8a353, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 261c4471329acc04e873ebecc8c8a353, type: 3}
