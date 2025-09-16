@@ -281,6 +281,9 @@ MonoBehaviour:
   SegmentMaterial: {fileID: 2100000, guid: 7dddbbe47f191f14fb559d432d72ecf8, type: 2}
   SegMat: {fileID: 0}
   HealthPerSegment: 10
+  damageText: {fileID: 6939732467756362259, guid: 1b23b527341eda74b8cfb8c5cc853186, type: 3}
+  YHeight: 3
+  RandomXPosOffset: 2.5
   DamageEffect: {fileID: 563094767013223733}
   CritDamageEffect: {fileID: 563094767013223733}
   SheildSize: 3.5
@@ -292,6 +295,7 @@ MonoBehaviour:
   SheildLerpBar: {fileID: 2556747292294739543}
   Sheildtime: 4
   YOffset: 1
+  isPlayer: 0
 --- !u!65 &185963841682055301
 BoxCollider:
   m_ObjectHideFlags: 0

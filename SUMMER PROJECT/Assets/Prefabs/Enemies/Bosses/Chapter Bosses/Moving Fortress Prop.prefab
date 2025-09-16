@@ -3334,7 +3334,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: c45143db0b84cc842b73a0dedd5cde44, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 57e7679919d11f44d995a487b5bb6e03, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &7058134464305879217
 GameObject:
@@ -3882,7 +3882,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
@@ -3912,6 +3912,9 @@ MonoBehaviour:
   clips: []
   poofNoise: {fileID: 0}
   InstantKillPlayer: 0
+  DamageOverTimer: 1
+  DOTTimer: 5
+  InflictDamageOverTime: 0
   V: {x: 0, y: 0, z: 0}
   shootF: 0
   UpwardF: 0
@@ -3937,7 +3940,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0

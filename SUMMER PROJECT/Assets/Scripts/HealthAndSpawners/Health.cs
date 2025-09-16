@@ -38,6 +38,11 @@ public class Health : MonoBehaviour
 
     public GameObject damageText;
 
+    public float YHeight = 3;
+
+    public float RandomXPosOffset = 2.5f;
+    float RXPO;
+
     public ParticleSystem DamageEffect;
     public ParticleSystem CritDamageEffect;
 
@@ -58,6 +63,14 @@ public class Health : MonoBehaviour
     public float Sheildtime = 4f;
     GameObject sheild;
     public float YOffset;
+
+    [Header("DamageOverTime")]
+    public float DOTTimer;
+    float dott;
+    public bool startDottTimer;
+    public float DamageInflictedOverTime;
+
+
 
     public bool isPlayer = false;
 
@@ -98,7 +111,22 @@ public class Health : MonoBehaviour
 
     void Update()
     {
-        if(MH != MaxHealth)
+        if(startDottTimer == true)
+        {
+            startDottTimer = false;
+            dott = DOTTimer;
+        }
+        if(dott > 0)
+        {
+            dott -= Time.deltaTime;
+            this.DamageWithoutParticleEffects(DamageInflictedOverTime * Time.deltaTime);
+        }
+        else if(dott < 0)
+        {
+            dott = 0;
+        }
+
+        if (MH != MaxHealth)
         {
             MH = MaxHealth;
 
@@ -258,6 +286,8 @@ public class Health : MonoBehaviour
     public void Damage(float Damage)
     {
         D = Damage;
+
+        ShowText();
         if (SheildActive == true)
         {
             SheildCurrentHealth -= Damage;
@@ -277,9 +307,32 @@ public class Health : MonoBehaviour
             PlayPS = true;
             if (DamageEffect != null && PlayPS == true && didCrit == false)
             {
-                ShowText();
+                
                 DamageEffect.Play();
                 PlayPS = false;
+            }
+            didCrit = false;
+        }
+    }
+
+    public void DamageWithoutParticleEffects(float Damage)
+    {
+        D = Damage;
+
+        ShowText();
+        if (SheildActive == true)
+        {
+            SheildCurrentHealth -= Damage;
+
+        }
+        else
+        {
+            CurrentHealth -= Damage;
+            lerpTimer = 0;
+
+            if (CurrentHealth <= 0)
+            {
+                Dead = true;
             }
             didCrit = false;
         }
@@ -288,6 +341,8 @@ public class Health : MonoBehaviour
     public void CRITDamage(float Damage)
     {
         D = (Damage * CritMUlt);
+
+        ShowText();
         if (SheildActive == true)
         {
             SheildCurrentHealth -= (Damage * CritMUlt);
@@ -305,7 +360,7 @@ public class Health : MonoBehaviour
             PlayPS = true;
             if (CritDamageEffect != null && PlayPS == true && didCrit == true)
             {
-                ShowText();
+                
                 CritDamageEffect.Play();
                 PlayPS = false;
             }
@@ -332,8 +387,12 @@ public class Health : MonoBehaviour
             return;
         }
 
-        var DTxt = Instantiate(damageText, transform.position, Quaternion.identity, transform);
+        RXPO = Random.RandomRange(-RandomXPosOffset, RandomXPosOffset);
+
+        var DTxt = Instantiate(damageText, transform.position + new Vector3(RXPO, YHeight, 0), Quaternion.identity);
         DTxt.GetComponent<TextMesh>().text = D.ToString();
+
+        Destroy(DTxt, 1);
     }
 
 

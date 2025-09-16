@@ -2317,7 +2317,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -6717,6 +6717,9 @@ MonoBehaviour:
   clips: []
   poofNoise: {fileID: 0}
   InstantKillPlayer: 0
+  DamageOverTimer: 1
+  DOTTimer: 5
+  InflictDamageOverTime: 0
   V: {x: 0, y: 0, z: 0}
   shootF: 0
   UpwardF: 0

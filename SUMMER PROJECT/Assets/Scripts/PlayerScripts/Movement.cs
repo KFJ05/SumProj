@@ -85,6 +85,7 @@ public class Movement : MonoBehaviour
     bool exitingSlope;
 
     public float MAX_SPEED;
+    float MS;
 
 
     [Header("keybinds")]
@@ -98,6 +99,14 @@ public class Movement : MonoBehaviour
     public ParticleSystem Wind;
     public float StartWindFreshhold;
     public Canvas PauseMenu;
+
+    [Header("Status Effects")]
+    public float SlowTimer;
+    float STime;
+    [Range(0.1f, 0.9f)]
+    public float SlowSpeed;
+
+    public bool slowed, onFire, Electrified;
 
 
 
@@ -135,6 +144,8 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        MS = MAX_SPEED;
+
         if (PauseMenu != null)
             PauseMenu.gameObject.SetActive(false);
         rb = GetComponent<Rigidbody>();
@@ -151,12 +162,41 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(PauseKey))
+        if(slowed == true)
         {
-            if(PauseManager.Instance!= null)
+            slowed = false;
+            STime = SlowTimer;
+        }
+        if(STime > 0)
+        {
+            if (MAX_SPEED == MS)
+            {
+                MAX_SPEED *= SlowSpeed;
+                wallrunSpeed *= SlowSpeed;
+                SwingSpeed *= SlowSpeed;
+                slideSpeed *= SlowSpeed;
+            }
+            STime -= Time.deltaTime;
+        }
+        else if(STime == 0 && MAX_SPEED != MS)
+        {
+            MAX_SPEED = MS;
+            wallrunSpeed /= SlowSpeed;
+            SwingSpeed /= SlowSpeed;
+            slideSpeed /= SlowSpeed;
+
+        }
+        else if (STime < 0)
+        {
+            STime = 0;
+        }
+
+        if (Input.GetKeyDown(PauseKey))
+        {
+            if (PauseManager.Instance != null)
             {
                 PauseManager.Instance.IsPaused = true;
-                if(PauseMenu != null)
+                if (PauseMenu != null)
                 {
                     PauseMenu.gameObject.SetActive(true);
                 }

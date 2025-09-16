@@ -30,12 +30,24 @@ public class Bullet : MonoBehaviour
 
     public bool InstantKillPlayer = false;
 
+    [Header("DamageOverTime")]
+    public float DamageOverTimer = 1;
+    public float DOTTimer = 5;
+    public bool InflictDamageOverTime = false;
+
     Rigidbody rb;
     public Vector3 V;
     public float shootF;
     public float UpwardF;
 
+    [Header("InflictStatusAffectsOnPlayer")]
+    public bool SlowDown;
+    public bool SpeedUp;
+
     bool AppliedForce = true;
+
+    [Range(0.1f, 0.9f)]
+    public float SlowSpeed;
 
     private void Awake()
     {
@@ -127,6 +139,18 @@ public class Bullet : MonoBehaviour
                         {
                             tempHP = collision.gameObject.GetComponentInParent<Health>();
                         }
+                        
+                        if(TagsToDamage[i] == "Player")
+                        {
+                            Movement M = GameObject.FindWithTag(TagsToDamage[i]).GetComponent<Movement>();
+                            if(SlowDown == true)
+                            {
+                                M.SlowSpeed = SlowSpeed;
+                                M.slowed = true;
+                            }
+                            
+                            
+                        }
 
                         if (tempHP == null)
                         {
@@ -154,6 +178,14 @@ public class Bullet : MonoBehaviour
                             else
                             {
                                 tempHP.Damage(Damage);
+                                if(InflictDamageOverTime == true)
+                                    {
+                                        tempHP.DamageInflictedOverTime = DamageOverTimer;
+                                        tempHP.DOTTimer = DOTTimer;
+                                        tempHP.startDottTimer = true;
+
+                                    }
+
                             }
                         }
                         if (tempHPM != null)

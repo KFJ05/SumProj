@@ -752,6 +752,9 @@ MonoBehaviour:
   SegmentMaterial: {fileID: 0}
   SegMat: {fileID: 0}
   HealthPerSegment: 0
+  damageText: {fileID: 0}
+  YHeight: 1
+  RandomXPosOffset: 2.5
   DamageEffect: {fileID: 6599756738034415715}
   CritDamageEffect: {fileID: 6599756738034415715}
   SheildSize: 10
@@ -763,6 +766,7 @@ MonoBehaviour:
   SheildLerpBar: {fileID: 9001552709712846262}
   Sheildtime: 4
   YOffset: 0
+  isPlayer: 0
 --- !u!114 &4234775109846793965
 MonoBehaviour:
   m_ObjectHideFlags: 0
