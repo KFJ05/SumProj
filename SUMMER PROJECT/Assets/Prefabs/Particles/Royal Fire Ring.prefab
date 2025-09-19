@@ -19376,9 +19376,20 @@ MonoBehaviour:
   Damage: 3
   bulletLifeTime: 0
   Testing: 1
+  HitOnce: 0
   TagsToDamage:
   - Player
   poofEffect: {fileID: 0}
   StoredObj: {fileID: 0}
   clips: []
   poofNoise: {fileID: 0}
+  InstantKillPlayer: 0
+  DamageOverTimer: 1
+  DOTTimer: 5
+  InflictDamageOverTime: 0
+  V: {x: 0, y: 0, z: 0}
+  shootF: 0
+  UpwardF: 0
+  SlowDown: 0
+  SpeedUp: 0
+  SlowSpeed: 0.1
