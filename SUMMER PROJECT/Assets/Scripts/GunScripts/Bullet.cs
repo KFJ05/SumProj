@@ -49,6 +49,9 @@ public class Bullet : MonoBehaviour
     [Range(0.1f, 0.9f)]
     public float SlowSpeed;
 
+    [Range(1.1f, 3f)]
+    public float SpedupSpeed;
+
     private void Awake()
     {
 
@@ -148,9 +151,16 @@ public class Bullet : MonoBehaviour
                                 M.SlowSpeed = SlowSpeed;
                                 M.slowed = true;
                             }
-                            
-                            
-                        }
+
+                            if (SpeedUp == true)
+                            {
+                                M.SpedUpSpeed = SpedupSpeed;
+                                M.onFire = true;
+
+                            }
+
+
+                }
 
                         if (tempHP == null)
                         {
@@ -255,6 +265,25 @@ public class Bullet : MonoBehaviour
 
                         }
 
+                        if (TagsToDamage[i] == "Player")
+                        {
+                            Movement M = GameObject.FindWithTag(TagsToDamage[i]).GetComponent<Movement>();
+                            if (SlowDown == true)
+                            {
+                                M.SlowSpeed = SlowSpeed;
+                                M.slowed = true;
+                            }
+
+                            if(SpeedUp == true)
+                            {
+                                M.SpedUpSpeed = SpedupSpeed;
+                                M.onFire = true;
+
+                            }
+
+
+                        }
+
                         // Check if the actual collider that was hit has the WeakSpot
 
 
@@ -263,11 +292,21 @@ public class Bullet : MonoBehaviour
 
                             tempHP.Damage(Damage);
 
+                            if (InflictDamageOverTime == true)
+                            {
+                                tempHP.DamageInflictedOverTime = DamageOverTimer;
+                                tempHP.DOTTimer = DOTTimer;
+                                tempHP.startDottTimer = true;
+
+                            }
+
+
                         }
                         if (tempHPM != null)
                         {
 
                             tempHPM.Damage(Damage);
+
 
                         }
 

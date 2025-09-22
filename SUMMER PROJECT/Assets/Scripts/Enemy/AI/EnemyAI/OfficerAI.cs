@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class OfficerAI : MonoBehaviour
 {
+
     [Range(1, 5)]
     public int OfficerTeir;
     public bool Royal;
@@ -25,6 +26,9 @@ public class OfficerAI : MonoBehaviour
     public float[] SheildTierValues;
 
     public GameObject[] EnemiesSpawned;
+
+    public bool CustomTier5Spawn;
+    public GameObject[] Tier5CustomSpawn;
 
     public Transform[] SpawnLocations;
 
@@ -59,6 +63,8 @@ public class OfficerAI : MonoBehaviour
     public GameObject Bullet;
 
     public Transform FireLocation;
+
+    public float rotationSpeed = 5f;
 
     public float RepeatFire;
 
@@ -154,9 +160,26 @@ public class OfficerAI : MonoBehaviour
                     Shotgun.gameObject.SetActive(false);
                     animator.SetBool("Aiming", false);
 
-                    transform.LookAt(player.transform.position);
 
-                    Debug.Log("Summon");
+                    Vector3 direction = player.transform.position - transform.position;
+                    direction.y = 0f; // lock to horizontal plane
+
+                    if (direction.sqrMagnitude > 0.001f)
+                    {
+                        // Only rotate around Y axis
+                        Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
+
+                        // Smoothly rotate
+                        transform.rotation = Quaternion.Slerp(
+                            transform.rotation,
+                            targetRotation,
+                            rotationSpeed * Time.deltaTime
+                        );
+                    }
+
+                        //transform.LookAt(player.transform.position);
+
+                        Debug.Log("Summon");
 
                     animator.SetBool("Summoning", true);
 
@@ -339,15 +362,31 @@ public class OfficerAI : MonoBehaviour
     }
     public void summonEnemiesTeir4To5()
     {
-        for (int i = 0; i < 4; i++)
+        if (OfficerTeir == 5 && CustomTier5Spawn == true)
         {
-            if (EnemiesSpawned[i] != null && SpawnLocations[i] != null)
+            for (int i = 0; i < 4; i++)
             {
-                GameObject G = Instantiate(EnemiesSpawned[OfficerTeir - 1], SpawnLocations[i]);
-                G.transform.parent = null;
-                EnemyManager.Instance.AddEnemy(G);
+                if (Tier5CustomSpawn[i] != null && SpawnLocations[i] != null)
+                {
+                    GameObject G = Instantiate(Tier5CustomSpawn[i], SpawnLocations[i]);
+                    G.transform.parent = null;
+                    EnemyManager.Instance.AddEnemy(G);
+
+                }
+            }
+        }
+        else if(CustomTier5Spawn == false)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (EnemiesSpawned[i] != null && SpawnLocations[i] != null)
+                {
+                    GameObject G = Instantiate(EnemiesSpawned[OfficerTeir - 1], SpawnLocations[i]);
+                    G.transform.parent = null;
+                    EnemyManager.Instance.AddEnemy(G);
 
 
+                }
             }
         }
         

@@ -16601,6 +16601,13 @@ MonoBehaviour:
   Wind: {fileID: 6728711657442509738}
   StartWindFreshhold: 5
   PauseMenu: {fileID: 2925952081758726484}
+  SlowTimer: 5
+  SlowSpeed: 0.1
+  SpeedTimer: 5
+  SpedUpSpeed: 1.1
+  slowed: 0
+  onFire: 0
+  Electrified: 0
   state: 0
   sliding: 0
   wallRunning: 0
@@ -16819,6 +16826,9 @@ MonoBehaviour:
   SegmentMaterial: {fileID: 0}
   SegMat: {fileID: 0}
   HealthPerSegment: 0
+  damageText: {fileID: 0}
+  YHeight: 3
+  RandomXPosOffset: 2.5
   DamageEffect: {fileID: 5498054467943839891}
   CritDamageEffect: {fileID: 5498054467943839891}
   SheildSize: 0
@@ -16830,6 +16840,10 @@ MonoBehaviour:
   SheildLerpBar: {fileID: 0}
   Sheildtime: 4
   YOffset: 0
+  DOTTimer: 0
+  startDottTimer: 0
+  DamageInflictedOverTime: 0
+  isPlayer: 0
 --- !u!114 &2936562961606995442
 MonoBehaviour:
   m_ObjectHideFlags: 0

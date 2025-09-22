@@ -816,7 +816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51fc89dcd996e3459288957bc909ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OfficerTeir: 3
+  OfficerTeir: 5
   Royal: 1
   NavMeshAgent: {fileID: 190962273764691674}
   OfficerCoat: {fileID: 3790108237484805239}
@@ -824,23 +824,29 @@ MonoBehaviour:
   OfficerS_Pads: {fileID: 8143988661077374824}
   FearRange: 8
   HealthTeirValues:
-  - 1
-  - 1
+  - 60
   - 120
+  - 180
   - 240
   - 300
   SheildTierValues:
-  - 0
-  - 0
+  - 10
+  - 15
   - 20
-  - 25
   - 30
+  - 40
   EnemiesSpawned:
-  - {fileID: 1925130697391322004, guid: 261c4471329acc04e873ebecc8c8a353, type: 3}
-  - {fileID: 1925130697391322004, guid: d9fc96005bcf394408eb3776ba45e5ce, type: 3}
+  - {fileID: 1925130697391322004, guid: 2ef8544c887cd2e4d9fabc9c02862ad6, type: 3}
+  - {fileID: 1925130697391322004, guid: 2843adfad66ed6f438f38b801de39a8a, type: 3}
   - {fileID: 1925130697391322004, guid: 5b0b6a885932a4848b4d3a3cb560cf76, type: 3}
   - {fileID: 1925130697391322004, guid: 98f242332166c6a48b2f72050ebd3bac, type: 3}
   - {fileID: 6037562090520907634, guid: 325970c8229c63f4fab468824f5c4d3b, type: 3}
+  CustomTier5Spawn: 1
+  Tier5CustomSpawn:
+  - {fileID: 6037562090520907634, guid: 325970c8229c63f4fab468824f5c4d3b, type: 3}
+  - {fileID: 6037562090520907634, guid: 325970c8229c63f4fab468824f5c4d3b, type: 3}
+  - {fileID: 6037562090520907634, guid: aa262181e4fcaff4fb1bb3abf9abf4e3, type: 3}
+  - {fileID: 6037562090520907634, guid: b8d3066e2fd71d24eaa74f43ce59a988, type: 3}
   SpawnLocations:
   - {fileID: 1520736326410308031}
   - {fileID: 1573030662892396675}
@@ -947,6 +953,9 @@ MonoBehaviour:
   SheildLerpBar: {fileID: 2049562842207815518}
   Sheildtime: 4
   YOffset: 1
+  DOTTimer: 0
+  startDottTimer: 0
+  DamageInflictedOverTime: 0
   isPlayer: 0
 --- !u!54 &8555815138409148780
 Rigidbody:
@@ -1695,7 +1704,7 @@ PrefabInstance:
     - target: {fileID: -6305394790416297415, guid: 62244ecc40fc06f468ac30a171182bb2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b273a7d7c3bb1d0459367d5dea25f494, type: 2}
+      objectReference: {fileID: 2100000, guid: bbf5290d3e67cab4bb23e7ba3a8d8eb5, type: 2}
     - target: {fileID: -4179099390078277340, guid: 62244ecc40fc06f468ac30a171182bb2, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1703,11 +1712,11 @@ PrefabInstance:
     - target: {fileID: -1602920137864340500, guid: 62244ecc40fc06f468ac30a171182bb2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 176cbe5b43c0e7d44a999b88ffeb8149, type: 2}
+      objectReference: {fileID: 2100000, guid: 84a16d51762108448aa178b9d5e84fe3, type: 2}
     - target: {fileID: -956892244318526221, guid: 62244ecc40fc06f468ac30a171182bb2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 37c651ec397587841a628eb8d77b2c3f, type: 2}
+      objectReference: {fileID: 2100000, guid: 2b31e5a0cbae00b409ebdd4af20ff65a, type: 2}
     - target: {fileID: 260279599535362619, guid: 62244ecc40fc06f468ac30a171182bb2, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1735,7 +1744,7 @@ PrefabInstance:
     - target: {fileID: 8940444906657846014, guid: 62244ecc40fc06f468ac30a171182bb2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 961dd3727942d8a49af76640ac0c9ea9, type: 2}
+      objectReference: {fileID: 2100000, guid: 281f0fe387fe3ad4298b61b62f1c367b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

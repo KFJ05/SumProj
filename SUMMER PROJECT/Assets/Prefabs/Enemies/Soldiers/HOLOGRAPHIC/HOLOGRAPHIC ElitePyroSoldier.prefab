@@ -641,6 +641,9 @@ MonoBehaviour:
   SheildLerpBar: {fileID: 3277069813687797152}
   Sheildtime: 4
   YOffset: 1
+  DOTTimer: 0
+  startDottTimer: 0
+  DamageInflictedOverTime: 0
   isPlayer: 0
 --- !u!114 &6580539375822968788
 MonoBehaviour:
@@ -2945,7 +2948,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1b7774427f492ca4b8903ec64e7ef39f, type: 2}
+  - {fileID: 2100000, guid: 6bcbd20a06dcdd044914f6a3cec0f581, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

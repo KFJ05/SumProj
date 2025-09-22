@@ -14546,15 +14546,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7331512180375724423}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -2.403, y: 1.429, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 234226748373102224}
   - {fileID: 4546542707272322645}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &2748235505803824763
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -19376,7 +19376,21 @@ MonoBehaviour:
   Damage: 0.1
   bulletLifeTime: 0
   Testing: 1
+  HitOnce: 0
   TagsToDamage:
   - Player
   poofEffect: {fileID: 0}
   StoredObj: {fileID: 0}
+  clips: []
+  poofNoise: {fileID: 0}
+  InstantKillPlayer: 0
+  DamageOverTimer: 5
+  DOTTimer: 3
+  InflictDamageOverTime: 1
+  V: {x: 0, y: 0, z: 0}
+  shootF: 0
+  UpwardF: 0
+  SlowDown: 0
+  SpeedUp: 1
+  SlowSpeed: 0.1
+  SpedupSpeed: 3

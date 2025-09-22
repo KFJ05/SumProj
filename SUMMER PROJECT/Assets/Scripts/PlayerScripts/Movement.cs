@@ -101,10 +101,19 @@ public class Movement : MonoBehaviour
     public Canvas PauseMenu;
 
     [Header("Status Effects")]
+    [Header("Slowed")]
     public float SlowTimer;
     float STime;
+
     [Range(0.1f, 0.9f)]
     public float SlowSpeed;
+
+    [Header("OnFire")]
+    public float SpeedTimer;
+    float SpeedTime;
+
+    [Range(1.1f, 3f)]
+    public float SpedUpSpeed;
 
     public bool slowed, onFire, Electrified;
 
@@ -162,35 +171,6 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(slowed == true)
-        {
-            slowed = false;
-            STime = SlowTimer;
-        }
-        if(STime > 0)
-        {
-            if (MAX_SPEED == MS)
-            {
-                MAX_SPEED *= SlowSpeed;
-                wallrunSpeed *= SlowSpeed;
-                SwingSpeed *= SlowSpeed;
-                slideSpeed *= SlowSpeed;
-            }
-            STime -= Time.deltaTime;
-        }
-        else if(STime == 0 && MAX_SPEED != MS)
-        {
-            MAX_SPEED = MS;
-            wallrunSpeed /= SlowSpeed;
-            SwingSpeed /= SlowSpeed;
-            slideSpeed /= SlowSpeed;
-
-        }
-        else if (STime < 0)
-        {
-            STime = 0;
-        }
-
         if (Input.GetKeyDown(PauseKey))
         {
             if (PauseManager.Instance != null)
@@ -204,8 +184,73 @@ public class Movement : MonoBehaviour
         }
         if (PauseManager.Instance != null)
         {
+            //slowed
             if (PauseManager.Instance.IsPaused == false)
             {
+                if (slowed == true && onFire == false)
+                {
+                    slowed = false;
+                    STime = SlowTimer;
+                }
+                if (STime > 0)
+                {
+                    if (MAX_SPEED == MS)
+                    {
+                        MAX_SPEED *= SlowSpeed;
+                        wallrunSpeed *= SlowSpeed;
+                        SwingSpeed *= SlowSpeed;
+                        slideSpeed *= SlowSpeed;
+                    }
+                    STime -= Time.deltaTime;
+                }
+                else if (STime == 0 && MAX_SPEED != MS)
+                {
+                    MAX_SPEED = MS;
+                    wallrunSpeed /= SlowSpeed;
+                    SwingSpeed /= SlowSpeed;
+                    slideSpeed /= SlowSpeed;
+
+                }
+                else if (STime < 0)
+                {
+                    STime = 0;
+                }
+
+                //on fire
+
+                if (onFire == true && (1 == 2))
+                {
+                    onFire = false;
+                    SpeedTime = SpeedTimer;
+                }
+                if (SpeedTime > 0)
+                {
+                    if (MAX_SPEED == MS)
+                    {
+                        MAX_SPEED *= SpedUpSpeed;
+                        wallrunSpeed *= SpedUpSpeed;
+                        SwingSpeed *= SpedUpSpeed;
+                        slideSpeed *= SpedUpSpeed;
+                        //walkspeed *= SpedUpSpeed;
+                    }
+                    SpeedTime -= Time.deltaTime;
+                }
+                else if (SpeedTime == 0 && MAX_SPEED != MS)
+                {
+                    MAX_SPEED = MS;
+                    wallrunSpeed /= SpedUpSpeed;
+                    SwingSpeed /= SpedUpSpeed;
+                    slideSpeed /= SpedUpSpeed;
+                    //walkspeed /= SpedUpSpeed;
+
+                }
+                else if (SpeedTime < 0)
+                {
+                    SpeedTime = 0;
+                }
+
+
+
                 PauseMenu.gameObject.SetActive(false);
 
                 rb.isKinematic = false;
