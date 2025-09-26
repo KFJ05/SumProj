@@ -690,8 +690,8 @@ MonoBehaviour:
   SheildCurrentHealth: 5
   SheildMaxHealth: 5
   SheildPrefab: {fileID: 6330724444806739072, guid: f555ffa5c715dc8418e41ed71a239e50, type: 3}
-  SheildHBar: {fileID: 0}
-  SheildLerpBar: {fileID: 0}
+  SheildHBar: {fileID: 3704291895145468260}
+  SheildLerpBar: {fileID: 7693930172204958538}
   Sheildtime: 4
   YOffset: 1
   DOTTimer: 0

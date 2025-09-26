@@ -48,6 +48,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Chapter_3/Ch3Lvl6.unity
     guid: 4133b16f8c23e9d47b8c70456ef4756b
   - enabled: 1
+    path: Assets/Scenes/Chapter_3/Ch3Lvl10.unity
+    guid: cdd19aa9facdc0648b839fc63f16bafd
+  - enabled: 1
     path: Assets/Scenes/Chapter_1/Extra/Ch1Lvl1EX.unity
     guid: 400492785da56aa4780bd7b44c7bcf23
   - enabled: 1
