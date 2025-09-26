@@ -3613,9 +3613,16 @@ MonoBehaviour:
   clips: []
   poofNoise: {fileID: 0}
   InstantKillPlayer: 0
+  DamageOverTimer: 1
+  DOTTimer: 5
+  InflictDamageOverTime: 0
   V: {x: 0, y: 0, z: 0}
   shootF: 0
   UpwardF: 0
+  SlowDown: 0
+  SpeedUp: 0
+  SlowSpeed: 0
+  SpedupSpeed: 0
 --- !u!65 &1010081501
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4640,7 +4647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentLevel: Ch1Lvl4EX
   NextLevel: Ch1Lvl5EX
-  LevelMusic: {fileID: 8300000, guid: f26ed89293e4a5f448c32ece1d00a7d5, type: 3}
+  LevelMusic: {fileID: 8300000, guid: 70030a54f86f5b4448ab68ee530d2ce4, type: 3}
   LoopMusic: 1
   PlayMusic: 1
   StopMusicOnLeave: 1

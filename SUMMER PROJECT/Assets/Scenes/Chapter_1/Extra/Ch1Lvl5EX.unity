@@ -2358,7 +2358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9157dc458c02ba9419abe724033f2237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Clip1: {fileID: 8300000, guid: a5a63dbd4f259fb469d730e7416c83f1, type: 3}
+  Clip1: {fileID: 8300000, guid: efec3ad970370984594f2ff0a990602b, type: 3}
   Clip2: {fileID: 0}
   source: {fileID: 0}
   triggered: 0
@@ -2463,9 +2463,16 @@ MonoBehaviour:
   clips: []
   poofNoise: {fileID: 0}
   InstantKillPlayer: 0
+  DamageOverTimer: 1
+  DOTTimer: 5
+  InflictDamageOverTime: 0
   V: {x: 0, y: 0, z: 0}
   shootF: 0
   UpwardF: 0
+  SlowDown: 0
+  SpeedUp: 0
+  SlowSpeed: 0
+  SpedupSpeed: 0
 --- !u!65 &1826281469
 BoxCollider:
   m_ObjectHideFlags: 0
