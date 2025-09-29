@@ -564,6 +564,15 @@ MonoBehaviour:
   - {fileID: 8626944424517223452}
   - {fileID: 5795369597374328627}
   Drone: {fileID: 2295462832957512113, guid: e6b2e9b31a0e4d84f8ab99a51f4b981f, type: 3}
+  useRocket: 0
+  useX_Rocket: 0
+  rocketTimer: 20
+  XTimer: 20
+  Rocket: {fileID: 2710739862230671500, guid: 49db82a0dcad90d44a096f783cdac072, type: 3}
+  X_Rocket: {fileID: 1572553320130013320, guid: 23269869dc8458948a8808f79fd27b88, type: 3}
+  HealthDeadline: 150
+  TurnOnRocket: 1
+  TurnOnX_Rocket: 0
 --- !u!114 &3287270096209351120
 MonoBehaviour:
   m_ObjectHideFlags: 0

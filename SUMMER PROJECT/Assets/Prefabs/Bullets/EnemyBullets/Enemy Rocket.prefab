@@ -187,6 +187,9 @@ MonoBehaviour:
   SegmentMaterial: {fileID: 0}
   SegMat: {fileID: 0}
   HealthPerSegment: 0
+  damageText: {fileID: 0}
+  YHeight: 3
+  RandomXPosOffset: 2.5
   DamageEffect: {fileID: 0}
   CritDamageEffect: {fileID: 0}
   SheildSize: 0
@@ -198,6 +201,10 @@ MonoBehaviour:
   SheildLerpBar: {fileID: 0}
   Sheildtime: 4
   YOffset: 0
+  DOTTimer: 0
+  startDottTimer: 0
+  DamageInflictedOverTime: 0
+  isPlayer: 0
 --- !u!114 &9214383146720806865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5216,10 +5223,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6396207912003241893}
     m_Modifications:
-    - target: {fileID: 652556143599871185, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3142950351343403454, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5260,125 +5263,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4099037642511104114, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
-      propertyPath: TimetoLast
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4099037642511104114, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
-      propertyPath: ColliderTime
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 4099850047249004648, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
       propertyPath: m_Name
       value: RocketExplosionEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 5930585626228336749, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5930585626228336749, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
-      propertyPath: autoRandomSeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5930585626228336749, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
-      propertyPath: ShapeModule.type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5930585626228336749, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
-      propertyPath: ShapeModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5930585626228336749, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
-      propertyPath: CollisionModule.type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5930585626228336749, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
-      propertyPath: ShapeModule.arc.value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5930585626228336749, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
-      propertyPath: ShapeModule.arc.spread
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5930585626228336749, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
-      propertyPath: CollisionModule.enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5930585626228336749, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
-      propertyPath: SizeModule.curve.scalar
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5930585626228336749, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
-      propertyPath: ShapeModule.radius.value
-      value: 0.0001
-      objectReference: {fileID: 0}
-    - target: {fileID: 5930585626228336749, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
-      propertyPath: ShapeModule.radiusThickness
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5930585626228336749, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
-      propertyPath: CollisionModule.m_Planes.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6651897781887417727, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8231976036465399551, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8936611429553236713, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
-      propertyPath: Damage
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8936611429553236713, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
-      propertyPath: TagsToDamage.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8936611429553236713, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
-      propertyPath: TagsToDamage.Array.data[1]
-      value: Enemy
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4099850047249004648, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5538838197655624237}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
 --- !u!198 &3044215201712980144 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 5930585626228336749, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
   m_PrefabInstance: {fileID: 8679163999147976925}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4654191253241974965 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4099850047249004648, guid: 13922a85db721534b9f658e7c25ad144, type: 3}
-  m_PrefabInstance: {fileID: 8679163999147976925}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &5538838197655624237
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4654191253241974965}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Radius: 3
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &6047372351607253347 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3142950351343403454, guid: 13922a85db721534b9f658e7c25ad144, type: 3}

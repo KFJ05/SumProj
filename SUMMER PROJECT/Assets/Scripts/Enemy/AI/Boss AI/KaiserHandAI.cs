@@ -61,11 +61,31 @@ public class KaiserHandAI : MonoBehaviour
     public GameObject[] DroneSpawnPoints;
     public GameObject Drone;
 
+    [Header("RocketSettings")]
+    public bool useRocket, useX_Rocket = false;
+
+    public float rocketTimer, XTimer;
+    float RT, XT;
+    public GameObject Rocket, X_Rocket;
+
+    [Header("ActivatePhase2")]
+    public float HealthDeadline;
+
+    public bool TurnOnRocket;
+    public bool TurnOnX_Rocket;
+    
+
+
    
 
     // Start is called before the first frame update
     void Start()
     {
+        if(useRocket)
+        {
+            RT = rocketTimer;
+        }
+
         DST = DroneSummonTime;
         R = -1;
         MT = MoveTimer;
@@ -89,6 +109,21 @@ public class KaiserHandAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (HBM.totalHealth <= HealthDeadline)
+        {
+            if (TurnOnRocket && useRocket == false)
+            {
+                useRocket = true;
+                RT = 0;
+            }
+            if (TurnOnX_Rocket && useX_Rocket == false)
+            {
+                useX_Rocket = true;
+                XT = 0;
+            }
+        }
+
+
         DST -= Time.deltaTime;
         if(DST <= 0)
         {
@@ -96,8 +131,27 @@ public class KaiserHandAI : MonoBehaviour
             SummonDrone();
         }
 
+        if(useRocket)
+        {
+            RT -= Time.deltaTime;
+            if(RT <= 0)
+            {
+                RT = rocketTimer;
+                GameObject R = Instantiate(Rocket, DroneSpawnPoints[0].transform.position, Quaternion.identity, null);
+            }
+        }
+        if (useX_Rocket)
+        {
+            XT -= Time.deltaTime;
+            if (XT <= 0)
+            {
+                RT = rocketTimer;
+                GameObject X = Instantiate(X_Rocket, transform.position, Quaternion.identity, null);
+            }
+        }
 
-        if(Counter <= HealthIntervals.Length)
+
+        if (Counter <= HealthIntervals.Length)
         {
             if(HBM.totalHealth <= HealthIntervals[HealthIntervals.Length - Counter])
             {

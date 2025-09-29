@@ -12,11 +12,13 @@ public class GameManager : MonoBehaviour
 
     public AudioSource MasterMusicSource;
 
-    public AudioSource MasterSoundSource;
+    public AudioSource MasterSoundSourceBullets, MasterSoundSourceExplosions, MasterSoundSourceVoices;
 
     public bool NormalGameCompleted;
 
     float mouseSensitivity = 500f;
+
+    float SoundVolume = .5f;
 
 
     private static GameManager instance;
@@ -80,16 +82,16 @@ public class GameManager : MonoBehaviour
         MasterMusicSource.loop = false;
     }
 
-    public void PlaySound(AudioClip clip)
+    public void PlayBulletSound(AudioClip clip)
     {
-        MasterSoundSource.clip = clip;
-        MasterSoundSource.Play();
+        MasterSoundSourceBullets.clip = clip;
+        MasterSoundSourceBullets.Play();
 
     }
-    public void StopSound()
+    public void StopBulletSound()
     {
-        MasterSoundSource.Pause();
-        MasterSoundSource.clip = null;
+        MasterSoundSourceBullets.Pause();
+        MasterSoundSourceBullets.clip = null;
     }
 
     public void ChangeMusicVolume(float NewVolume)
@@ -100,6 +102,16 @@ public class GameManager : MonoBehaviour
     public float GetMusicVolume()
     {
         return MasterMusicSource.volume;
+    }
+
+    public void ChangSoundVolume(float NewVolume)
+    {
+        SoundVolume = NewVolume;
+    }
+
+    public float GetSoundVolume()
+    {
+        return SoundVolume;
     }
 
     public float GetmouseSensitivity()
