@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     float mouseSensitivity = 500f;
 
-    float SoundVolume = .5f;
+    float SoundVolume = .25f;
 
 
     private static GameManager instance;

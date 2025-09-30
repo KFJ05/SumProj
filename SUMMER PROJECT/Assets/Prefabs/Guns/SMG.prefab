@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 3910310288137829153}
   - component: {fileID: 5267652790207833821}
   - component: {fileID: 6743404373102216830}
+  - component: {fileID: 535259879389005516}
   m_Layer: 0
   m_Name: SMG
   m_TagString: Gun
@@ -432,6 +433,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &535259879389005516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2908764697293676447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e4803d39086244b905fa507e60c431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 6743404373102216830}
 --- !u!1 &4625334317908402250
 GameObject:
   m_ObjectHideFlags: 0

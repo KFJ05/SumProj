@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2247676394242785368}
   - component: {fileID: 8480569203400823432}
   - component: {fileID: -2365519064719336538}
+  - component: {fileID: -4124771704528514660}
   m_Layer: 0
   m_Name: HomingGaurdDroneBullet
   m_TagString: Untagged
@@ -401,6 +402,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-4124771704528514660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3442919074317325586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e4803d39086244b905fa507e60c431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: -2365519064719336538}
 --- !u!1001 &1777681916176799301
 PrefabInstance:
   m_ObjectHideFlags: 0

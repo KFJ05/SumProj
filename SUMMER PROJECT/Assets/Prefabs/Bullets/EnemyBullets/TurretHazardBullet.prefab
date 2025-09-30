@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 9202186062275466019}
   - component: {fileID: 2247676394242785368}
   - component: {fileID: 1545346800264102739}
-  - component: {fileID: 579830847827261817}
+  - component: {fileID: -3765754627717155312}
   m_Layer: 0
   m_Name: TurretHazardBullet
   m_TagString: Untagged
@@ -383,7 +383,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &579830847827261817
+--- !u!114 &-3765754627717155312
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -395,6 +395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e4803d39086244b905fa507e60c431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  source: {fileID: 1545346800264102739}
 --- !u!1001 &4897174590519533952
 PrefabInstance:
   m_ObjectHideFlags: 0

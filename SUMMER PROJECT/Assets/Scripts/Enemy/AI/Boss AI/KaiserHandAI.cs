@@ -254,10 +254,18 @@ public class KaiserHandAI : MonoBehaviour
             if (Counter <= EnemiesSpawned.Length)
             {
                 GameObject E = Instantiate(EnemiesSpawned[EnemiesSpawned.Length - Counter], DroneSpawnPoints[f].transform.position, transform.rotation);
+                if (EnemyManager.Instance != null)
+                {
+                    EnemyManager.Instance.AddEnemy(E);
+                }
             }
             else
             {
                 GameObject E = Instantiate(EnemiesSpawned[0], transform.position, transform.rotation);
+                if(EnemyManager.Instance != null)
+                {
+                    EnemyManager.Instance.AddEnemy(E);
+                }
             }
 
                 State = KaiserHandStates.Idle;

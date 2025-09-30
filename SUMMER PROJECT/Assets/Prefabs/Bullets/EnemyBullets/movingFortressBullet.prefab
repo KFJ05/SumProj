@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2247676394242785368}
   - component: {fileID: 8480569203400823432}
   - component: {fileID: -1885535735685835406}
+  - component: {fileID: -2742815082060481692}
   m_Layer: 0
   m_Name: movingFortressBullet
   m_TagString: Untagged
@@ -154,6 +155,7 @@ MonoBehaviour:
   Damage: 5
   bulletLifeTime: 3
   Testing: 0
+  HitOnce: 0
   TagsToDamage:
   - Player
   poofEffect: {fileID: 2888945554033376314}
@@ -161,6 +163,17 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: 231efaa0436414148954d2d41472b807, type: 3}
   poofNoise: {fileID: 0}
+  InstantKillPlayer: 0
+  DamageOverTimer: 1
+  DOTTimer: 5
+  InflictDamageOverTime: 0
+  V: {x: 0, y: 0, z: 0}
+  shootF: 0
+  UpwardF: 0
+  SlowDown: 0
+  SpeedUp: 0
+  SlowSpeed: 0.1
+  SpedupSpeed: 1.1
 --- !u!96 &2247676394242785368
 TrailRenderer:
   serializedVersion: 3
@@ -388,6 +401,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-2742815082060481692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3442919074317325586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e4803d39086244b905fa507e60c431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: -1885535735685835406}
 --- !u!1001 &1777681916176799301
 PrefabInstance:
   m_ObjectHideFlags: 0
