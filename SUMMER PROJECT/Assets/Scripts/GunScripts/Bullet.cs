@@ -52,6 +52,8 @@ public class Bullet : MonoBehaviour
     [Range(1.1f, 3f)]
     public float SpedupSpeed;
 
+    public bool Stationary;
+
     private void Awake()
     {
 
@@ -88,7 +90,7 @@ public class Bullet : MonoBehaviour
             }
         }
 
-        if (rb != null)
+        if (rb != null || Stationary == false)
         {
             if (PauseManager.Instance != null)
             {

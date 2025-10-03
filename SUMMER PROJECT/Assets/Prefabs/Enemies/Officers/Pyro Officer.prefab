@@ -750,6 +750,7 @@ GameObject:
   - component: {fileID: 8555815138409148780}
   - component: {fileID: 6663617801157948224}
   - component: {fileID: 8819458607910408030}
+  - component: {fileID: 5986425613164239698}
   m_Layer: 0
   m_Name: Pyro Officer
   m_TagString: Enemy
@@ -863,6 +864,7 @@ MonoBehaviour:
   TimeBetweenShots: 2
   Bullet: {fileID: 3442919074317325586, guid: 352b419465c300440a76a74cc7f1fc5a, type: 3}
   FireLocation: {fileID: 6427433850484179436}
+  rotationSpeed: 5
   RepeatFire: 0.02
   BulletsShot:
   - 0
@@ -1119,6 +1121,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5986425613164239698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6037562090520907634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e4803d39086244b905fa507e60c431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 8819458607910408030}
 --- !u!1 &6227847322407748293
 GameObject:
   m_ObjectHideFlags: 0

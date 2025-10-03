@@ -808,6 +808,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2936562961606995442, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
+      propertyPath: SwapMusic
+      value: 
+      objectReference: {fileID: 336620338}
+    - target: {fileID: 2936562961606995442, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
+      propertyPath: LevelMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: dc38a524534d4324ba6f376d68d8b90c, type: 3}
+    - target: {fileID: 2936562961606995442, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
+      propertyPath: ResetMusic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936562961606995442, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
       propertyPath: ResetGunOnDeath
       value: 0
       objectReference: {fileID: 0}
@@ -863,6 +875,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5704776758052415479, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5704776758052415479, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5704776758052415479, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6672080454603989902, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -890,6 +914,14 @@ PrefabInstance:
     - target: {fileID: 7742536421284454803, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PauseManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882211421026957861, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882211421026957861, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8076401958199647226, guid: 8ef51e0806abae3458fcd2f6dcee1a38, type: 3}
       propertyPath: field of view
@@ -1056,6 +1088,7 @@ GameObject:
   - component: {fileID: 336620336}
   - component: {fileID: 336620335}
   - component: {fileID: 336620334}
+  - component: {fileID: 336620338}
   m_Layer: 6
   m_Name: SpawnC
   m_TagString: Untagged
@@ -1169,6 +1202,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336620332}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &336620338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336620332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9157dc458c02ba9419abe724033f2237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Clip1: {fileID: 8300000, guid: 70030a54f86f5b4448ab68ee530d2ce4, type: 3}
+  Clip2: {fileID: 0}
+  source: {fileID: 0}
+  triggered: 0
+  ActivateTag: Player
 --- !u!1001 &385176690
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4025,9 +4075,17 @@ MonoBehaviour:
   clips: []
   poofNoise: {fileID: 0}
   InstantKillPlayer: 0
+  DamageOverTimer: 1
+  DOTTimer: 5
+  InflictDamageOverTime: 0
   V: {x: 0, y: 0, z: 0}
   shootF: 0
   UpwardF: 0
+  SlowDown: 0
+  SpeedUp: 0
+  SlowSpeed: 0
+  SpedupSpeed: 0
+  Stationary: 0
 --- !u!65 &1495602128
 BoxCollider:
   m_ObjectHideFlags: 0
